@@ -1,0 +1,2069 @@
+{
+    "machine_info": {
+        "node": "roger-mac.local",
+        "processor": "i386",
+        "machine": "x86_64",
+        "python_compiler": "Clang 4.0.1 (tags/RELEASE_401/final)",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.7.3",
+        "python_version": "3.7.3",
+        "python_build": [
+            "default",
+            "Mar 27 2019 16:54:48"
+        ],
+        "release": "18.6.0",
+        "system": "Darwin",
+        "cpu": {
+            "vendor_id": "GenuineIntel",
+            "hardware": "unknown",
+            "brand": "Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz"
+        }
+    },
+    "commit_info": {
+        "id": "3e77769723aa9c55df0ec8ca0dbd1708dd6bc114",
+        "time": "2019-07-02T14:49:43-04:00",
+        "author_time": "2019-07-02T14:49:43-04:00",
+        "dirty": true,
+        "project": "quantum-benchmarks",
+        "branch": "master"
+    },
+    "benchmarks": [
+        {
+            "group": "X",
+            "name": "test_X[4]",
+            "fullname": "benchmarks.py::test_X[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.008753057999999925,
+                "max": 0.011390127000000305,
+                "mean": 0.01033911924561401,
+                "stddev": 0.0004327111034506532,
+                "rounds": 57,
+                "median": 0.010358606000000492,
+                "iqr": 0.0005456037500000122,
+                "q1": 0.010054671999999876,
+                "q3": 0.010600275749999888,
+                "iqr_outliers": 1,
+                "stddev_outliers": 11,
+                "outliers": "11;1",
+                "ld15iqr": 0.009684693999999716,
+                "hd15iqr": 0.011390127000000305,
+                "ops": 96.72003738850512,
+                "total": 0.5893297969999987,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[5]",
+            "fullname": "benchmarks.py::test_X[5]",
+            "params": {
+                "nqubits": 5
+            },
+            "param": "5",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00963828399999933,
+                "max": 0.012213497000000295,
+                "mean": 0.010434547526315755,
+                "stddev": 0.00038462536313866924,
+                "rounds": 114,
+                "median": 0.010428185499999465,
+                "iqr": 0.0004547539999988359,
+                "q1": 0.01016508400000049,
+                "q3": 0.010619837999999326,
+                "iqr_outliers": 3,
+                "stddev_outliers": 25,
+                "outliers": "25;3",
+                "ld15iqr": 0.00963828399999933,
+                "hd15iqr": 0.011437978000000015,
+                "ops": 95.83549238508105,
+                "total": 1.1895384179999962,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[6]",
+            "fullname": "benchmarks.py::test_X[6]",
+            "params": {
+                "nqubits": 6
+            },
+            "param": "6",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010166293999999354,
+                "max": 0.012752730999999962,
+                "mean": 0.010753688200000132,
+                "stddev": 0.0004035592169698886,
+                "rounds": 110,
+                "median": 0.010693653999999775,
+                "iqr": 0.0004581699999990363,
+                "q1": 0.01047269200000045,
+                "q3": 0.010930861999999486,
+                "iqr_outliers": 4,
+                "stddev_outliers": 24,
+                "outliers": "24;4",
+                "ld15iqr": 0.010166293999999354,
+                "hd15iqr": 0.011741955999999831,
+                "ops": 92.99135156252603,
+                "total": 1.1829057020000144,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[7]",
+            "fullname": "benchmarks.py::test_X[7]",
+            "params": {
+                "nqubits": 7
+            },
+            "param": "7",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010540855999998655,
+                "max": 0.0177788139999997,
+                "mean": 0.011764869225225228,
+                "stddev": 0.0009153381665269302,
+                "rounds": 111,
+                "median": 0.011645998999998852,
+                "iqr": 0.000730820750000305,
+                "q1": 0.011281459249999237,
+                "q3": 0.012012279999999542,
+                "iqr_outliers": 7,
+                "stddev_outliers": 19,
+                "outliers": "19;7",
+                "ld15iqr": 0.010540855999998655,
+                "hd15iqr": 0.013277994999999265,
+                "ops": 84.9988198641329,
+                "total": 1.3059004840000004,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[8]",
+            "fullname": "benchmarks.py::test_X[8]",
+            "params": {
+                "nqubits": 8
+            },
+            "param": "8",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01112121800000132,
+                "max": 0.05514432100000022,
+                "mean": 0.013214737564356576,
+                "stddev": 0.0047784703817509554,
+                "rounds": 101,
+                "median": 0.012222857999999448,
+                "iqr": 0.0008745312500000324,
+                "q1": 0.011784080249999995,
+                "q3": 0.012658611500000028,
+                "iqr_outliers": 14,
+                "stddev_outliers": 5,
+                "outliers": "5;14",
+                "ld15iqr": 0.01112121800000132,
+                "hd15iqr": 0.014074081000000405,
+                "ops": 75.67308810560476,
+                "total": 1.334688494000014,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[9]",
+            "fullname": "benchmarks.py::test_X[9]",
+            "params": {
+                "nqubits": 9
+            },
+            "param": "9",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.011930414000000056,
+                "max": 0.017222366000000378,
+                "mean": 0.012752399660377271,
+                "stddev": 0.0007518489057968164,
+                "rounds": 106,
+                "median": 0.012570224500000116,
+                "iqr": 0.0005042440000000425,
+                "q1": 0.012355657999998826,
+                "q3": 0.012859901999998868,
+                "iqr_outliers": 8,
+                "stddev_outliers": 13,
+                "outliers": "13;8",
+                "ld15iqr": 0.011930414000000056,
+                "hd15iqr": 0.01371531299999873,
+                "ops": 78.41661386343468,
+                "total": 1.3517543639999907,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[10]",
+            "fullname": "benchmarks.py::test_X[10]",
+            "params": {
+                "nqubits": 10
+            },
+            "param": "10",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01373400800000013,
+                "max": 0.016658122999999136,
+                "mean": 0.014427675514285606,
+                "stddev": 0.0005091796738972363,
+                "rounds": 105,
+                "median": 0.014338215000000432,
+                "iqr": 0.00043715425000012686,
+                "q1": 0.014108613499999922,
+                "q3": 0.01454576775000005,
+                "iqr_outliers": 7,
+                "stddev_outliers": 22,
+                "outliers": "22;7",
+                "ld15iqr": 0.01373400800000013,
+                "hd15iqr": 0.015217629000000343,
+                "ops": 69.31123444035367,
+                "total": 1.5149059289999887,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[11]",
+            "fullname": "benchmarks.py::test_X[11]",
+            "params": {
+                "nqubits": 11
+            },
+            "param": "11",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.014651383000000351,
+                "max": 0.05313030399999974,
+                "mean": 0.01940626714851497,
+                "stddev": 0.006461395248829893,
+                "rounds": 101,
+                "median": 0.018175437000000016,
+                "iqr": 0.00459758125000187,
+                "q1": 0.01594529274999923,
+                "q3": 0.0205428740000011,
+                "iqr_outliers": 4,
+                "stddev_outliers": 4,
+                "outliers": "4;4",
+                "ld15iqr": 0.014651383000000351,
+                "hd15iqr": 0.031202784999997846,
+                "ops": 51.52974512548248,
+                "total": 1.960032982000012,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[12]",
+            "fullname": "benchmarks.py::test_X[12]",
+            "params": {
+                "nqubits": 12
+            },
+            "param": "12",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.014932214000001665,
+                "max": 0.07469030400000065,
+                "mean": 0.027546804349514536,
+                "stddev": 0.01207545011850386,
+                "rounds": 103,
+                "median": 0.024445106000001715,
+                "iqr": 0.015784086000002695,
+                "q1": 0.017922986749998593,
+                "q3": 0.03370707275000129,
+                "iqr_outliers": 4,
+                "stddev_outliers": 21,
+                "outliers": "21;4",
+                "ld15iqr": 0.014932214000001665,
+                "hd15iqr": 0.058336439000001405,
+                "ops": 36.301851471117125,
+                "total": 2.8373208479999974,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[13]",
+            "fullname": "benchmarks.py::test_X[13]",
+            "params": {
+                "nqubits": 13
+            },
+            "param": "13",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.015959228999999908,
+                "max": 0.12495189000000195,
+                "mean": 0.043948789796116675,
+                "stddev": 0.024635082176596917,
+                "rounds": 103,
+                "median": 0.036081964000000966,
+                "iqr": 0.029243481749997358,
+                "q1": 0.026061833000001755,
+                "q3": 0.05530531474999911,
+                "iqr_outliers": 3,
+                "stddev_outliers": 30,
+                "outliers": "30;3",
+                "ld15iqr": 0.015959228999999908,
+                "hd15iqr": 0.10945660400000179,
+                "ops": 22.75375510085969,
+                "total": 4.526725349000017,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[14]",
+            "fullname": "benchmarks.py::test_X[14]",
+            "params": {
+                "nqubits": 14
+            },
+            "param": "14",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.0213178290000009,
+                "max": 0.20396735499999963,
+                "mean": 0.07516292934444443,
+                "stddev": 0.037988995738740344,
+                "rounds": 90,
+                "median": 0.0696412585000008,
+                "iqr": 0.04907900399999576,
+                "q1": 0.04728062200000238,
+                "q3": 0.09635962599999814,
+                "iqr_outliers": 1,
+                "stddev_outliers": 35,
+                "outliers": "35;1",
+                "ld15iqr": 0.0213178290000009,
+                "hd15iqr": 0.20396735499999963,
+                "ops": 13.304430903928225,
+                "total": 6.7646636409999985,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[4]",
+            "fullname": "benchmarks.py::test_H[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009303360000000538,
+                "max": 0.04533636599999724,
+                "mean": 0.010800459548076659,
+                "stddev": 0.0035384436324484027,
+                "rounds": 104,
+                "median": 0.01018142099999686,
+                "iqr": 0.0012336510000032774,
+                "q1": 0.00977087399999732,
+                "q3": 0.011004525000000598,
+                "iqr_outliers": 5,
+                "stddev_outliers": 1,
+                "outliers": "1;5",
+                "ld15iqr": 0.009303360000000538,
+                "hd15iqr": 0.012886895000001175,
+                "ops": 92.58865287617134,
+                "total": 1.1232477929999725,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[5]",
+            "fullname": "benchmarks.py::test_H[5]",
+            "params": {
+                "nqubits": 5
+            },
+            "param": "5",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00951987099999485,
+                "max": 0.011999353000000212,
+                "mean": 0.010167600644627942,
+                "stddev": 0.00044557820297833647,
+                "rounds": 121,
+                "median": 0.01004810999999961,
+                "iqr": 0.00032235749999820484,
+                "q1": 0.009909501500002804,
+                "q3": 0.010231859000001009,
+                "iqr_outliers": 10,
+                "stddev_outliers": 22,
+                "outliers": "22;10",
+                "ld15iqr": 0.00951987099999485,
+                "hd15iqr": 0.010775905999999225,
+                "ops": 98.35162050039314,
+                "total": 1.230279677999981,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[6]",
+            "fullname": "benchmarks.py::test_H[6]",
+            "params": {
+                "nqubits": 6
+            },
+            "param": "6",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00978212799999767,
+                "max": 0.012746567000000653,
+                "mean": 0.010402351675438438,
+                "stddev": 0.00041796674983154205,
+                "rounds": 114,
+                "median": 0.010303382000000028,
+                "iqr": 0.00040117599999689446,
+                "q1": 0.010156024000004038,
+                "q3": 0.010557200000000933,
+                "iqr_outliers": 7,
+                "stddev_outliers": 19,
+                "outliers": "19;7",
+                "ld15iqr": 0.00978212799999767,
+                "hd15iqr": 0.011216602999994052,
+                "ops": 96.13210850784392,
+                "total": 1.185868090999982,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[7]",
+            "fullname": "benchmarks.py::test_H[7]",
+            "params": {
+                "nqubits": 7
+            },
+            "param": "7",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009842418000005182,
+                "max": 0.012444021999996835,
+                "mean": 0.010703622412843597,
+                "stddev": 0.00040612966888022386,
+                "rounds": 109,
+                "median": 0.010636809999994057,
+                "iqr": 0.00038214550000148506,
+                "q1": 0.010440292499994897,
+                "q3": 0.010822437999996382,
+                "iqr_outliers": 8,
+                "stddev_outliers": 25,
+                "outliers": "25;8",
+                "ld15iqr": 0.010088449000001276,
+                "hd15iqr": 0.011395751999998538,
+                "ops": 93.42631507629324,
+                "total": 1.1666948429999522,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[8]",
+            "fullname": "benchmarks.py::test_H[8]",
+            "params": {
+                "nqubits": 8
+            },
+            "param": "8",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01062348299999627,
+                "max": 0.013443501999994112,
+                "mean": 0.011346411414413714,
+                "stddev": 0.000495257315048601,
+                "rounds": 111,
+                "median": 0.011261407999995754,
+                "iqr": 0.00048546899999557525,
+                "q1": 0.011018540500000285,
+                "q3": 0.01150400949999586,
+                "iqr_outliers": 8,
+                "stddev_outliers": 21,
+                "outliers": "21;8",
+                "ld15iqr": 0.01062348299999627,
+                "hd15iqr": 0.012308136999997998,
+                "ops": 88.13359250570339,
+                "total": 1.2594516669999223,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[9]",
+            "fullname": "benchmarks.py::test_H[9]",
+            "params": {
+                "nqubits": 9
+            },
+            "param": "9",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.011584437999999864,
+                "max": 0.013973339000003193,
+                "mean": 0.012256030775700638,
+                "stddev": 0.0003945021643863361,
+                "rounds": 107,
+                "median": 0.012195505999997636,
+                "iqr": 0.00035609325000152126,
+                "q1": 0.012023992749998769,
+                "q3": 0.01238008600000029,
+                "iqr_outliers": 6,
+                "stddev_outliers": 24,
+                "outliers": "24;6",
+                "ld15iqr": 0.011584437999999864,
+                "hd15iqr": 0.012972821000005297,
+                "ops": 81.59248441042146,
+                "total": 1.3113952929999684,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[10]",
+            "fullname": "benchmarks.py::test_H[10]",
+            "params": {
+                "nqubits": 10
+            },
+            "param": "10",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.013334944999996878,
+                "max": 0.019262106999995865,
+                "mean": 0.014375451857142707,
+                "stddev": 0.0008296883320016882,
+                "rounds": 105,
+                "median": 0.014152035000002172,
+                "iqr": 0.0006468542499984409,
+                "q1": 0.01391415500000015,
+                "q3": 0.014561009249998591,
+                "iqr_outliers": 9,
+                "stddev_outliers": 15,
+                "outliers": "15;9",
+                "ld15iqr": 0.013334944999996878,
+                "hd15iqr": 0.015647930000000088,
+                "ops": 69.56303077896864,
+                "total": 1.5094224449999842,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[11]",
+            "fullname": "benchmarks.py::test_H[11]",
+            "params": {
+                "nqubits": 11
+            },
+            "param": "11",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01409949800000021,
+                "max": 0.057859319999998604,
+                "mean": 0.019283461811321043,
+                "stddev": 0.006632299351238418,
+                "rounds": 106,
+                "median": 0.017839790000000022,
+                "iqr": 0.004581461999997316,
+                "q1": 0.01588974999999948,
+                "q3": 0.020471211999996797,
+                "iqr_outliers": 3,
+                "stddev_outliers": 3,
+                "outliers": "3;3",
+                "ld15iqr": 0.01409949800000021,
+                "hd15iqr": 0.05195652200000467,
+                "ops": 51.85790859465464,
+                "total": 2.0440469520000306,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[12]",
+            "fullname": "benchmarks.py::test_H[12]",
+            "params": {
+                "nqubits": 12
+            },
+            "param": "12",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.015033084999998891,
+                "max": 0.07393169000000199,
+                "mean": 0.0279088498190476,
+                "stddev": 0.012580719013380664,
+                "rounds": 105,
+                "median": 0.025107271000003095,
+                "iqr": 0.014704114999998907,
+                "q1": 0.01862376124999976,
+                "q3": 0.03332787624999867,
+                "iqr_outliers": 5,
+                "stddev_outliers": 15,
+                "outliers": "15;5",
+                "ld15iqr": 0.015033084999998891,
+                "hd15iqr": 0.05577139200000403,
+                "ops": 35.83092841459582,
+                "total": 2.930429230999998,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[13]",
+            "fullname": "benchmarks.py::test_H[13]",
+            "params": {
+                "nqubits": 13
+            },
+            "param": "13",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.015927199999993036,
+                "max": 0.14295487500000092,
+                "mean": 0.0440332686288661,
+                "stddev": 0.02349997550114576,
+                "rounds": 97,
+                "median": 0.03636843999999684,
+                "iqr": 0.02994782225000492,
+                "q1": 0.027723483749998223,
+                "q3": 0.05767130600000314,
+                "iqr_outliers": 3,
+                "stddev_outliers": 25,
+                "outliers": "25;3",
+                "ld15iqr": 0.015927199999993036,
+                "hd15iqr": 0.10577015700000203,
+                "ops": 22.710101501400874,
+                "total": 4.2712270570000115,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[14]",
+            "fullname": "benchmarks.py::test_H[14]",
+            "params": {
+                "nqubits": 14
+            },
+            "param": "14",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.016266446000003043,
+                "max": 0.22878326300000396,
+                "mean": 0.07637053916129023,
+                "stddev": 0.04552953771627796,
+                "rounds": 93,
+                "median": 0.06801154400000087,
+                "iqr": 0.05129033300000252,
+                "q1": 0.0414393344999997,
+                "q3": 0.09272966750000222,
+                "iqr_outliers": 4,
+                "stddev_outliers": 28,
+                "outliers": "28;4",
+                "ld15iqr": 0.016266446000003043,
+                "hd15iqr": 0.1830543739999939,
+                "ops": 13.094054474174353,
+                "total": 7.102460141999991,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[4]",
+            "fullname": "benchmarks.py::test_T[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009274845999996728,
+                "max": 0.04197507800000011,
+                "mean": 0.010286499168140882,
+                "stddev": 0.0030404728615729872,
+                "rounds": 113,
+                "median": 0.00992425299999411,
+                "iqr": 0.0003645202499971134,
+                "q1": 0.009756339000002612,
+                "q3": 0.010120859249999725,
+                "iqr_outliers": 9,
+                "stddev_outliers": 1,
+                "outliers": "1;9",
+                "ld15iqr": 0.009274845999996728,
+                "hd15iqr": 0.010723075000001359,
+                "ops": 97.2148039536306,
+                "total": 1.1623744059999197,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[5]",
+            "fullname": "benchmarks.py::test_T[5]",
+            "params": {
+                "nqubits": 5
+            },
+            "param": "5",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00945625099999603,
+                "max": 0.012808034000002522,
+                "mean": 0.010140371215517115,
+                "stddev": 0.000366301278833271,
+                "rounds": 116,
+                "median": 0.010079251500002329,
+                "iqr": 0.00036007150000472166,
+                "q1": 0.009929434000000015,
+                "q3": 0.010289505500004736,
+                "iqr_outliers": 2,
+                "stddev_outliers": 19,
+                "outliers": "19;2",
+                "ld15iqr": 0.00945625099999603,
+                "hd15iqr": 0.010964882000003229,
+                "ops": 98.61571916319677,
+                "total": 1.1762830609999853,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[6]",
+            "fullname": "benchmarks.py::test_T[6]",
+            "params": {
+                "nqubits": 6
+            },
+            "param": "6",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009790746999996713,
+                "max": 0.012386949000003256,
+                "mean": 0.010408718666666235,
+                "stddev": 0.0003676402113957814,
+                "rounds": 114,
+                "median": 0.010351324500000203,
+                "iqr": 0.000377256000000159,
+                "q1": 0.010198441999996533,
+                "q3": 0.010575697999996692,
+                "iqr_outliers": 5,
+                "stddev_outliers": 22,
+                "outliers": "22;5",
+                "ld15iqr": 0.009790746999996713,
+                "hd15iqr": 0.01119327400000003,
+                "ops": 96.07330470007656,
+                "total": 1.186593927999951,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[7]",
+            "fullname": "benchmarks.py::test_T[7]",
+            "params": {
+                "nqubits": 7
+            },
+            "param": "7",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010141541000002974,
+                "max": 0.012008620999999664,
+                "mean": 0.0106967445765762,
+                "stddev": 0.0003257244029043112,
+                "rounds": 111,
+                "median": 0.010635688999997228,
+                "iqr": 0.00040981674999862605,
+                "q1": 0.010466188250001451,
+                "q3": 0.010876005000000077,
+                "iqr_outliers": 2,
+                "stddev_outliers": 25,
+                "outliers": "25;2",
+                "ld15iqr": 0.010141541000002974,
+                "hd15iqr": 0.011973715999999968,
+                "ops": 93.48638670776589,
+                "total": 1.1873386479999581,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[8]",
+            "fullname": "benchmarks.py::test_T[8]",
+            "params": {
+                "nqubits": 8
+            },
+            "param": "8",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010622173999998097,
+                "max": 0.014702473999996357,
+                "mean": 0.011375284701754097,
+                "stddev": 0.0005585543793238605,
+                "rounds": 114,
+                "median": 0.011233984999996949,
+                "iqr": 0.00043854900000184216,
+                "q1": 0.011062690999999347,
+                "q3": 0.01150124000000119,
+                "iqr_outliers": 9,
+                "stddev_outliers": 16,
+                "outliers": "16;9",
+                "ld15iqr": 0.010622173999998097,
+                "hd15iqr": 0.012167986000001463,
+                "ops": 87.90988763962959,
+                "total": 1.296782455999967,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[9]",
+            "fullname": "benchmarks.py::test_T[9]",
+            "params": {
+                "nqubits": 9
+            },
+            "param": "9",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.011527890000003538,
+                "max": 0.0211126109999924,
+                "mean": 0.012562268568807025,
+                "stddev": 0.000986067523170629,
+                "rounds": 109,
+                "median": 0.012425782999997637,
+                "iqr": 0.0005778435000056703,
+                "q1": 0.012113243250000849,
+                "q3": 0.01269108675000652,
+                "iqr_outliers": 6,
+                "stddev_outliers": 7,
+                "outliers": "7;6",
+                "ld15iqr": 0.011527890000003538,
+                "hd15iqr": 0.013661033999994743,
+                "ops": 79.60345653515708,
+                "total": 1.3692872739999657,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[10]",
+            "fullname": "benchmarks.py::test_T[10]",
+            "params": {
+                "nqubits": 10
+            },
+            "param": "10",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.013355313000005253,
+                "max": 0.05078262900001107,
+                "mean": 0.015196077177569814,
+                "stddev": 0.0036097301208161924,
+                "rounds": 107,
+                "median": 0.014625492999996936,
+                "iqr": 0.0011571337499987067,
+                "q1": 0.014149960999993993,
+                "q3": 0.0153070947499927,
+                "iqr_outliers": 5,
+                "stddev_outliers": 2,
+                "outliers": "2;5",
+                "ld15iqr": 0.013355313000005253,
+                "hd15iqr": 0.017685922999987724,
+                "ops": 65.80645704248272,
+                "total": 1.62598025799997,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[11]",
+            "fullname": "benchmarks.py::test_T[11]",
+            "params": {
+                "nqubits": 11
+            },
+            "param": "11",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.014313200999993114,
+                "max": 0.05770988300000113,
+                "mean": 0.019158420614679397,
+                "stddev": 0.006204024811720837,
+                "rounds": 109,
+                "median": 0.017888084999995613,
+                "iqr": 0.004395663250008397,
+                "q1": 0.015911933499999975,
+                "q3": 0.020307596750008372,
+                "iqr_outliers": 3,
+                "stddev_outliers": 4,
+                "outliers": "4;3",
+                "ld15iqr": 0.014313200999993114,
+                "hd15iqr": 0.045307807000000366,
+                "ops": 52.19636942482559,
+                "total": 2.088267847000054,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[12]",
+            "fullname": "benchmarks.py::test_T[12]",
+            "params": {
+                "nqubits": 12
+            },
+            "param": "12",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.015357988999994632,
+                "max": 0.06539795300000151,
+                "mean": 0.027255337376238423,
+                "stddev": 0.010687356118525497,
+                "rounds": 101,
+                "median": 0.024572923999997442,
+                "iqr": 0.015503812500007541,
+                "q1": 0.018322223999994947,
+                "q3": 0.03382603650000249,
+                "iqr_outliers": 1,
+                "stddev_outliers": 30,
+                "outliers": "30;1",
+                "ld15iqr": 0.015357988999994632,
+                "hd15iqr": 0.06539795300000151,
+                "ops": 36.69006133352118,
+                "total": 2.7527890750000807,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[13]",
+            "fullname": "benchmarks.py::test_T[13]",
+            "params": {
+                "nqubits": 13
+            },
+            "param": "13",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01501151799999434,
+                "max": 0.09612409800000421,
+                "mean": 0.04308876168041235,
+                "stddev": 0.023068267641981752,
+                "rounds": 97,
+                "median": 0.03528670099998976,
+                "iqr": 0.03402508225000389,
+                "q1": 0.024072007749996516,
+                "q3": 0.058097090000000406,
+                "iqr_outliers": 0,
+                "stddev_outliers": 30,
+                "outliers": "30;0",
+                "ld15iqr": 0.01501151799999434,
+                "hd15iqr": 0.09612409800000421,
+                "ops": 23.207907607486163,
+                "total": 4.179609882999998,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "T",
+            "name": "test_T[14]",
+            "fullname": "benchmarks.py::test_T[14]",
+            "params": {
+                "nqubits": 14
+            },
+            "param": "14",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.016457603000006316,
+                "max": 0.21070349999999394,
+                "mean": 0.0740648368651693,
+                "stddev": 0.039999722115623144,
+                "rounds": 89,
+                "median": 0.06484082000000058,
+                "iqr": 0.0590774945000021,
+                "q1": 0.04237450449999969,
+                "q3": 0.10145199900000179,
+                "iqr_outliers": 2,
+                "stddev_outliers": 23,
+                "outliers": "23;2",
+                "ld15iqr": 0.016457603000006316,
+                "hd15iqr": 0.20878000700000143,
+                "ops": 13.501683691283104,
+                "total": 6.591770481000069,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[4]",
+            "fullname": "benchmarks.py::test_CX[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009503943999987996,
+                "max": 0.04514697699998749,
+                "mean": 0.010422318891088193,
+                "stddev": 0.0035175878305181555,
+                "rounds": 101,
+                "median": 0.0099834959999896,
+                "iqr": 0.0003154907500011461,
+                "q1": 0.009830086000000904,
+                "q3": 0.01014557675000205,
+                "iqr_outliers": 8,
+                "stddev_outliers": 1,
+                "outliers": "1;8",
+                "ld15iqr": 0.009503943999987996,
+                "hd15iqr": 0.010730741000003263,
+                "ops": 95.94793734963046,
+                "total": 1.0526542079999075,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[5]",
+            "fullname": "benchmarks.py::test_CX[5]",
+            "params": {
+                "nqubits": 5
+            },
+            "param": "5",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009576438999999937,
+                "max": 0.013816360999996391,
+                "mean": 0.01031004600900914,
+                "stddev": 0.0005807274638336352,
+                "rounds": 111,
+                "median": 0.010134703999995054,
+                "iqr": 0.00045760100000791226,
+                "q1": 0.009976826249996407,
+                "q3": 0.010434427250004319,
+                "iqr_outliers": 10,
+                "stddev_outliers": 15,
+                "outliers": "15;10",
+                "ld15iqr": 0.009576438999999937,
+                "hd15iqr": 0.011130612000002316,
+                "ops": 96.99277763903075,
+                "total": 1.1444151070000146,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[6]",
+            "fullname": "benchmarks.py::test_CX[6]",
+            "params": {
+                "nqubits": 6
+            },
+            "param": "6",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009943044999999984,
+                "max": 0.012033732000006125,
+                "mean": 0.010581259639639387,
+                "stddev": 0.00040844703446436305,
+                "rounds": 111,
+                "median": 0.010492906999999718,
+                "iqr": 0.0005263259999921388,
+                "q1": 0.010283927750005972,
+                "q3": 0.010810253749998111,
+                "iqr_outliers": 2,
+                "stddev_outliers": 31,
+                "outliers": "31;2",
+                "ld15iqr": 0.009943044999999984,
+                "hd15iqr": 0.0119499970000021,
+                "ops": 94.5067065790364,
+                "total": 1.174519819999972,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[7]",
+            "fullname": "benchmarks.py::test_CX[7]",
+            "params": {
+                "nqubits": 7
+            },
+            "param": "7",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010162518000001342,
+                "max": 0.01281051099999786,
+                "mean": 0.010794198214285114,
+                "stddev": 0.0003940246282036404,
+                "rounds": 112,
+                "median": 0.010729975499998545,
+                "iqr": 0.000517651999992097,
+                "q1": 0.01052539300000177,
+                "q3": 0.011043044999993867,
+                "iqr_outliers": 2,
+                "stddev_outliers": 29,
+                "outliers": "29;2",
+                "ld15iqr": 0.010162518000001342,
+                "hd15iqr": 0.012051174999996306,
+                "ops": 92.64236028912211,
+                "total": 1.2089501999999328,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[8]",
+            "fullname": "benchmarks.py::test_CX[8]",
+            "params": {
+                "nqubits": 8
+            },
+            "param": "8",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010718400999991218,
+                "max": 0.013470079000001078,
+                "mean": 0.011395148660714354,
+                "stddev": 0.00044481335491692653,
+                "rounds": 112,
+                "median": 0.0113184124999961,
+                "iqr": 0.00044749250000108987,
+                "q1": 0.011126697999998214,
+                "q3": 0.011574190499999304,
+                "iqr_outliers": 7,
+                "stddev_outliers": 25,
+                "outliers": "25;7",
+                "ld15iqr": 0.010718400999991218,
+                "hd15iqr": 0.012255010999993488,
+                "ops": 87.75664361866347,
+                "total": 1.2762566500000077,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[9]",
+            "fullname": "benchmarks.py::test_CX[9]",
+            "params": {
+                "nqubits": 9
+            },
+            "param": "9",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.011738446999999042,
+                "max": 0.016638118000003033,
+                "mean": 0.01269784389523785,
+                "stddev": 0.000731937380673478,
+                "rounds": 105,
+                "median": 0.012580405999997879,
+                "iqr": 0.0006605012499960594,
+                "q1": 0.01221161475000443,
+                "q3": 0.012872116000000489,
+                "iqr_outliers": 5,
+                "stddev_outliers": 17,
+                "outliers": "17;5",
+                "ld15iqr": 0.011738446999999042,
+                "hd15iqr": 0.014055217999995762,
+                "ops": 78.75352762645288,
+                "total": 1.3332736089999742,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[10]",
+            "fullname": "benchmarks.py::test_CX[10]",
+            "params": {
+                "nqubits": 10
+            },
+            "param": "10",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.013321312999991619,
+                "max": 0.016335307999995052,
+                "mean": 0.014184828563637227,
+                "stddev": 0.0004421687620247929,
+                "rounds": 110,
+                "median": 0.014153116000002797,
+                "iqr": 0.000519468999996775,
+                "q1": 0.013883359000004702,
+                "q3": 0.014402828000001477,
+                "iqr_outliers": 2,
+                "stddev_outliers": 21,
+                "outliers": "21;2",
+                "ld15iqr": 0.013321312999991619,
+                "hd15iqr": 0.01617751599999906,
+                "ops": 70.49785589679226,
+                "total": 1.560331142000095,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[11]",
+            "fullname": "benchmarks.py::test_CX[11]",
+            "params": {
+                "nqubits": 11
+            },
+            "param": "11",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.014518824000006703,
+                "max": 0.06203542400000117,
+                "mean": 0.019241428809525153,
+                "stddev": 0.006573900610059179,
+                "rounds": 105,
+                "median": 0.018040401999996902,
+                "iqr": 0.004295129249996421,
+                "q1": 0.015791474000007355,
+                "q3": 0.020086603250003776,
+                "iqr_outliers": 3,
+                "stddev_outliers": 5,
+                "outliers": "5;3",
+                "ld15iqr": 0.014518824000006703,
+                "hd15iqr": 0.04614344899999878,
+                "ops": 51.971192467004656,
+                "total": 2.020350025000141,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[12]",
+            "fullname": "benchmarks.py::test_CX[12]",
+            "params": {
+                "nqubits": 12
+            },
+            "param": "12",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.014824903999993921,
+                "max": 0.0809763699999877,
+                "mean": 0.027593927826922247,
+                "stddev": 0.013152089790112285,
+                "rounds": 104,
+                "median": 0.023095340499999395,
+                "iqr": 0.008390073499995765,
+                "q1": 0.021240114000001142,
+                "q3": 0.029630187499996907,
+                "iqr_outliers": 8,
+                "stddev_outliers": 8,
+                "outliers": "8;8",
+                "ld15iqr": 0.014824903999993921,
+                "hd15iqr": 0.05068463799999279,
+                "ops": 36.23985705378057,
+                "total": 2.8697684939999135,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[13]",
+            "fullname": "benchmarks.py::test_CX[13]",
+            "params": {
+                "nqubits": 13
+            },
+            "param": "13",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.016713633000009054,
+                "max": 0.1481439069999908,
+                "mean": 0.04247478610784402,
+                "stddev": 0.024912117677382592,
+                "rounds": 102,
+                "median": 0.03455754749999329,
+                "iqr": 0.027810639999998443,
+                "q1": 0.023804534999996463,
+                "q3": 0.051615174999994906,
+                "iqr_outliers": 3,
+                "stddev_outliers": 24,
+                "outliers": "24;3",
+                "ld15iqr": 0.016713633000009054,
+                "hd15iqr": 0.10908200299999748,
+                "ops": 23.54337929945044,
+                "total": 4.33242818300009,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[14]",
+            "fullname": "benchmarks.py::test_CX[14]",
+            "params": {
+                "nqubits": 14
+            },
+            "param": "14",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01608341400000768,
+                "max": 0.19492759599999943,
+                "mean": 0.07384979265060274,
+                "stddev": 0.0447235619558794,
+                "rounds": 83,
+                "median": 0.06111013100000662,
+                "iqr": 0.04961925425000757,
+                "q1": 0.04187446874999523,
+                "q3": 0.0914937230000028,
+                "iqr_outliers": 6,
+                "stddev_outliers": 21,
+                "outliers": "21;6",
+                "ld15iqr": 0.01608341400000768,
+                "hd15iqr": 0.17143732699999248,
+                "ops": 13.540999427462012,
+                "total": 6.129532790000027,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[4]",
+            "fullname": "benchmarks.py::test_Toffoli[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009294406999998728,
+                "max": 0.04590382799999304,
+                "mean": 0.010384938666666264,
+                "stddev": 0.003427281397675934,
+                "rounds": 111,
+                "median": 0.009992866999994021,
+                "iqr": 0.00046369250000566353,
+                "q1": 0.00981555774999876,
+                "q3": 0.010279250250004424,
+                "iqr_outliers": 3,
+                "stddev_outliers": 1,
+                "outliers": "1;3",
+                "ld15iqr": 0.009294406999998728,
+                "hd15iqr": 0.011130997999998726,
+                "ops": 96.2932986026981,
+                "total": 1.1527281919999552,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[5]",
+            "fullname": "benchmarks.py::test_Toffoli[5]",
+            "params": {
+                "nqubits": 5
+            },
+            "param": "5",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.009535653000000366,
+                "max": 0.014516004000000748,
+                "mean": 0.010543522173912833,
+                "stddev": 0.0008294523957670117,
+                "rounds": 115,
+                "median": 0.010280946999998264,
+                "iqr": 0.0006964290000013307,
+                "q1": 0.010058159999996263,
+                "q3": 0.010754588999997594,
+                "iqr_outliers": 9,
+                "stddev_outliers": 13,
+                "outliers": "13;9",
+                "ld15iqr": 0.009535653000000366,
+                "hd15iqr": 0.011896018999991043,
+                "ops": 94.84496580035051,
+                "total": 1.2125050499999759,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[6]",
+            "fullname": "benchmarks.py::test_Toffoli[6]",
+            "params": {
+                "nqubits": 6
+            },
+            "param": "6",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00993827099999578,
+                "max": 0.012292943000005607,
+                "mean": 0.01054076639130427,
+                "stddev": 0.0003920133703338669,
+                "rounds": 115,
+                "median": 0.010455063999998515,
+                "iqr": 0.00043233124999630945,
+                "q1": 0.010288156750004163,
+                "q3": 0.010720488000000472,
+                "iqr_outliers": 3,
+                "stddev_outliers": 22,
+                "outliers": "22;3",
+                "ld15iqr": 0.00993827099999578,
+                "hd15iqr": 0.01206830700000694,
+                "ops": 94.86976210998868,
+                "total": 1.212188134999991,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[7]",
+            "fullname": "benchmarks.py::test_Toffoli[7]",
+            "params": {
+                "nqubits": 7
+            },
+            "param": "7",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010152943999997888,
+                "max": 0.011987867999991408,
+                "mean": 0.010838357982301072,
+                "stddev": 0.00036556811986956857,
+                "rounds": 113,
+                "median": 0.010773588999995809,
+                "iqr": 0.000411607000007308,
+                "q1": 0.010570258749996952,
+                "q3": 0.01098186575000426,
+                "iqr_outliers": 7,
+                "stddev_outliers": 30,
+                "outliers": "30;7",
+                "ld15iqr": 0.010152943999997888,
+                "hd15iqr": 0.011652321999989113,
+                "ops": 92.2648985790089,
+                "total": 1.2247344520000212,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[8]",
+            "fullname": "benchmarks.py::test_Toffoli[8]",
+            "params": {
+                "nqubits": 8
+            },
+            "param": "8",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.010768904000002522,
+                "max": 0.013198633999991216,
+                "mean": 0.011443318953704009,
+                "stddev": 0.0003925031986709869,
+                "rounds": 108,
+                "median": 0.01142293000000194,
+                "iqr": 0.0004672419999991462,
+                "q1": 0.011164961500000459,
+                "q3": 0.011632203499999605,
+                "iqr_outliers": 3,
+                "stddev_outliers": 31,
+                "outliers": "31;3",
+                "ld15iqr": 0.010768904000002522,
+                "hd15iqr": 0.012362238999997999,
+                "ops": 87.3872347739042,
+                "total": 1.235878447000033,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[9]",
+            "fullname": "benchmarks.py::test_Toffoli[9]",
+            "params": {
+                "nqubits": 9
+            },
+            "param": "9",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.011844359000008353,
+                "max": 0.016428257999990592,
+                "mean": 0.012725889620370438,
+                "stddev": 0.0007290040141513992,
+                "rounds": 108,
+                "median": 0.012561884500001952,
+                "iqr": 0.0005809994999879109,
+                "q1": 0.012279439500005651,
+                "q3": 0.012860438999993562,
+                "iqr_outliers": 6,
+                "stddev_outliers": 18,
+                "outliers": "18;6",
+                "ld15iqr": 0.011844359000008353,
+                "hd15iqr": 0.013831033000002435,
+                "ops": 78.57996806755982,
+                "total": 1.3743960790000074,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[10]",
+            "fullname": "benchmarks.py::test_Toffoli[10]",
+            "params": {
+                "nqubits": 10
+            },
+            "param": "10",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.013507982000007246,
+                "max": 0.05303026700001112,
+                "mean": 0.014751785476635066,
+                "stddev": 0.003775219649417779,
+                "rounds": 107,
+                "median": 0.014225779000000216,
+                "iqr": 0.000538780500008329,
+                "q1": 0.014087379749994966,
+                "q3": 0.014626160250003295,
+                "iqr_outliers": 8,
+                "stddev_outliers": 1,
+                "outliers": "1;8",
+                "ld15iqr": 0.013507982000007246,
+                "hd15iqr": 0.015438178999986008,
+                "ops": 67.78840443306822,
+                "total": 1.578441045999952,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[11]",
+            "fullname": "benchmarks.py::test_Toffoli[11]",
+            "params": {
+                "nqubits": 11
+            },
+            "param": "11",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.014634161999993012,
+                "max": 0.05907473800000673,
+                "mean": 0.01892344750980459,
+                "stddev": 0.005964653153708575,
+                "rounds": 102,
+                "median": 0.01776390549999718,
+                "iqr": 0.00441681899999935,
+                "q1": 0.015940565000008178,
+                "q3": 0.020357384000007528,
+                "iqr_outliers": 3,
+                "stddev_outliers": 4,
+                "outliers": "4;3",
+                "ld15iqr": 0.014634161999993012,
+                "hd15iqr": 0.028280260999991924,
+                "ops": 52.84449355657215,
+                "total": 1.9301916460000683,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[12]",
+            "fullname": "benchmarks.py::test_Toffoli[12]",
+            "params": {
+                "nqubits": 12
+            },
+            "param": "12",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.014919444000000226,
+                "max": 0.07297746599999755,
+                "mean": 0.027676528151515917,
+                "stddev": 0.011142826589834294,
+                "rounds": 99,
+                "median": 0.024121867999994606,
+                "iqr": 0.010238687499985133,
+                "q1": 0.021573959500010176,
+                "q3": 0.03181264699999531,
+                "iqr_outliers": 7,
+                "stddev_outliers": 19,
+                "outliers": "19;7",
+                "ld15iqr": 0.014919444000000226,
+                "hd15iqr": 0.049733349000007365,
+                "ops": 36.131699558755074,
+                "total": 2.7399762870000757,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[13]",
+            "fullname": "benchmarks.py::test_Toffoli[13]",
+            "params": {
+                "nqubits": 13
+            },
+            "param": "13",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.015816666999995732,
+                "max": 0.13942531700000416,
+                "mean": 0.04322715109999976,
+                "stddev": 0.024713082255930618,
+                "rounds": 100,
+                "median": 0.03701772600000197,
+                "iqr": 0.02752567399999606,
+                "q1": 0.02667241550000199,
+                "q3": 0.05419808949999805,
+                "iqr_outliers": 5,
+                "stddev_outliers": 21,
+                "outliers": "21;5",
+                "ld15iqr": 0.015816666999995732,
+                "hd15iqr": 0.10426340899999786,
+                "ops": 23.133608728612366,
+                "total": 4.322715109999976,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "Toffoli",
+            "name": "test_Toffoli[14]",
+            "fullname": "benchmarks.py::test_Toffoli[14]",
+            "params": {
+                "nqubits": 14
+            },
+            "param": "14",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01655008399998792,
+                "max": 0.199592631999991,
+                "mean": 0.07498104356043869,
+                "stddev": 0.04302863760570608,
+                "rounds": 91,
+                "median": 0.06667868700000668,
+                "iqr": 0.06368086824999608,
+                "q1": 0.03843801749999898,
+                "q3": 0.10211888574999506,
+                "iqr_outliers": 1,
+                "stddev_outliers": 29,
+                "outliers": "29;1",
+                "ld15iqr": 0.01655008399998792,
+                "hd15iqr": 0.199592631999991,
+                "ops": 13.336704219033,
+                "total": 6.823274963999921,
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2019-07-02T21:28:33.779728",
+    "version": "3.2.2"
+}
