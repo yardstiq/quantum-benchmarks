@@ -1,12 +1,14 @@
 """
 single gate benchmark
 """
-
 import matplotlib
 matplotlib.use('TkAgg')
 import cirq
 from cirq import Simulator
 import pytest
+import mkl
+mkl.set_num_threads(1)
+
 
 def run_bench(benchmark, nqubits, gate, locs=(1, )):
     qubits = [cirq.GridQubit(k, 0) for k in range(nqubits)]
@@ -35,16 +37,15 @@ def layer(n, qubits, first=False, last=False):
     else:
         return cirq.Moment(Rz_list(0.0)), cirq.Moment(Rx_list(0.0)), cirq.Moment(Rz_list(0.0))
 
-def generate_qcbm_circuit(n, depth, pairs):
+def generate_qcbm_circuit(n, qubits, depth, pairs):
     circuit = cirq.Circuit()
-    qubits = [cirq.GridQubit(k, 0) for k in range(n)]
     circuit.append(layer(n, qubits, first=True))
     circuit.append((cirq.CNOT(qubits[i], qubits[j]) for i, j in pairs), strategy=cirq.InsertStrategy.NEW)
 
     for _ in range(depth - 1):
         circuit.append(layer(n, qubits))
         circuit.append(cirq.CNOT(qubits[i], qubits[j]) for i, j in pairs)
-    
+
     circuit.append(layer(n, qubits, last=True))
     return circuit
 
@@ -79,3 +80,12 @@ def test_CY(benchmark, nqubits):
 def test_Toffoli(benchmark, nqubits):
     benchmark.group = "Toffoli"
     run_bench(benchmark, nqubits, cirq.TOFFOLI, (2, 3, 0))
+
+@pytest.mark.parametrize('nqubits', range(4, 15))
+def test_QCBM(benchmark, nqubits):
+    benchmark.group = "QCBM"
+    qubits = [cirq.GridQubit(k, 0) for k in range(nqubits)]
+    circuit = generate_qcbm_circuit(nqubits, qubits, 10,
+            [(i, (i+1) % nqubits) for i in range(nqubits)])
+    simulator = Simulator()
+    benchmark(simulator.simulate, circuit, qubit_order=qubits)
