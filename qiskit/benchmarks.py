@@ -13,7 +13,7 @@ def run_bench(benchmark, nqubits, gate, locs=(1, )):
     benchmark(execute, circuit, backend)
 
 
-nbit_list = range(4,15)
+nbit_list = range(4,18)
 
 @pytest.mark.parametrize('nqubits', nbit_list)
 def test_X(benchmark, nqubits):
