@@ -6,7 +6,7 @@ from projectq import ops
 from functools import reduce
 
 import mkl
-mkl.set_num_threads(4)
+mkl.set_num_threads(1)
 
 import pytest
 from functools import wraps
