@@ -12,4 +12,4 @@ pytest qiskit/benchmarks.py --benchmark-save=qiskit --benchmark-sort=name
 ## 3.ProjectQ
 pytest projectq/benchmark_gates.py --benchmark-save=projectq --benchmark-sort=name
 ## 4.Yao
-julia yao/benchmark_gates.jl yao.csv
+julia yao/benchmark_gates.jl yao.csv yao_qcbm.csv
