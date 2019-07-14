@@ -24,11 +24,10 @@ def wash_benchmark_data(name, labels):
             for each in data['benchmarks'] if each['group']==lb]
     return pd.DataFrame(data=dd)
 
-df_projectq = wash_benchmark_data('projectq', ['X', 'H', 'T', 'CNOT', 'Toffoli', 'QCBM'])
-df_qiskit = wash_benchmark_data('qiskit', ['X', 'H', 'T', 'CNOT', 'Toffoli', 'QCBM'])
-df_cirq = wash_benchmark_data('cirq', ['X', 'H', 'T', 'CNOT', 'Toffoli', 'QCBM'])
+df_projectq = wash_benchmark_data('projectq', ['X', 'H', 'T', 'CNOT', 'Toffoli'])
+df_qiskit = wash_benchmark_data('qiskit', ['X', 'H', 'T', 'CNOT', 'Toffoli'])
+df_cirq = wash_benchmark_data('cirq', ['X', 'H', 'T', 'CNOT', 'Toffoli'])
 df_yao = pd.read_csv('yao.csv')
-# df_qcbm = pd.read_csv('qcbm.csv')
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8), sharey=True)
 

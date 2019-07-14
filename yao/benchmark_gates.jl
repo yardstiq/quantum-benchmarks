@@ -70,7 +70,7 @@ benchmarks["QCBM_batch"] = map(4:15) do k
     minimum(t).time
 end
 
-@static if "CuYao" in Pkg.installed()
+@static if "CuYao" in keys(Pkg.installed())
 
     using CuYao
     @info "benchmarking QCBM batch cuda"
@@ -91,7 +91,7 @@ df = DataFrame(
     CRx=benchmarks["CRx(0.5)"],
     Toffoli=benchmarks["Toffoli"])
 
-@static if "CuYao" in Pkg.installed()
+@static if "CuYao" in keys(Pkg.installed())
 
 df_qcbm = DataFrame(
     nqubits=4:15,

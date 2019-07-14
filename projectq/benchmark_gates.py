@@ -58,32 +58,32 @@ def test_T(benchmark, nqubits):
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_CX(benchmark, nqubits):
     benchmark.group = "CNOT"
-    run_bench(benchmark, ops.CNOT, (2,3), nqubits)
+    run_bench(benchmark, ops.CNOT, (2, 3), nqubits)
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_CY(benchmark, nqubits):
     benchmark.group = "C-Rx(0.5)"
-    run_bench(benchmark, ops.C(ops.Rx(0.5)), (2,3), nqubits)
+    run_bench(benchmark, ops.C(ops.Rx(0.5)), (2, 3), nqubits)
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_Toffoli(benchmark, nqubits):
     benchmark.group = "Toffoli"
-    run_bench(benchmark, ops.Toffoli, (2,3,0), nqubits)
+    run_bench(benchmark, ops.Toffoli, (2, 3, 0), nqubits)
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_Measure(benchmark, nqubits):
     benchmark.group = "Measure"
     run_bench(benchmark, ops.All(ops.Measure), None, nqubits)
 
-@pytest.mark.parametrize('nqubits', range(4,16))
-def test_TimeEvolution(benchmark, nqubits):
-    benchmark.group = "TimeEvolution"
-    run_bench(benchmark, ops.TimeEvolution(1.0, ising_hamiltonian(nqubits)), None, nqubits)
+# @pytest.mark.parametrize('nqubits', range(4,16))
+# def test_TimeEvolution(benchmark, nqubits):
+#     benchmark.group = "TimeEvolution"
+#     run_bench(benchmark, ops.TimeEvolution(1.0, ising_hamiltonian(nqubits)), None, nqubits)
 
-@pytest.mark.parametrize('nbit', range(4, 16))
-def test_X(benchmark, nbit):
-    benchmark.group = "QCBM"
-    bm = load_barstripe((nbit, 1), 10, structure='ring', context='projectq')
-    theta_list = np.random.rand(bm.circuit.num_param)*2*np.pi
-    with bm.context( bm.circuit.num_bit, 'simulate') as cc:
-        benchmark(bm.circuit, cc.qureg, theta_list)
+# @pytest.mark.parametrize('nqubits', range(4, 16))
+# def test_X(benchmark, nqubits):
+#     benchmark.group = "QCBM"
+#     bm = load_barstripe((nqubits, 1), 10, structure='ring', context='projectq')
+#     theta_list = np.random.rand(bm.circuit.num_param)*2*np.pi
+#     with bm.context( bm.circuit.num_bit, 'simulate') as cc:
+#         benchmark(bm.circuit, cc.qureg, theta_list)

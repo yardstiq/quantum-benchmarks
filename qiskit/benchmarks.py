@@ -7,6 +7,76 @@ mkl.set_num_threads(1)
 backend = Aer.get_backend('statevector_simulator')
 
 def run_bench(benchmark, nqubits, gate, locs=(1, )):
+    if qiskit.__qiskit_version__['qiskit-terra'] == '0.9.0':
+        run_bench_new(benchmark, nqubits, gate, locs)
+    else:
+        run_bench_old(benchmark, nqubits, gate, locs)
+
+
+def run_bench_new(benchmark, nqubits, gate, locs=(1, )):
+    qubits = QuantumRegister(nqubits)
+    circuit = QuantumCircuit(qubits)
+    locs = [qubits[k] for k in locs]
+    getattr(circuit, gate)(*locs)
+    experiments = circuit
+    basis_gates = None
+    coupling_map = None  # circuit transpile options
+    backend_properties = None
+    initial_layout = None,
+    seed_transpiler = None
+    optimization_level = None
+    pass_manager = None,
+    qobj_id = None
+    qobj_header = None
+    shots = 1024,  # common run options
+    memory = False
+    max_credits = 10
+    seed_simulator = None,
+    default_qubit_los = None
+    default_meas_los = None,  # schedule run options
+    schedule_los = None
+    meas_level = 2
+    meas_return = 'avg',
+    memory_slots = None
+    memory_slot_size = 100
+    rep_time = None
+    parameter_binds = None
+    experiments = transpile(experiments,
+                            basis_gates=basis_gates,
+                            coupling_map=coupling_map,
+                            backend_properties=backend_properties,
+                            initial_layout=initial_layout,
+                            seed_transpiler=seed_transpiler,
+                            optimization_level=optimization_level,
+                            backend=backend,
+                            pass_manager=pass_manager,
+                            )
+
+    run_config = {}
+    # assembling the circuits into a qobj to be run on the backend
+    qobj = assemble(experiments,
+                    qobj_id=qobj_id,
+                    qobj_header=qobj_header,
+                    shots=shots,
+                    memory=memory,
+                    max_credits=max_credits,
+                    seed_simulator=seed_simulator,
+                    default_qubit_los=default_qubit_los,
+                    default_meas_los=default_meas_los,
+                    schedule_los=schedule_los,
+                    meas_level=meas_level,
+                    meas_return=meas_return,
+                    memory_slots=memory_slots,
+                    memory_slot_size=memory_slot_size,
+                    rep_time=rep_time,
+                    parameter_binds=parameter_binds,
+                    backend=backend,
+                    run_config=run_config
+                    )
+    
+    benchmark(backend.run, qobj, **run_config)
+
+def run_bench_old(benchmark, nqubits, gate, locs=(1, )):
     qubits = QuantumRegister(nqubits)
     circuit = QuantumCircuit(qubits)
     locs = [qubits[k] for k in locs]
