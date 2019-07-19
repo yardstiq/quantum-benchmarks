@@ -14,10 +14,10 @@ function build_circuit(n, nlayers, pairs)
     circuit = chain(n)
     push!(circuit, layer(n, :first))
     for i in 2:nlayers
-        push!(circuit, cache(entangler(pairs)))
+        push!(circuit, entangler(pairs))
         push!(circuit, layer(n, :mid))
     end
-    push!(circuit, cache(entangler(pairs)))
+    push!(circuit, entangler(pairs))
     push!(circuit, layer(n, :last))
     return circuit
 end

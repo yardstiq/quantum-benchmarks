@@ -1,12 +1,37 @@
 # Quantum Software Benchmarks
 
+
+## Installation
+
+1. Install Python packages
+
+```sh
+pip install -r requiurements.txt
+```
+
+2. Install Julia packages
+
+enter Julia REPL, press `]`
+
+```jl
+(pkg) > add Yao CuYao DataFrames CSV
+```
+
 ## Run Benchmarks
 
-```
+```sh
 sh benchmarks.sh
 ```
 
-## Version Info
+## Generate Plots
+
+```sh
+python plot.py
+```
+
+## Platform Info
+
+Julia & CPU Info
 
 ```
 julia> versioninfo()
@@ -24,6 +49,16 @@ Environment:
 
 BLAS: intel MKL
 
+Python version: 3.7.3
+
+GPU: TITAN Xp
+
+### Yao Version
+
+```
+[b48ca7a8] CuYao v0.1.0
+[5872b779] Yao v0.5.0
+```
 
 ### Cirq Version
 
@@ -31,6 +66,15 @@ v0.5.0
 
 ### qiskit version
 
-https://github.com/Qiskit/qiskit/commit/44e131809ba35ddbcb68704af999e0ce9ca08187
+qiskit: 62dd60a1cd45a1d49b8238a5d26ef82b3b7e59b0
+qiskit-terra: bfd1f859fc79c36190322ade8359f88ce4adb48e
+qiskit-aer: 558b0bbc27d2562248f5b5ae81a578acba7a3d3c
+qiskit-aqua: 422e74b3a0d73b24994359f460085a24bf03ca89
 
-qiskit-terra
+### ProjectQ
+
+v0.4.2
+
+## Acknowledge
+
+We thank [Juan Gomez](https://github.com/atilag) for reviewing the benchmark of qiskit.
