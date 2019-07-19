@@ -80,10 +80,10 @@ def test_Measure(benchmark, nqubits):
 #     benchmark.group = "TimeEvolution"
 #     run_bench(benchmark, ops.TimeEvolution(1.0, ising_hamiltonian(nqubits)), None, nqubits)
 
-# @pytest.mark.parametrize('nqubits', range(4, 16))
-# def test_X(benchmark, nqubits):
-#     benchmark.group = "QCBM"
-#     bm = load_barstripe((nqubits, 1), 10, structure='ring', context='projectq')
-#     theta_list = np.random.rand(bm.circuit.num_param)*2*np.pi
-#     with bm.context( bm.circuit.num_bit, 'simulate') as cc:
-#         benchmark(bm.circuit, cc.qureg, theta_list)
+@pytest.mark.parametrize('nqubits', range(4, 16))
+def test_QCBM(benchmark, nqubits):
+    benchmark.group = "QCBM"
+    bm = load_barstripe((nqubits, 1), 10, structure='ring', context='projectq')
+    theta_list = np.random.rand(bm.circuit.num_param)*2*np.pi
+    with bm.context( bm.circuit.num_bit, 'simulate') as cc:
+        benchmark(bm.circuit, cc.qureg, theta_list)
