@@ -65,7 +65,7 @@ lgd = fig.legend(
     bbox_to_anchor=(1.09, 0.9))
 
 plt.tight_layout()
-plt.savefig('gates.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.savefig('gates.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 df_projectq = wash_benchmark_data('projectq', ['QCBM'])
 df_qiskit = wash_benchmark_data('qiskit', ['QCBM'])
@@ -78,14 +78,15 @@ l1 = ax.semilogy(df_projectq["nqubits"], df_projectq["QCBM"], '-o', markersize=3
 l2 = ax.semilogy(df_qiskit["nqubits"], df_qiskit["QCBM"], '-o', markersize=3)
 l3 = ax.semilogy(df_cirq["nqubits"], df_cirq["QCBM"], '-o', markersize=3)
 l4 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM"], '-o', markersize=3)
+l5 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM_cuda"], '-o', markersize=3)
 ax.set(title="Parameterized Circuit", xlabel="nqubits", ylabel="ns")
 lgd = ax.legend(
-    [l1, l2, l3, l4],
-    labels=["Cirq", "qiskit", "ProjectQ", "Yao"],
+    [l1, l2, l3, l4, l5],
+    labels=["Cirq", "qiskit", "ProjectQ", "Yao", "CuYao"],
     loc="upper right",
     borderaxespad=0.1,
     bbox_to_anchor=(1.2, 0.9))
-plt.savefig('pcircuit.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.savefig('pcircuit.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 fig = plt.figure(figsize=(8, 6))
 ax = plt.subplot(111)
@@ -98,4 +99,4 @@ lgd = ax.legend(
     loc="upper right",
     borderaxespad=0.1,
     bbox_to_anchor=(1.2, 0.9))
-plt.savefig('pcircuit_batch.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.savefig('pcircuit_batch.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
