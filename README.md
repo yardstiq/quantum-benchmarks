@@ -12,7 +12,7 @@ Parameterized Circuit Benchmark
 
 Batched parameterized circuit of Yao and CuYao
 
-![batch-pcircuit]()
+![batch-pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/pcircuit_batch.png)
 
 ## Installation
 
@@ -79,10 +79,10 @@ v0.5.0
 
 ### qiskit version
 
-qiskit: 62dd60a1cd45a1d49b8238a5d26ef82b3b7e59b0
-qiskit-terra: bfd1f859fc79c36190322ade8359f88ce4adb48e
-qiskit-aer: 558b0bbc27d2562248f5b5ae81a578acba7a3d3c
-qiskit-aqua: 422e74b3a0d73b24994359f460085a24bf03ca89
+- qiskit: 62dd60a1cd45a1d49b8238a5d26ef82b3b7e59b0
+- qiskit-terra: bfd1f859fc79c36190322ade8359f88ce4adb48e
+- qiskit-aer: 558b0bbc27d2562248f5b5ae81a578acba7a3d3c
+- qiskit-aqua: 422e74b3a0d73b24994359f460085a24bf03ca89
 
 ### ProjectQ
 
