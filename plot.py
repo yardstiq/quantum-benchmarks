@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
@@ -65,17 +67,35 @@ lgd = fig.legend(
 plt.tight_layout()
 plt.savefig('gates.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
 
-# fig = plt.figure(figsize=(8, 6))
-# ax = plt.subplot(111)
-# l1 = ax.semilogy(df_qcbm["nqubits"], df_qcbm["cirq"], '-o', markersize=3)
-# l2 = ax.semilogy(df_qcbm["nqubits"], df_qcbm["qiskit"], '-o', markersize=3)
-# l3 = ax.semilogy(df_qcbm["nqubits"], df_qcbm["projectq"], '-o', markersize=3)
-# l4 = ax.semilogy(df_qcbm["nqubits"], df_qcbm["yao"], '-o', markersize=3)
-# ax.set(title="Parameterized Circuit", xlabel="nqubits", ylabel="ns")
-# lgd = ax.legend(
-#     [l1, l2, l3, l4],
-#     labels=["Cirq", "qiskit", "ProjectQ", "Yao"],
-#     loc="upper right",
-#     borderaxespad=0.1,
-#     bbox_to_anchor=(1.2, 0.9))
-# plt.savefig('qcbm.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
+df_projectq = wash_benchmark_data('projectq', ['QCBM'])
+df_qiskit = wash_benchmark_data('qiskit', ['QCBM'])
+df_cirq = wash_benchmark_data('cirq', ['QCBM'])
+df_yao = pd.read_csv('yao_qcbm.csv')
+
+fig = plt.figure(figsize=(8, 6))
+ax = plt.subplot(111)
+l1 = ax.semilogy(df_projectq["nqubits"], df_projectq["QCBM"], '-o', markersize=3)
+l2 = ax.semilogy(df_qiskit["nqubits"], df_qiskit["QCBM"], '-o', markersize=3)
+l3 = ax.semilogy(df_cirq["nqubits"], df_cirq["QCBM"], '-o', markersize=3)
+l4 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM"], '-o', markersize=3)
+ax.set(title="Parameterized Circuit", xlabel="nqubits", ylabel="ns")
+lgd = ax.legend(
+    [l1, l2, l3, l4],
+    labels=["Cirq", "qiskit", "ProjectQ", "Yao"],
+    loc="upper right",
+    borderaxespad=0.1,
+    bbox_to_anchor=(1.2, 0.9))
+plt.savefig('pcircuit.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
+
+fig = plt.figure(figsize=(8, 6))
+ax = plt.subplot(111)
+l1 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM_batch"], '-o', markersize=3)
+l2 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM_cuda_batch"], '-o', markersize=3)
+ax.set(title="Batched Parameterized Circuit", xlabel="nqubits", ylabel="ns")
+lgd = ax.legend(
+    [l1, l2],
+    labels=["CPU", "CUDA"],
+    loc="upper right",
+    borderaxespad=0.1,
+    bbox_to_anchor=(1.2, 0.9))
+plt.savefig('pcircuit_batch.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
