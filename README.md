@@ -2,9 +2,17 @@
 
 ## Results
 
+Single Gate Benchmark
+
+![gates](https://github.com/Roger-luo/quantum-benchmarks/blob/master/gates.png)
+
 Parameterized Circuit Benchmark
 
 ![pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/pcircuit.png)
+
+Batched parameterized circuit of Yao and CuYao
+
+![batch-pcircuit]()
 
 ## Installation
 
