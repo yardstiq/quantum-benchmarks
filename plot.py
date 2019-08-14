@@ -88,6 +88,7 @@ lgd = ax.legend(
     bbox_to_anchor=(1.2, 0.9))
 plt.savefig('pcircuit.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 
+df_yao = pd.read_csv('yao_qcbm_batch.csv')
 fig = plt.figure(figsize=(8, 6))
 ax = plt.subplot(111)
 l1 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM_batch"], '-o', markersize=3)

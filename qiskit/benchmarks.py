@@ -181,7 +181,7 @@ def generate_qcbm_circuit(n, depth, pairs):
     return circuit
 
 
-nbit_list = range(4,18)
+nbit_list = range(4,21)
 
 @pytest.mark.parametrize('nqubits', nbit_list)
 def test_X(benchmark, nqubits):
@@ -214,7 +214,7 @@ def test_Toffoli(benchmark, nqubits):
     benchmark.group = "Toffoli"
     run_bench(benchmark, nqubits, 'ccx', (2, 3, 0))
 
-@pytest.mark.parametrize('nqubits', range(4, 16))
+@pytest.mark.parametrize('nqubits', range(4, 21))
 def test_qcbm(benchmark, nqubits):
     benchmark.group = "QCBM"
     circuit = generate_qcbm_circuit(nqubits, 9,

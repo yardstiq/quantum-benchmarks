@@ -58,8 +58,10 @@ benchmarks["Toffoli"] = map(nqubits) do k
     minimum(t).time
 end
 
+const qcbm_nqubits = 4:20
+
 @info "benchmarking QCBM"
-benchmarks["QCBM"] = map(4:15) do k
+benchmarks["QCBM"] = map(qcbm_nqubits) do k
     t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=zero_state($k))
     minimum(t).time
 end
@@ -75,7 +77,7 @@ end
     using CuYao
 
     @info "benchmarking QCBM cuda"
-    benchmarks["QCBM_cuda"] = map(4:15) do k
+    benchmarks["QCBM_cuda"] = map(qcbm_nqubits) do k
         t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=cu(zero_state($k)))
         minimum(t).time
     end
@@ -101,20 +103,19 @@ df = DataFrame(
 @static if "CuYao" in keys(Pkg.installed())
 
 df_qcbm = DataFrame(
-    nqubits=4:15,
+    nqubits=qcbm_nqubits,
     QCBM=benchmarks["QCBM"],
-    QCBM_batch=benchmarks["QCBM_batch"],
     QCBM_cuda=benchmarks["QCBM_cuda"],
+)
+
+df_batch_qcbm = DataFrame(
+    nqubits=4:15,
+    QCBM_batch=benchmarks["QCBM_batch"],
     QCBM_cuda_batch=benchmarks["QCBM_cuda_batch"]
 )
 
-else
-    df_qcbm = DataFrame(
-        nqubits=4:15,
-        QCBM=benchmarks["QCBM"],
-        QCBM_batch=benchmarks["QCBM_batch"],
-    )
 end
 
 CSV.write(ARGS[1], df)
 CSV.write(ARGS[2], df_qcbm)
+CSV.write(ARGS[3], df_batch_qcbm)
