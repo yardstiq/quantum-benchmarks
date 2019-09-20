@@ -1,8 +1,9 @@
 using Yao, Yao.YaoBlocks.ConstGate, BenchmarkTools
+using DataFrames, CSV
 using LinearAlgebra, Pkg
 BLAS.set_num_threads(1)
 
-nqubits=4:26
+nqubits=4:25
 benchmarks = Dict()
 
 layer(nbit::Int, x::Symbol) = layer(nbit, Val(x))
@@ -58,7 +59,17 @@ benchmarks["Toffoli"] = map(nqubits) do k
     minimum(t).time
 end
 
-const qcbm_nqubits = 4:20
+df = DataFrame(
+    nqubits=nqubits,
+    X=benchmarks["X"],
+    H=benchmarks["H"],
+    T=benchmarks["T"],
+    CNOT=benchmarks["CNOT"],
+    CRx=benchmarks["CRx(0.5)"],
+    Toffoli=benchmarks["Toffoli"])
+
+
+const qcbm_nqubits = 4:25
 
 @info "benchmarking QCBM"
 benchmarks["QCBM"] = map(qcbm_nqubits) do k
@@ -78,27 +89,17 @@ end
 
     @info "benchmarking QCBM cuda"
     benchmarks["QCBM_cuda"] = map(qcbm_nqubits) do k
-        t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=cu(zero_state($k)))
+        t = @benchmark CuArrays.@sync apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=cu(zero_state($k)))
         minimum(t).time
     end
 
     @info "benchmarking QCBM batch cuda"
     benchmarks["QCBM_cuda_batch"] = map(4:15) do k
-        t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=cu(zero_state($k, nbatch=1000)))
+        t = @benchmark CuArrays.@sync apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=cu(zero_state($k, nbatch=1000)))
         minimum(t).time
     end
 
 end
-
-using DataFrames, CSV
-df = DataFrame(
-    nqubits=4:26,
-    X=benchmarks["X"],
-    H=benchmarks["H"],
-    T=benchmarks["T"],
-    CNOT=benchmarks["CNOT"],
-    CRx=benchmarks["CRx(0.5)"],
-    Toffoli=benchmarks["Toffoli"])
 
 @static if "CuYao" in keys(Pkg.installed())
 
