@@ -85,17 +85,17 @@ end
 
 @static if "CuYao" in keys(Pkg.installed())
 
-    using CuYao
+    using CuYao, CuArrays
 
     @info "benchmarking QCBM cuda"
     benchmarks["QCBM_cuda"] = map(qcbm_nqubits) do k
-        t = @benchmark CuArrays.@sync apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=cu(zero_state($k)))
+        t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k)))
         minimum(t).time
     end
 
     @info "benchmarking QCBM batch cuda"
     benchmarks["QCBM_cuda_batch"] = map(4:15) do k
-        t = @benchmark CuArrays.@sync apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=cu(zero_state($k, nbatch=1000)))
+        t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k, nbatch=1000)))
         minimum(t).time
     end
 
