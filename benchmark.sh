@@ -8,8 +8,9 @@ export JULIA_NUM_THREADS=1
 ## 1.Cirq
 pytest cirq/benchmark_gates.py --benchmark-save=cirq --benchmark-sort=name
 ## 2.QISKit
-pytest qiskit/benchmarks.py --benchmark-save=qiskit --benchmark-sort=name
+# pytest qiskit/benchmarks.py --benchmark-save=qiskit --benchmark-sort=name
 ## 3.ProjectQ
 pytest projectq/benchmark_gates.py --benchmark-save=projectq --benchmark-sort=name
 ## 4.Yao
-julia yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv
+julia --project=yao -e "using Pkg; Pkg.instantiate()"
+julia --project=yao yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv
