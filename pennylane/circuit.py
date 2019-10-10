@@ -5,7 +5,6 @@ mkl.set_num_threads(1)
 
 import pytest
 
-
 class QCBM:
 
     def __init__(self, n, nlayers, dev="default.qubit"):
