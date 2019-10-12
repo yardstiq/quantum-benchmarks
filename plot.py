@@ -71,6 +71,7 @@ df_projectq = wash_benchmark_data('projectq', ['QCBM'])
 df_qiskit = wash_benchmark_data('qiskit', ['QCBM'])
 df_cirq = wash_benchmark_data('cirq', ['QCBM'])
 df_yao = pd.read_csv('yao_qcbm.csv')
+df_pennylane = pd.read_csv('pennylane', ['QCBM'])
 
 fig = plt.figure(figsize=(8, 6))
 ax = plt.subplot(111)
@@ -79,9 +80,11 @@ l2 = ax.semilogy(df_qiskit["nqubits"], df_qiskit["QCBM"], '-o', markersize=3)
 l3 = ax.semilogy(df_cirq["nqubits"], df_cirq["QCBM"], '-o', markersize=3)
 l4 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM"], '-o', markersize=3)
 l5 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM_cuda"], '-o', markersize=3)
+l6 = ax.semilogy(df_pennylane['nqubits'], df_yao['QCBM'], '-o', markersize=3)
+
 ax.set(title="Parameterized Circuit", xlabel="nqubits", ylabel="ns")
 lgd = ax.legend(
-    [l1, l2, l3, l4, l5],
+    [l1, l2, l3, l4, l5, l6],
     labels=["Cirq", "qiskit", "ProjectQ", "Yao", "CuYao"],
     loc="upper right",
     borderaxespad=0.1,
