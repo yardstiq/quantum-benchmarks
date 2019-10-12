@@ -81,7 +81,7 @@ def test_Toffoli(benchmark, nqubits):
     benchmark.group = "Toffoli"
     run_bench(benchmark, nqubits, cirq.TOFFOLI, (2, 3, 0))
 
-@pytest.mark.parametrize('nqubits', range(4, 21))
+@pytest.mark.parametrize('nqubits', range(4, 26))
 def test_QCBM(benchmark, nqubits):
     benchmark.group = "QCBM"
     qubits = [cirq.GridQubit(k, 0) for k in range(nqubits)]
