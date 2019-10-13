@@ -181,7 +181,7 @@ def generate_qcbm_circuit(n, depth, pairs):
     return circuit
 
 
-nbit_list = range(4,21)
+nbit_list = range(4,26)
 
 @pytest.mark.parametrize('nqubits', nbit_list)
 def test_X(benchmark, nqubits):
