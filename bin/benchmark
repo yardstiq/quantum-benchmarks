@@ -45,7 +45,7 @@ help        print this message
 case $1 in
     install) install
     ;;
-    benchmark) benchmark
+    run) benchmark
     ;;
     *) help
     ;;

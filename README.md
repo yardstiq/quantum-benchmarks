@@ -16,24 +16,33 @@ Batched parameterized circuit of Yao and CuYao
 
 ## Installation
 
-1. Install Python packages
+### Requirements
+
+- [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html?highlight=conda)
+- [Python 3](https://www.python.org/downloads/)
+- [Julia 1.0+](https://julialang.org/)
+- [CUDA Toolkit (optional)](https://developer.nvidia.com/cuda-toolkit) for benchmarking Yao's CUDA backend
+
+Make sure you have the above required dependency installed, then run the following script, which will install
+all the dependencies for you.
 
 ```sh
-pip install -r requiurements.txt
+bin/benchmark install
 ```
 
-2. Install Julia packages
+If you prefer a virtual environment to run the benchmark, please create one using either `conda` or `virtualenv`
+before you install the dependencies with `bin/benchmark`.
 
-enter Julia REPL, press `]`
-
-```jl
-(pkg) > add Yao CuYao DataFrames CSV
-```
-
-## Run Benchmarks
+## Run Benchmark
 
 ```sh
-sh benchmarks.sh
+bin/benchmark run
+```
+
+This will usually take a few hours to finish, thus if you want to run it in the backend, you can use `nohup`
+
+```sh
+nohup bin/benchmark run &
 ```
 
 ## Generate Plots
@@ -66,27 +75,19 @@ Python version: 3.7.3
 
 GPU: TITAN Xp
 
-### Yao Version
+## Package Info
 
-```
-[b48ca7a8] CuYao v0.1.0
-[5872b779] Yao v0.5.0
-```
-
-### Cirq Version
-
-v0.5.0
-
-### qiskit version
-
-- qiskit: 62dd60a1cd45a1d49b8238a5d26ef82b3b7e59b0
-- qiskit-terra: bfd1f859fc79c36190322ade8359f88ce4adb48e
-- qiskit-aer: 558b0bbc27d2562248f5b5ae81a578acba7a3d3c
-- qiskit-aqua: 422e74b3a0d73b24994359f460085a24bf03ca89
-
-### ProjectQ
-
-v0.4.2
+|       Package        | Version |
+| -------------------- | ------- |
+| Yao                  | v0.6.0  |
+| CuYao                | v0.1.3  |
+| qiskit               | 0.11.0  |
+| qiskit-aer           | 0.2.3   |
+| qiskit-aqua          | 0.5.2   |
+| qiskit-ignis         | 0.1.1   |
+| qiskit-terra         | 0.8.2   |
+| projectq             | 0.4.2   |
+| PennyLane            | 0.5.0   |
 
 ## Acknowledge
 
