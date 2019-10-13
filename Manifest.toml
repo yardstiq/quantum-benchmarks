@@ -404,7 +404,7 @@ version = "0.6.1"
 
 [[Yao]]
 deps = ["BitBasis", "Reexport", "YaoArrayRegister", "YaoBase", "YaoBlocks"]
-git-tree-sha1 = "118e6151d5c47b07858bd3cc4321708415f3d851"
+git-tree-sha1 = "ce66c99ed0f57052eed7fcb78ddbc5c452c7c70d"
 repo-rev = "master"
 repo-url = "https://github.com/QuantumBFS/Yao.jl.git"
 uuid = "5872b779-8223-5990-8dd0-5abbb0748c8c"
