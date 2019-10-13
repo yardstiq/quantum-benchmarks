@@ -37,7 +37,7 @@ help() {
     Quantum Circuit Simulation Benchmark
 
 install     install dependencies
-benchmark   start benchmarking
+run         start benchmarking
 help        print this message
 "
 }
