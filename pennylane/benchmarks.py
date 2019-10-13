@@ -67,7 +67,7 @@ class QCBM:
 
 
 @pytest.mark.parametrize('nqubits', range(4,26))
-def qcbm(benchmark, nqubits):
+def test_QCBM(benchmark, nqubits):
     benchmark.group = "QCBM"
     qcbm = QCBM(nqubits, 9)
     vars = qcbm.generate_random_vars()
