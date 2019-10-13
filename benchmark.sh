@@ -15,4 +15,4 @@ pytest projectq/benchmark_gates.py --benchmark-save=projectq --benchmark-sort=na
 julia --project -e "using Pkg; Pkg.instantiate()"
 julia --project yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv
 ## 5. PennyLane (default)
-pytest pennylane/benchmarks.py --benchmark-save=projectq --benchmark-sort=name
+pytest pennylane/benchmarks.py --benchmark-save=pennylane --benchmark-sort=name
