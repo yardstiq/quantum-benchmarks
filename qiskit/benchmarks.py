@@ -214,7 +214,7 @@ def test_Toffoli(benchmark, nqubits):
     benchmark.group = "Toffoli"
     run_bench(benchmark, nqubits, 'ccx', (2, 3, 0))
 
-@pytest.mark.parametrize('nqubits', range(4, 21))
+@pytest.mark.parametrize('nqubits', range(4, 26))
 def test_qcbm(benchmark, nqubits):
     benchmark.group = "QCBM"
     circuit = generate_qcbm_circuit(nqubits, 9,
