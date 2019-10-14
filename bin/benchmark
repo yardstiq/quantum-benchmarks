@@ -66,6 +66,7 @@ case $1 in
     run) (cd $ROOT_PATH && benchmark)
     ;;
     parallel) (cd $ROOT_PATH && benchmark_parallel)
+    ;;
     *) help
     ;;
 esac
