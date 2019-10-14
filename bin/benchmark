@@ -18,7 +18,7 @@ benchmark_julia() {
     export OMP_NUM_THREADS=1
     export MKL_NUM_THREADS=1
 
-    julia --project yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out
+    julia --project yao/benchmarks.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out
 }
 
 install() {
