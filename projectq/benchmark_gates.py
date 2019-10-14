@@ -57,7 +57,7 @@ def execute_qcbm(reg, n, depth, pairs):
 
     last_rotation(reg, n)
 
-################### Tests #################
+
 nqubits_list = range(4,26)
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_X(benchmark, nqubits):
@@ -94,7 +94,7 @@ def test_Measure(benchmark, nqubits):
     benchmark.group = "Measure"
     run_bench(benchmark, ops.All(ops.Measure), None, nqubits)
 
-@pytest.mark.parametrize('nqubits', range(4, 26))
+@pytest.mark.parametrize('nqubits', nqubits_list)
 def test_qcbm(benchmark, nqubits):
     pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
     benchmark.group = "QCBM"
