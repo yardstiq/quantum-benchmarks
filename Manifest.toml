@@ -106,11 +106,11 @@ version = "1.2.1"
 
 [[CuYao]]
 deps = ["BitBasis", "CUDAnative", "CuArrays", "GPUArrays", "LinearAlgebra", "LuxurySparse", "Random", "Reexport", "StaticArrays", "StatsBase", "TupleTools", "Yao", "YaoArrayRegister", "YaoBase"]
-git-tree-sha1 = "14f882fafa14c644edea26fae402b3cb50f1468c"
+git-tree-sha1 = "b421b0b2ab224874beb43f29aa56228c879eb825"
 repo-rev = "master"
 repo-url = "https://github.com/QuantumBFS/CuYao.jl.git"
 uuid = "b48ca7a8-dd42-11e8-2b8e-1b7706800275"
-version = "0.1.2"
+version = "0.1.3"
 
 [[DataAPI]]
 git-tree-sha1 = "674b67f344687a88310213ddfa8a2b3c76cc4252"
@@ -412,7 +412,7 @@ version = "0.6.0"
 
 [[YaoArrayRegister]]
 deps = ["BitBasis", "LinearAlgebra", "LuxurySparse", "Random", "StaticArrays", "StatsBase", "TupleTools", "YaoBase"]
-git-tree-sha1 = "0c4632cee32a66904f9c101b405d043eef8b093a"
+git-tree-sha1 = "3b0739b0d2b02896ecbdda1b9fc9d8d84c4b4b0b"
 repo-rev = "master"
 repo-url = "https://github.com/QuantumBFS/YaoArrayRegister.jl.git"
 uuid = "e600142f-9330-5003-8abb-0ebd767abc51"
@@ -426,7 +426,7 @@ version = "0.11.2"
 
 [[YaoBlocks]]
 deps = ["BitBasis", "CacheServers", "ExponentialUtilities", "InteractiveUtils", "LegibleLambdas", "LinearAlgebra", "LuxurySparse", "MLStyle", "Random", "SimpleTraits", "SparseArrays", "StaticArrays", "StatsBase", "YaoArrayRegister", "YaoBase"]
-git-tree-sha1 = "50d46fff7786b9e8917f857a03a427411b640de0"
+git-tree-sha1 = "eed75afd23d233880425cccc4be51bc8a2abb85a"
 repo-rev = "master"
 repo-url = "https://github.com/QuantumBFS/YaoBlocks.jl.git"
 uuid = "418bc28f-b43b-5e0b-a6e7-61bbc1a2c1df"
