@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import numpy as np
-from contexts import ProjectQContext
+from projectq import MainEngine
 from projectq import ops
-from functools import reduce
-from qcbm.testsuit import load_barstripe
+from projectq.ops import *
 
 import mkl
 mkl.set_num_threads(1)
@@ -11,11 +10,10 @@ mkl.set_num_threads(1)
 import pytest
 
 def run_bench(benchmark, G, locs, nqubits):
-    with ProjectQContext(nqubits, 'simulate') as cc:
-        qureg = cc.qureg
-        eng = qureg.engine
-        qi = take_locs(qureg, locs)
-        benchmark(run_gate, eng, G, qi)
+    eng = MainEngine()
+    reg = eng.allocate_qureg(nqubits)
+    G | take_locs(reg, locs)
+    benchmark(eng.flush)
 
 def take_locs(qureg, locs):
     if isinstance(locs, int):
@@ -29,14 +27,35 @@ def take_locs(qureg, locs):
     else:
         raise
 
-def run_gate(eng, G, qi):
-    G | qi
-    eng.flush()
+def first_rotation(reg, nqubits):
+    for k in range(nqubits):
+        Rx(np.random.rand()) | reg[k]
+        Rz(np.random.rand()) | reg[k]
 
-def ising_hamiltonian(nqubits):
-    H1 = reduce(lambda x,y: x+y, [1/4. * ops.QubitOperator("Z%d Z%d"%(i, i+1)) for i in range(nqubits-1)])
-    H2 = reduce(lambda x,y: x+y, [1/4 * ops.QubitOperator("X%d"%(i, )) for i in range(nqubits)])
-    return H1 + H2
+def mid_rotation(reg, nqubits):
+    for k in range(nqubits):
+        Rz(np.random.rand()) | reg[k]
+        Rx(np.random.rand()) | reg[k]
+        Rz(np.random.rand()) | reg[k]
+
+def last_rotation(reg, nqubits):
+    for k in range(nqubits):
+        Rz(np.random.rand()) | reg[k]
+        Rx(np.random.rand()) | reg[k]
+
+def entangler(reg, pairs):
+    for a, b in pairs:
+        CNOT | (reg[a], reg[b])
+
+
+def execute_qcbm(reg, n, depth, pairs):
+    first_rotation(reg, n)
+    entangler(reg, pairs)
+    for k in range(depth-1):
+        mid_rotation(reg, n)
+        entangler(reg, pairs)
+
+    last_rotation(reg, n)
 
 ################### Tests #################
 nqubits_list = range(4,26)
@@ -76,9 +95,10 @@ def test_Measure(benchmark, nqubits):
     run_bench(benchmark, ops.All(ops.Measure), None, nqubits)
 
 @pytest.mark.parametrize('nqubits', range(4, 26))
-def test_QCBM(benchmark, nqubits):
+def test_qcbm(benchmark, nqubits):
+    pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
     benchmark.group = "QCBM"
-    bm = load_barstripe((nqubits, 1), 10, structure='ring', context='projectq')
-    theta_list = np.random.rand(bm.circuit.num_param)*2*np.pi
-    with bm.context( bm.circuit.num_bit, 'simulate') as cc:
-        benchmark(bm.circuit, cc.qureg, theta_list)
+    eng = MainEngine()
+    reg = eng.allocate_qureg(nqubits)
+    execute_qcbm(reg, nqubits, 9, pairs)
+    benchmark(eng.flush)
