@@ -4,13 +4,13 @@ BASE_PATH=$(dirname "$FILE_PATH")
 ROOT_PATH="$BASE_PATH/.."
 NCORES=$(grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $4}')
 
-benchmark_pytest(name) {
+benchmark_pytest() {
     # set threads to one
     export OMP_NUM_THREADS=1
     export MKL_NUM_THREADS=1
     export MKL_DOMAIN_NUM_THREADS=1
 
-    pytest "$name/benchmarks.py" --benchmark-save=$name --benchmark-sort=name --benchmark-min-rounds=1 > $name.out
+    pytest "$1/benchmarks.py" --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=1 > $1.out
 }
 
 benchmark_julia() {
@@ -31,20 +31,22 @@ install() {
     julia --project -e "using Pkg; Pkg.instantiate()"
 }
 
-benchmark(){
-
+benchmark_parallel(){
     # start benchmark
-    ## 1.Cirq
-    pytest cirq/benchmark_gates.py --benchmark-save=cirq --benchmark-sort=name --benchmark-min-rounds=1 > cirq.out  &
-    ## 2.QISKit
-    pytest qiskit/benchmarks.py --benchmark-save=qiskit --benchmark-sort=name --benchmark-min-rounds=1 > qiskit.out  &
-    ## 3.ProjectQ
-    pytest projectq/benchmark_gates.py --benchmark-save=projectq --benchmark-sort=name --benchmark-min-rounds=1 > projectq.out  &
-    ## 4.Yao
-    # NOTE: make sure we run Yao after pytest, since we do not create benchmarks folder ourselves
-    julia --project yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out  &
-    ## 5. PennyLane (default)
-    pytest pennylane/benchmarks.py --benchmark-save=pennylane --benchmark-sort=name --benchmark-min-rounds=1 > pennylane.out  &
+    benchmark_pytest cirq       &
+    benchmark_pytest qiskit     &
+    benchmark_pytest projectq   &
+    benchmark_pytest pennylane  &
+    benchmark_julia             &
+}
+
+benchmark(){
+    # start benchmark
+    benchmark_pytest cirq
+    benchmark_pytest qiskit
+    benchmark_pytest projectq
+    benchmark_pytest pennylane
+    benchmark_julia
 }
 
 help() {
@@ -53,17 +55,17 @@ help() {
 
 install     install dependencies
 run         start benchmarking
+parallel    spawn each benchmark in a process
 help        print this message
 "
 }
 
-echo $NCORES
-
-# case $1 in
-#     install) (cd $ROOT_PATH && install)
-#     ;;
-#     run) (cd $ROOT_PATH && benchmark)
-#     ;;
-#     *) help
-#     ;;
-# esac
+case $1 in
+    install) (cd $ROOT_PATH && install)
+    ;;
+    run) (cd $ROOT_PATH && benchmark)
+    ;;
+    parallel) (cd $ROOT_PATH && benchmark_parallel)
+    *) help
+    ;;
+esac
