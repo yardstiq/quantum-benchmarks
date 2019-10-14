@@ -2,6 +2,24 @@
 FILE_PATH=$(readlink -f "$0")
 BASE_PATH=$(dirname "$FILE_PATH")
 ROOT_PATH="$BASE_PATH/.."
+NCORES=$(grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $4}')
+
+benchmark_pytest(name) {
+    # set threads to one
+    export OMP_NUM_THREADS=1
+    export MKL_NUM_THREADS=1
+    export MKL_DOMAIN_NUM_THREADS=1
+
+    pytest "$name/benchmarks.py" --benchmark-save=$name --benchmark-sort=name --benchmark-min-rounds=1 > $name.out
+}
+
+benchmark_julia() {
+    export JULIA_NUM_THREADS=1
+    export OMP_NUM_THREADS=1
+    export MKL_NUM_THREADS=1
+
+    julia --project yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out
+}
 
 install() {
     # install Python dependencies
@@ -14,11 +32,6 @@ install() {
 }
 
 benchmark(){
-    # set threads to one
-    export OMP_NUM_THREADS=1
-    export MKL_NUM_THREADS=1
-    export MKL_DOMAIN_NUM_THREADS=1
-    export JULIA_NUM_THREADS=1
 
     # start benchmark
     ## 1.Cirq
@@ -44,13 +57,13 @@ help        print this message
 "
 }
 
-echo $ROOT_PATH
+echo $NCORES
 
-case $1 in
-    install) (cd $ROOT_PATH && install)
-    ;;
-    run) (cd $ROOT_PATH && benchmark)
-    ;;
-    *) help
-    ;;
-esac
+# case $1 in
+#     install) (cd $ROOT_PATH && install)
+#     ;;
+#     run) (cd $ROOT_PATH && benchmark)
+#     ;;
+#     *) help
+#     ;;
+# esac
