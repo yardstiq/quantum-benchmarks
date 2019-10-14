@@ -28,6 +28,7 @@ benchmark(){
     ## 3.ProjectQ
     pytest projectq/benchmark_gates.py --benchmark-save=projectq --benchmark-sort=name --benchmark-min-rounds=1 > projectq.out
     ## 4.Yao
+    # NOTE: make sure we run Yao after pytest, since we do not create benchmarks folder ourselves
     julia --project yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out
     ## 5. PennyLane (default)
     pytest pennylane/benchmarks.py --benchmark-save=pennylane --benchmark-sort=name --benchmark-min-rounds=1 > pennylane.out
