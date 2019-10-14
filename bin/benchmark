@@ -21,15 +21,15 @@ benchmark(){
 
     # start benchmark
     ## 1.Cirq
-    pytest cirq/benchmark_gates.py --benchmark-save=cirq --benchmark-sort=name
+    pytest cirq/benchmark_gates.py --benchmark-save=cirq --benchmark-sort=name --benchmark-min-rounds=1
     ## 2.QISKit
-    pytest qiskit/benchmarks.py --benchmark-save=qiskit --benchmark-sort=name
+    pytest qiskit/benchmarks.py --benchmark-save=qiskit --benchmark-sort=name --benchmark-min-rounds=1
     ## 3.ProjectQ
-    pytest projectq/benchmark_gates.py --benchmark-save=projectq --benchmark-sort=name
+    pytest projectq/benchmark_gates.py --benchmark-save=projectq --benchmark-sort=name --benchmark-min-rounds=1
     ## 4.Yao
     julia --project yao/benchmark_gates.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv
     ## 5. PennyLane (default)
-    pytest pennylane/benchmarks.py --benchmark-save=pennylane --benchmark-sort=name
+    pytest pennylane/benchmarks.py --benchmark-save=pennylane --benchmark-sort=name --benchmark-min-rounds=1
 }
 
 help() {
