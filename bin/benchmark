@@ -10,7 +10,7 @@ benchmark_pytest() {
     export MKL_NUM_THREADS=1
     export MKL_DOMAIN_NUM_THREADS=1
 
-    pytest "$1/benchmarks.py" --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5 > $1.out
+    pytest "$1/benchmarks.py" --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5 > $1.out 2> $1.err
 }
 
 benchmark_julia() {
@@ -18,7 +18,7 @@ benchmark_julia() {
     export OMP_NUM_THREADS=1
     export MKL_NUM_THREADS=1
 
-    julia --project yao/benchmarks.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out
+    julia --project yao/benchmarks.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out 2> yao.err
 }
 
 install() {
