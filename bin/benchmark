@@ -24,8 +24,7 @@ benchmark_julia() {
 install() {
     # install Python dependencies
     echo "installing Python dependencies"
-    conda install mkl-service
-    conda install pytest
+    conda install -y mkl-service pytest
     pip install -r requirements.txt
     # install Julia dependencies
     echo "installing Julia dependencies"
