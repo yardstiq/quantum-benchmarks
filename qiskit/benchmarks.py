@@ -8,7 +8,7 @@ backend = Aer.get_backend('statevector_simulator')
 
 def run_bench(benchmark, nqubits, gate, locs=(1, )):
     q = QuantumRegister(nqubits)
-    qc = QuantumRegister(q)
+    qc = QuantumCircuit(q)
     getattr(qc, gate)(*locs)
     benchmark(execute, qc, backend)
 
