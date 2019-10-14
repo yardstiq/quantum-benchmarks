@@ -10,7 +10,7 @@ benchmark_pytest() {
     export MKL_NUM_THREADS=1
     export MKL_DOMAIN_NUM_THREADS=1
 
-    pytest "$1/benchmarks.py" --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=1 > $1.out
+    pytest "$1/benchmarks.py" --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5 > $1.out
 }
 
 benchmark_julia() {
