@@ -41,8 +41,12 @@ for each_package in packages:
         gate_data[each_package] = wash_benchmark_data(each_package, gate_set)
 
 
+def subplot_dataset(dataset, ax, gate):
+    ls = [ax.semilogy(dataset[each]["nqubits"], dataset[each][gate], '-o', markersize=3) for each in packages]
+    return ls
+
 def subplot_gate(ax, gate):
-    ls = [ax.semilogy(gate_data[each]["nqubits"], gate_data[each][gate], '-o', markersize=3) for each in packages]
+    ls = subplot_dataset(gate_data, ax, gate)
     ax.set(title=' '.join([gate, 'gate']), xlabel="nqubits", ylabel="ns")
     return ls
 
@@ -63,25 +67,25 @@ lgd = fig.legend(
 plt.tight_layout()
 plt.savefig('gates.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 
-df_projectq = wash_benchmark_data('projectq', ['QCBM'])
-df_qiskit = wash_benchmark_data('qiskit', ['QCBM'])
-df_cirq = wash_benchmark_data('cirq', ['QCBM'])
-df_yao = pd.read_csv('yao_qcbm.csv')
-df_pennylane = wash_benchmark_data('pennylane', ['QCBM'])
+circuit_data = {}
+for each_package in packages:
+    if each_package == 'yao':
+        circuit_data['yao'] = pd.read_csv('yao_qcbm.csv')
+    else:
+        circuit_data[each_package] = wash_benchmark_data(each_package, ['QCBM'])
+
+# packages.append('pennylane')
+# circuit_data['pennylane'] = wash_benchmark_data('pennylane', ['QCBM'])
 
 fig = plt.figure(figsize=(8, 6))
 ax = plt.subplot(111)
-l1 = ax.semilogy(df_projectq["nqubits"], df_projectq["QCBM"], '-o', markersize=3)
-l2 = ax.semilogy(df_qiskit["nqubits"], df_qiskit["QCBM"], '-o', markersize=3)
-l3 = ax.semilogy(df_cirq["nqubits"], df_cirq["QCBM"], '-o', markersize=3)
-l4 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM"], '-o', markersize=3)
-l5 = ax.semilogy(df_yao["nqubits"], df_yao["QCBM_cuda"], '-o', markersize=3)
-l6 = ax.semilogy(df_pennylane['nqubits'], df_yao['QCBM'], '-o', markersize=3)
-
+ls = subplot_dataset(circuit_data, ax, 'QCBM')
+ls.append(ax.semilogy(circuit_data['yao']["nqubits"], circuit_data['yao']["QCBM_cuda"], '-o', markersize=3))
 ax.set(title="Parameterized Circuit", xlabel="nqubits", ylabel="ns")
+
 lgd = ax.legend(
-    [l1, l2, l3, l4, l5, l6],
-    labels=["ProjectQ", "qiskit", "Cirq", "Yao", "Yao (cuda)", "PennyLane (default)"],
+    ls,
+    labels=["ProjectQ", "qiskit", "Cirq", 'QuEST', "Yao", "Yao (cuda)"],
     loc="upper right",
     borderaxespad=0.1,
     bbox_to_anchor=(1.2, 0.9))
