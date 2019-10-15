@@ -7,6 +7,12 @@ mkl.set_num_threads(1)
 
 backend = Aer.get_backend('statevector_simulator')
 
+def _execute(circuit):
+    experiment = transpile(circuit)
+    qobj = assemble(experiment)
+    qobj_str = backend._format_qobj_str(qobj, None, None)
+    return backend._controller(qobj_str)
+
 def native_execute(benchmark, circuit):
     experiment = transpile(circuit)
     qobj = assemble(experiment)
@@ -46,7 +52,11 @@ def entangler(circuit, qubits, pairs):
 def generate_qcbm_circuit(n, depth, pairs):
     qubits = QuantumRegister(n)
     circuit = QuantumCircuit(qubits)
-    circuit = first_rotation(circuit, qubits)
+    
+    for each in qubits:
+        circuit.rx(1.0, each)
+        circuit.rz(1.0, each)
+
     circuit = entangler(circuit, qubits, pairs)
     for k in range(depth-1):
         circuit = mid_rotation(circuit, qubits)
@@ -82,9 +92,10 @@ def test_Toffoli(benchmark, nqubits):
     benchmark.group = "Toffoli"
     run_bench(benchmark, nqubits, 'ccx', (2, 3, 0))
 
-@pytest.mark.parametrize('nqubits', nbit_list)
-def test_qcbm(benchmark, nqubits):
-    benchmark.group = "QCBM"
-    circuit = generate_qcbm_circuit(nqubits, 9,
-        [(i, (i+1)%nqubits) for i in range(nqubits)])
-    native_execute(benchmark, circuit)
+# Rotation Z/X is not supported
+# @pytest.mark.parametrize('nqubits', nbit_list)
+# def test_qcbm(benchmark, nqubits):
+#     benchmark.group = "QCBM"
+#     circuit = generate_qcbm_circuit(nqubits, 9,
+#         [(i, (i+1)%nqubits) for i in range(nqubits)])
+#     native_execute(benchmark, circuit)
