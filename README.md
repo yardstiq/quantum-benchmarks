@@ -1,5 +1,13 @@
 # Quantum Software Benchmarks
 
+We benchmark several popular quantum computation softwares/frameworks/simulators to test their performance
+in practical daily research.
+
+This benchmark is written with the following principals:
+
+- tries to use the user interface (UI) instead of high performance hack from internals.
+- focus on laptop runnable scale instead of High Performance Cluster scale (4-25 qubits)
+
 ## Results
 
 ### Single Gate Benchmark
