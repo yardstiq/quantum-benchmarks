@@ -8,6 +8,8 @@ Single Gate Benchmark
 
 Parameterized Circuit Benchmark
 
+**NOTE: qiskit benchmark here looks physically wrong (should scales exponentially), I still need more investigation on it.**
+
 ![pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/pcircuit.png)
 
 Batched parameterized circuit of Yao and CuYao
