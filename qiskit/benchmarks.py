@@ -1,16 +1,23 @@
 import pytest
 import mkl
+import uuid
 from qiskit import *
 from qiskit.compiler import transpile, assemble
 mkl.set_num_threads(1)
 
 backend = Aer.get_backend('statevector_simulator')
 
+def native_execute(benchmark, circuit):
+    experiment = transpile(circuit)
+    qobj = assemble(experiment)
+    qobj_str = backend._format_qobj_str(qobj, None, None)
+    benchmark(backend._controller, qobj_str)
+
 def run_bench(benchmark, nqubits, gate, locs=(1, )):
     q = QuantumRegister(nqubits)
     qc = QuantumCircuit(q)
     getattr(qc, gate)(*locs)
-    benchmark(execute, qc, backend)
+    native_execute(benchmark, qc)
 
 def first_rotation(circuit, qubits):
     for each in qubits:
@@ -80,4 +87,4 @@ def test_qcbm(benchmark, nqubits):
     benchmark.group = "QCBM"
     circuit = generate_qcbm_circuit(nqubits, 9,
         [(i, (i+1)%nqubits) for i in range(nqubits)])
-    benchmark(execute, circuit, backend)
+    native_execute(benchmark, circuit)
