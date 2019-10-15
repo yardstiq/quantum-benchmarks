@@ -61,7 +61,7 @@ def test_T(benchmark, nqubits):
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_CNOT(benchmark, nqubits):
-    benchmark.group = "T"
+    benchmark.group = "CNOT"
     run_bench(benchmark, quest.controlledNot, nqubits, (2, 3))
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
