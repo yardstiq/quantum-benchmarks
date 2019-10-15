@@ -12,8 +12,12 @@ import pytest
 def run_bench(benchmark, G, locs, nqubits):
     eng = MainEngine()
     reg = eng.allocate_qureg(nqubits)
-    G | take_locs(reg, locs)
-    benchmark(eng.flush)
+    qi = take_locs(reg, locs)
+    benchmark(run_bench, eng, G, qi)
+
+def run_gate(eng, G, qi):
+    G | qi
+    eng.flush()
 
 def take_locs(qureg, locs):
     if isinstance(locs, int):
@@ -48,7 +52,7 @@ def entangler(reg, pairs):
         CNOT | (reg[a], reg[b])
 
 
-def execute_qcbm(reg, n, depth, pairs):
+def execute_qcbm(eng, reg, n, depth, pairs):
     first_rotation(reg, n)
     entangler(reg, pairs)
     for k in range(depth-1):
@@ -56,6 +60,7 @@ def execute_qcbm(reg, n, depth, pairs):
         entangler(reg, pairs)
 
     last_rotation(reg, n)
+    eng.flush()
 
 
 nqubits_list = range(4,26)
@@ -100,5 +105,4 @@ def test_qcbm(benchmark, nqubits):
     benchmark.group = "QCBM"
     eng = MainEngine()
     reg = eng.allocate_qureg(nqubits)
-    execute_qcbm(reg, nqubits, 9, pairs)
-    benchmark(eng.flush)
+    benchmark(execute_qcbm, eng, reg, nqubits, 9, pairs)
