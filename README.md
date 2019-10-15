@@ -2,17 +2,17 @@
 
 ## Results
 
-Single Gate Benchmark
+### Single Gate Benchmark
 
 ![gates](https://github.com/Roger-luo/quantum-benchmarks/blob/master/gates.png)
 
-Parameterized Circuit Benchmark
+### Parameterized Circuit Benchmark
 
-**NOTE: qiskit benchmark here looks physically wrong (should scales exponentially), I still need more investigation on it.**
+NOTE: qiskit state vector simulator does not support rotation x/z gate, thus there is no benchmark on the following circuits.
 
 ![pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/pcircuit.png)
 
-Batched parameterized circuit of Yao and CuYao
+### Batched parameterized circuit of Yao and CuYao
 
 ![batch-pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/pcircuit_batch.png)
 
