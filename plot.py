@@ -71,15 +71,20 @@ circuit_data = {}
 for each_package in packages:
     if each_package == 'yao':
         circuit_data['yao'] = pd.read_csv('yao_qcbm.csv')
+    elif each_package == 'qiskit':
+        continue # skip qiskit, since not supported
     else:
         circuit_data[each_package] = wash_benchmark_data(each_package, ['QCBM'])
 
 packages.append('pennylane')
 circuit_data['pennylane'] = wash_benchmark_data('pennylane', ['QCBM'])
+packages = [each for each in packages if each != 'qiskit']
 
 fig = plt.figure(figsize=(8, 6))
 ax = plt.subplot(111)
 ls = subplot_dataset(circuit_data, ax, 'QCBM')
+
+packages.append('yao (cuda)')
 ls.append(ax.semilogy(circuit_data['yao']["nqubits"], circuit_data['yao']["QCBM_cuda"], '-o', markersize=3))
 ax.set(title="Parameterized Circuit", xlabel="nqubits", ylabel="ns")
 
