@@ -74,8 +74,8 @@ for each_package in packages:
     else:
         circuit_data[each_package] = wash_benchmark_data(each_package, ['QCBM'])
 
-# packages.append('pennylane')
-# circuit_data['pennylane'] = wash_benchmark_data('pennylane', ['QCBM'])
+packages.append('pennylane')
+circuit_data['pennylane'] = wash_benchmark_data('pennylane', ['QCBM'])
 
 fig = plt.figure(figsize=(8, 6))
 ax = plt.subplot(111)
@@ -85,7 +85,7 @@ ax.set(title="Parameterized Circuit", xlabel="nqubits", ylabel="ns")
 
 lgd = ax.legend(
     ls,
-    labels=["ProjectQ", "qiskit", "Cirq", 'QuEST', "Yao", "Yao (cuda)"],
+    labels=packages,
     loc="upper right",
     borderaxespad=0.1,
     bbox_to_anchor=(1.2, 0.9))
