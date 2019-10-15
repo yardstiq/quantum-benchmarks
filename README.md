@@ -92,11 +92,10 @@ GPU: Tesla V100
 | CuYao                | v0.1.3  |
 | qiskit               | 0.11.0  |
 | qiskit-aer           | 0.2.3   |
-| qiskit-aqua          | 0.5.2   |
-| qiskit-ignis         | 0.1.1   |
 | qiskit-terra         | 0.8.2   |
 | projectq             | 0.4.2   |
 | PennyLane            | 0.5.0   |
+| QuEST (pyquest-cffi) | 0.1.1   |
 
 ## Acknowledge
 
