@@ -69,7 +69,11 @@ def plot_absolute(ax, data : dict, gate):
     for k in data:
         d = data[k]
         ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3))
-        labels.append(k)
+        
+        if k == 'quest':
+            labels.append('quest-cffi')
+        else:
+            labels.append(k)
 
     ax.set(xlabel="nqubits", ylabel="ns")
     return ls, labels
@@ -87,7 +91,11 @@ def plot_relative(ax, data: dict, gate, to='yao', log=True):
                 ls.append(ax.semilogy(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3))
             else:
                 ls.append(ax.plot(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3))
-            labels.append(k)
+            
+            if k == 'quest':
+                labels.append('quest-cffi')
+            else:
+                labels.append(k)
 
     ax.axhline(y=1, linestyle='--')
     labels.append(to)
