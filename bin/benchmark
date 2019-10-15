@@ -31,7 +31,7 @@ install() {
     julia --project -e "using Pkg; Pkg.instantiate()"
 }
 
-benchmark_parallel(){
+benchmark_all_parallel(){
     # start benchmark
     benchmark_pytest cirq       &
     benchmark_pytest qiskit     &
@@ -40,7 +40,7 @@ benchmark_parallel(){
     benchmark_julia             &
 }
 
-benchmark(){
+benchmark_all(){
     # start benchmark
     benchmark_pytest cirq
     benchmark_pytest qiskit
@@ -49,24 +49,52 @@ benchmark(){
     benchmark_julia
 }
 
+benchmark(){
+    case $1 in
+        yao) (cd $ROOT_PATH && benchmark_julia)
+        ;;
+        *) (cd $ROOT_PATH && benchmark_pytest $1)
+    esac
+}
+
 help() {
     echo "
     Quantum Circuit Simulation Benchmark
 
-install     install dependencies
-run         start benchmarking
-parallel    spawn each benchmark in a process
-help        print this message
+install                 install dependencies
+run [package]           run benchmark of [package] or run all benchmarks by default
+parallel [package]      spawn [package] benchmark in a process or run all benchmark in parallel by default
+help                    print this message
 "
 }
 
-case $1 in
-    install) (cd $ROOT_PATH && install)
+single_arg() {
+    case $1 in
+        install) (cd $ROOT_PATH && install)
+        ;;
+        run) (cd $ROOT_PATH && benchmark)
+        ;;
+        parallel) (cd $ROOT_PATH && benchmark_parallel)
+        ;;
+        *) help
+        ;;
+    esac
+}
+
+double_arg() {
+    case $1 in
+        run) benchmark $2
+        ;;
+        parallel) benchmark $2 &
+        ;;
+        *) help
+    esac
+}
+
+case $# in
+    1) single_arg $1
     ;;
-    run) (cd $ROOT_PATH && benchmark)
-    ;;
-    parallel) (cd $ROOT_PATH && benchmark_parallel)
+    2) double_arg $1 $2
     ;;
     *) help
-    ;;
 esac
