@@ -8,6 +8,8 @@ Single Gate Benchmark
 
 Parameterized Circuit Benchmark
 
+**NOTE: qiskit benchmark here looks physically wrong (should scales exponentially), I still need more investigation on it.**
+
 ![pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/pcircuit.png)
 
 Batched parameterized circuit of Yao and CuYao
@@ -15,6 +17,17 @@ Batched parameterized circuit of Yao and CuYao
 ![batch-pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/pcircuit_batch.png)
 
 ## Installation
+
+You should be able to run this benchmark with the `bin/benchmark` script.
+
+```
+    Quantum Circuit Simulation Benchmark
+
+install                 install dependencies
+run [package]           run benchmark of [package] or run all benchmarks by default
+parallel [package]      spawn [package] benchmark in a process or run all benchmark in parallel by default
+help                    print this message
+```
 
 ### Requirements
 
@@ -39,11 +52,7 @@ before you install the dependencies with `bin/benchmark`.
 bin/benchmark run
 ```
 
-This will usually take a few hours to finish, thus if you want to run it in the backend, you can use `nohup`
-
-```sh
-nohup bin/benchmark run &
-```
+This will usually take a few hours to finish, thus if you want to run it in the backend, you can use `parallel`
 
 ## Generate Plots
 
@@ -57,23 +66,21 @@ Julia & CPU Info
 
 ```
 julia> versioninfo()
-Julia Version 1.1.1
-Commit 55e36cc (2019-05-16 04:10 UTC)
+Julia Version 1.2.0
+Commit c6da87ff4b (2019-08-20 00:03 UTC)
 Platform Info:
-  OS: Linux (x86_64-linux-gnu)
-  CPU: Intel(R) Core(TM) i7-6800K CPU @ 3.40GHz
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-6.0.1 (ORCJIT, broadwell)
-Environment:
-  JULIA_NUM_THREADS = 12
+  LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
 ```
 
 BLAS: intel MKL
 
 Python version: 3.7.3
 
-GPU: TITAN Xp
+GPU: Tesla V100
 
 ## Package Info
 
