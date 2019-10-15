@@ -55,12 +55,11 @@ before you install the dependencies with `bin/benchmark`.
 bin/benchmark run
 ```
 
-This will usually take a few hours to finish, thus if you want to run it in the backend, you can use `parallel`
-
-## Generate Plots
+This will usually take a few hours to finish, thus if you want to run it in the backend, you can use `parallel`.
+You can generate the plot by running:
 
 ```sh
-python plot.py
+bin/plot
 ```
 
 ## Platform Info
