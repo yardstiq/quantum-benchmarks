@@ -13,7 +13,7 @@ def run_bench(benchmark, G, locs, nqubits):
     eng = MainEngine()
     reg = eng.allocate_qureg(nqubits)
     qi = take_locs(reg, locs)
-    benchmark(run_bench, eng, G, qi)
+    benchmark(run_gate, eng, G, qi)
 
 def run_gate(eng, G, qi):
     G | qi
