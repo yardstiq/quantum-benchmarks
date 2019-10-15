@@ -10,7 +10,7 @@ This benchmark is written with the following principals:
 
 ## Results
 
-<img src="https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/gates.png" alt="single gate benchmark (absolute timing)"></img>
+<img src="https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/gates.png" alt="single gate benchmark (absolute timing)" width=100 height=100></img>
 
 The complete results are included in [RESULTS.md](https://github.com/Roger-luo/quantum-benchmarks/blob/master/RESULTS.md)
 
