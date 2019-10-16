@@ -1,5 +1,9 @@
 # Contribution Guide
 
+*By contributing to this benchmark, you are agreeing to release it under [MIT License](LICENSE).*
+
+To contribute new benchmarks, please open a pull request and the maintainer to run it on test machine.
+
 ## Shell Scripts
 The shell script `bin/benchmark` provides an easy interface to setup benchmarks on arbitrary machine.
 If you would like to add a new benchmark please:
@@ -9,12 +13,16 @@ If you would like to add a new benchmark please:
 
 ## Structure of the benchmarks
 
+**Each software/framework benchmark is stored in their corresponding folder with file name `benchmarks.<extension name>`, e.g
+`cirq/benchmarks.py`.
+
 To make sure that we are doing the right measurement on execution time, the benchmarks are done with the following frameworks:
 
 - [pytest-benchmark](https://pytest-benchmark.readthedocs.io/en/latest/usage.html) for Python
 - [BenchmarkTools.jl](https://github.com/JuliaCI/BenchmarkTools.jl) for Julia
 
 We always use the minimum time in the statistics for all benchmarks, due to [Which estimator should I use?](https://github.com/JuliaCI/BenchmarkTools.jl/blob/master/doc/manual.md#which-estimator-should-i-use)
+
 
 ### Format
 

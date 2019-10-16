@@ -57,6 +57,14 @@ You can generate the plot by running:
 bin/plot
 ```
 
+## Contributing
+
+Please feel free to update and add new benchmarks. Check [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+
 ## Acknowledge
 
 We thank [Juan Gomez](https://github.com/atilag) for reviewing the benchmark of qiskit.
+
+## License
+
+[MIT license](LICENSE)
