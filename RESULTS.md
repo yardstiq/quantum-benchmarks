@@ -1,10 +1,18 @@
 # Benchmark Results
 
+- [Benchmark Results](#benchmark-results)
+  - [Single Thread Benchmark](#single-thread-benchmark)
+    - [Machine Info](#machine-info)
+    - [Package Info](#package-info)
+    - [Single Gate Benchmark](#single-gate-benchmark)
+    - [Parameterized Circuit Benchmark](#parameterized-circuit-benchmark)
+    - [Batched parameterized circuit of Yao and CuYao](#batched-parameterized-circuit-of-yao-and-cuyao)
+
 ## Single Thread Benchmark
 
 This benchmark only include single thread benchmark, all the multithread features are disabled.
 
-### Machine & Package Info
+### Machine Info
 
 Julia & CPU Info
 
@@ -26,7 +34,7 @@ Python version: 3.7.3
 
 GPU: Tesla V100
 
-## Package Info
+### Package Info
 
 |       Package        | Version |
 | -------------------- | ------- |
