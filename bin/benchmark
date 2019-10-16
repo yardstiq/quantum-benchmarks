@@ -4,6 +4,7 @@ BASE_PATH=$(dirname "$FILE_PATH")
 ROOT_PATH="$BASE_PATH/.."
 NCORES=$(grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $4}')
 
+# benchmark pytest-benchmark based scripts
 benchmark_pytest() {
     # set threads to one
     export OMP_NUM_THREADS=1
@@ -13,6 +14,7 @@ benchmark_pytest() {
     pytest "$1/benchmarks.py" --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5 > $1.out 2> $1.err
 }
 
+# benchmark Julia BenchmarkTools based scripts
 benchmark_julia() {
     export JULIA_NUM_THREADS=1
     export OMP_NUM_THREADS=1
