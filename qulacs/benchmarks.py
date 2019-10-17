@@ -1,6 +1,6 @@
 import numpy as np
 from qulacs import QuantumCircuit, QuantumState
-from qulacs.gate import X, T, H, CNOT, ParametricRZ, ParametricRX
+from qulacs.gate import X, T, H, CNOT, ParametricRZ, ParametricRX, DenseMatrix
 
 import pytest
 
@@ -64,6 +64,14 @@ def test_CNOT(benchmark, nqubits):
     benchmark.group = "CNOT"
     bench_gate(benchmark, nqubits, CNOT, (2, 3))
 
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_Toffoli(benchmark, nqubits):
+    benchmark.group = "Toffoli"
+    toffoli = DenseMatrix(0, [[0,1],[1,0]])
+    toffoli.add_control_qubit(1,1)
+    toffoli.add_control_qubit(2,1)
+    st = QuantumState(nqubits)
+    benchmark(toffoli.update_quantum_state, st)
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_QCBM(benchmark, nqubits):
