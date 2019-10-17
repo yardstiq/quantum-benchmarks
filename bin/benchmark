@@ -33,7 +33,7 @@ install() {
     julia --project -e "using Pkg; Pkg.instantiate()"
     echo "start building qulacs"
     git submodule update --init --recursive
-    python qulacs/qulacs/setup.py install
+    (cd qulacs/qulacs && python setup.py install)
 }
 
 benchmark_all_parallel(){
