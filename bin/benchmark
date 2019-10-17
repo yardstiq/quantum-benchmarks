@@ -39,6 +39,7 @@ benchmark_all_parallel(){
     benchmark_pytest qiskit     &
     benchmark_pytest projectq   &
     benchmark_pytest pennylane  &
+    benchmark_pytest qulacs     &
     benchmark_julia             &
 }
 
@@ -48,6 +49,7 @@ benchmark_all(){
     benchmark_pytest qiskit
     benchmark_pytest projectq
     benchmark_pytest pennylane
+    benchmark_pytest qulacs
     benchmark_julia
 }
 
