@@ -20,10 +20,10 @@ def run_bench(benchmark, nqubits, gate, locs=(1, )):
 
 def layer(n, qubits, first=False, last=False):
     def Rx(theta, k):
-        return cirq.XPowGate(exponent=0.0)(qubits[k])
+        return cirq.XPowGate(exponent=theta)(qubits[k])
 
     def Rz(theta, k):
-        return cirq.ZPowGate(exponent=0.0)(qubits[k])
+        return cirq.ZPowGate(exponent=theta)(qubits[k])
 
     def Rx_list(theta):
         return [Rx(0.0, k) for k in range(n)]

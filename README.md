@@ -63,7 +63,10 @@ Please feel free to update and add new benchmarks. Check [CONTRIBUTING.md](CONTR
 
 ## Acknowledge
 
-We thank [Juan Gomez](https://github.com/atilag) for reviewing the benchmark of qiskit.
+We thank the following people for review our benchmarks:
+
+- [Juan Gomez](https://github.com/atilag) for reviewing qiskit
+- [Craig Gidney](https://github.com/Strilanc) for reviewing Cirq
 
 ## License
 
