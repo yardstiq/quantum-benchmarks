@@ -5,7 +5,7 @@ in practical daily research.
 
 This benchmark is written with the following principles:
 
-- tries to use the user interface (UI) instead of high performance hack from internals.
+- try to use the user interface (UI) instead of high performance hack from internals.
 - focus on laptop runnable scale (4-25 qubits) instead of High Performance Cluster scale
 
 ## Results
@@ -63,7 +63,7 @@ Please feel free to update and add new benchmarks. Check [CONTRIBUTING.md](CONTR
 
 ## Acknowledge
 
-We thank the following people for review our benchmarks:
+We thank the following people for reviewing our benchmarks:
 
 - [Juan Gomez](https://github.com/atilag) for reviewing qiskit
 - [Craig Gidney](https://github.com/Strilanc) for reviewing Cirq
