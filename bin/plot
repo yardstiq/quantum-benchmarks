@@ -5,12 +5,12 @@ from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plo
 import matplotlib.pyplot as plt
 
 gate_data = parse_data(
-    packages=['projectq', 'qiskit', 'cirq', 'quest', 'yao'],
+    packages=['projectq', 'qiskit', 'cirq', 'quest', 'qulacs', 'yao'],
     labels=['X', 'H', 'T', 'CNOT', 'Toffoli']
 )
 
 circuit_data = parse_data(
-    packages=['projectq', 'cirq', 'quest', 'pennylane', 'yao'],
+    packages=['projectq', 'cirq', 'quest', 'pennylane', 'qulacs', 'yao'],
     labels=['QCBM']
 )
 
