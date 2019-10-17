@@ -62,7 +62,7 @@ def test_H(benchmark, nqubits):
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_CNOT(benchmark, nqubits):
     benchmark.group = "CNOT"
-    bench_gate(benchmark, nqubits, CNOT, (3, ))
+    bench_gate(benchmark, nqubits, CNOT, (2, 3))
 
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
