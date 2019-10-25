@@ -4,6 +4,7 @@ single gate benchmark
 import matplotlib
 matplotlib.use('TkAgg')
 import cirq
+import numpy as np
 from cirq import Simulator
 import pytest
 import mkl
@@ -15,7 +16,7 @@ def run_bench(benchmark, nqubits, gate, locs=(1, )):
     circuit = cirq.Circuit()
     locs = tuple(qubits[k] for k in locs)
     circuit.append(gate(*locs))
-    simulator = Simulator()
+    simulator = Simulator(dtype=np.complex128)
     benchmark(simulator.simulate, circuit, qubit_order=qubits)
 
 def layer(n, qubits, first=False, last=False):
