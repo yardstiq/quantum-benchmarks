@@ -58,6 +58,10 @@ def parse_data(packages, labels=['X', 'H', 'T', 'CNOT', 'Toffoli']):
                 gate_data['yao (cuda)'] = pd_data[['nqubits', 'QCBM_cuda_batch']].rename(columns={'QCBM_cuda_batch' : 'QCBM (batch)'})
             else:
                 gate_data[each_package] = pd.read_csv(os.path.join(ROOT_PATH, 'yao.csv'))
+        elif each_package == 'qulacs':
+            if len(labels) == 1 and 'QCBM' in labels:
+                gate_data['qulacs'] = wash_benchmark_data(each_package, ['QCBM'])
+                gate_data['qulacs (cuda)'] = wash_benchmark_data(each_package, ['QCBM (cuda)']).rename(columns={'QCBM (cuda)': 'QCBM'})
         else:
             gate_data[each_package] = wash_benchmark_data(each_package, labels)
 
