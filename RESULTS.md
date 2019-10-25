@@ -43,6 +43,7 @@ GPU: Tesla V100
 | qiskit               | 0.11.0  |
 | qiskit-aer           | 0.2.3   |
 | qiskit-terra         | 0.8.2   |
+| qulacs               | 0.1.8   |
 | projectq             | 0.4.2   |
 | PennyLane            | 0.5.0   |
 | QuEST (pyquest-cffi) | 0.1.1   |
