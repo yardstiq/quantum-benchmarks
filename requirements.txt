@@ -47,8 +47,8 @@ mccabe==0.6.1
 mkl==2019.0
 mkl-fft==1.0.12
 mkl-random==1.0.2
-mkl-service==2.0.2
-more-itertools==5.0.0
+mkl-service==2.3.0
+more-itertools==7.2.0
 mpmath==1.1.0
 ndg-httpsclient==0.5.1
 nest-asyncio==1.0.0
@@ -83,7 +83,7 @@ pyOpenSSL==19.0.0
 pyparsing==2.4.0
 pyquest-cffi==0.1.1
 pyscf==1.6.2
-pytest==5.0.0
+pytest==5.2.1
 pytest-benchmark==3.2.2
 python-dateutil==2.8.0
 pytz==2019.1
@@ -95,6 +95,8 @@ qiskit-ibmq-provider==0.3.0
 qiskit-ignis==0.1.1
 qiskit-terra==0.8.2
 Quandl==3.4.8
+Qulacs==0.1.6
+Qulacs-GPU==0.1.8
 requests==2.22.0
 requests-ntlm==1.1.0
 rsa==4.0
@@ -109,6 +111,7 @@ sympy==1.4
 toml==0.10.0
 tornado==6.0.3
 traitlets==4.3.2
+typed-ast==1.4.0
 typing-extensions==3.7.4
 uritemplate==3.0.0
 urllib3==1.25.3
