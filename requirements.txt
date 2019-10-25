@@ -62,7 +62,7 @@ PennyLane==0.5.0
 PennyLane-PQ==0.4.1
 pexpect==4.7.0
 pickleshare==0.7.5
-Pillow==6.1.0
+Pillow>=6.2.0
 pluggy==0.12.0
 ply==3.11
 projectq==0.4.2
