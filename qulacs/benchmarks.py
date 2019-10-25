@@ -1,5 +1,5 @@
 import numpy as np
-from qulacs import QuantumCircuit, QuantumState, QuantumStateGPU
+from qulacs import QuantumCircuit, QuantumState, QuantumStateGpu
 from qulacs.gate import X, T, H, CNOT, ParametricRZ, ParametricRX, DenseMatrix
 
 import pytest
@@ -86,5 +86,5 @@ def test_QCBM_CUDA(benchmark, nqubits):
     benchmark.group = "QCBM (cuda)"
     pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
     circuit = build_circuit(nqubits, 9, pairs)
-    st = QuantumStateGPU(nqubits)
+    st = QuantumStateGpu(nqubits)
     benchmark(circuit.update_quantum_state, st)
