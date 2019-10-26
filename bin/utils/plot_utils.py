@@ -62,6 +62,8 @@ def parse_data(packages, labels=['X', 'H', 'T', 'CNOT', 'Toffoli']):
             if len(labels) == 1 and 'QCBM' in labels:
                 gate_data['qulacs'] = wash_benchmark_data(each_package, ['QCBM'])
                 gate_data['qulacs (cuda)'] = wash_benchmark_data(each_package, ['QCBM (cuda)']).rename(columns={'QCBM (cuda)': 'QCBM'})
+            else:
+                gate_data[each_package] = wash_benchmark_data(each_package, labels)
         else:
             gate_data[each_package] = wash_benchmark_data(each_package, labels)
 
