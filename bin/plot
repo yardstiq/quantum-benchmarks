@@ -87,7 +87,7 @@ lgd = ax.legend(
     labels=labels,
     loc="upper left",
     borderaxespad=0.1,
-    bbox_to_anchor=(1.2, 0.9))
+    bbox_to_anchor=(1.02, 0.9))
 plt.savefig(image_path('pcircuit_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 
@@ -110,7 +110,5 @@ ax.set(title="Batched Parameterized Circuit (relative time)")
 lgd = ax.legend(
     ls,
     labels=labels,
-    loc="upper left",
-    borderaxespad=0.1,
-    bbox_to_anchor=(1.2, 0.9))
+    loc="upper left")
 plt.savefig(image_path('pcircuit_batch_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
