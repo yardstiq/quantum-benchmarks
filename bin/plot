@@ -58,7 +58,7 @@ lgd = fig.legend(
     labels=labels,
     loc="upper right",
     borderaxespad=0.1,
-    bbox_to_anchor=(1.09, 0.9))
+    bbox_to_anchor=(1.12, 0.9))
 
 plt.tight_layout()
 plt.savefig(image_path('gates_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
@@ -85,7 +85,9 @@ ax.set(title="Parameterized Circuit (relative time)")
 lgd = ax.legend(
     ls,
     labels=labels,
-    loc="upper left")
+    loc="upper left",
+    borderaxespad=0.1,
+    bbox_to_anchor=(1.2, 0.9))
 plt.savefig(image_path('pcircuit_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 
@@ -100,7 +102,6 @@ lgd = ax.legend(
     loc="upper left")
 plt.savefig(image_path('pcircuit_batch.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
-
 # batched parameterized quantum circuit relative time
 fig = plt.figure(figsize=(8, 6))
 ax = plt.subplot(111)
@@ -109,5 +110,7 @@ ax.set(title="Batched Parameterized Circuit (relative time)")
 lgd = ax.legend(
     ls,
     labels=labels,
-    loc="upper left")
+    loc="upper left",
+    borderaxespad=0.1,
+    bbox_to_anchor=(1.2, 0.9))
 plt.savefig(image_path('pcircuit_batch_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
