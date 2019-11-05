@@ -88,5 +88,5 @@ def test_QCBM(benchmark, nqubits):
     qubits = [cirq.GridQubit(k, 0) for k in range(nqubits)]
     circuit = generate_qcbm_circuit(nqubits, qubits, 10,
             [(i, (i+1) % nqubits) for i in range(nqubits)])
-    simulator = Simulator()
+    simulator = Simulator(dtype=np.complex128)
     benchmark(simulator.simulate, circuit, qubit_order=qubits)
