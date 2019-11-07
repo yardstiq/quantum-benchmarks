@@ -68,6 +68,7 @@ We thank the following people for reviewing our benchmarks:
 - [Juan Gomez](https://github.com/atilag) for reviewing qiskit
 - [Craig Gidney](https://github.com/Strilanc) for reviewing Cirq
 - [corryvrequan](https://github.com/corryvrequan) for reviewing qulacs
+- [Damian Steiger](https://github.com/damiansteiger) for reviewing ProjectQ
 
 ## License
 
