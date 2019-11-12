@@ -23,7 +23,8 @@ class QCBM:
 
             self.entangler()
             self.last_layer(vars[-1])
-            return [qml.expval(qml.PauliZ(k)) for k in range(self.n)]
+
+            return qml.expval(qml.PauliZ(0)) 
 
         return qcbm_circuit(vars)
 
@@ -66,9 +67,53 @@ class QCBM:
             qml.CNOT(wires=[i, j])
 
 
+class GateTest:
+
+    def __init__(self, n, gate, wires, dev="default.qubit"):
+        self.n = n
+        self.dev = qml.device(dev, wires=n)
+        self.gate = gate
+        self.wires = wires
+
+    def __call__(self, vars):
+        @qml.qnode(self.dev)
+        def gate_circuit():
+            self.gate(wires=self.wires)
+            
+            return qml.expval(qml.PauliZ(0)) 
+
+        return gate_circuit()
+
+
 @pytest.mark.parametrize('nqubits', range(4,26))
-def test_QCBM(benchmark, nqubits):
-    benchmark.group = "QCBM"
-    qcbm = QCBM(nqubits, 9)
-    vars = qcbm.generate_random_vars()
-    benchmark(qcbm, vars)
+class TestPennylane:
+    def test_QCBM(benchmark, nqubits):
+        benchmark.group = "QCBM"
+        qcbm = QCBM(nqubits, 9)
+        vars = qcbm.generate_random_vars()
+        benchmark(qcbm, vars)
+    
+    def test_X(benchmark, nqubits):
+        benchmark.group = "X"
+        gate_test = GateTest(nqubits, qml.X, [0])
+        run_bench(gate_test)
+    
+    def test_H(benchmark, nqubits):
+        benchmark.group = "H"
+        gate_test = GateTest(nqubits, qml.H, [0])
+        run_bench(gate_test)
+    
+    def test_T(benchmark, nqubits):
+        benchmark.group = "T"
+        gate_test = GateTest(nqubits, qml.T, [0])
+        run_bench(gate_test)
+    
+    def test_CX(benchmark, nqubits):
+        benchmark.group = "CNOT"
+        gate_test = GateTest(nqubits, qml.CNOT, [0, 1])
+        run_bench(gate_test)
+    
+    def test_Toffoli(benchmark, nqubits):
+        benchmark.group = "Toffoli"
+        gate_test = GateTest(nqubits, qml.Toffoli, [0, 1, 2])
+        run_bench(gate_test)
