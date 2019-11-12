@@ -1,5 +1,5 @@
 import pennylane as qml
-from pennylane import numpy as np
+import numpy as np
 import mkl
 mkl.set_num_threads(1)
 
@@ -75,7 +75,7 @@ class GateTest:
         self.gate = gate
         self.wires = wires
 
-    def __call__(self, vars):
+    def __call__(self):
         @qml.qnode(self.dev)
         def gate_circuit():
             self.gate(wires=self.wires)
@@ -85,35 +85,41 @@ class GateTest:
         return gate_circuit()
 
 
-@pytest.mark.parametrize('nqubits', range(4,26))
-class TestPennylane:
-    def test_QCBM(benchmark, nqubits):
-        benchmark.group = "QCBM"
-        qcbm = QCBM(nqubits, 9)
-        vars = qcbm.generate_random_vars()
-        benchmark(qcbm, vars)
-    
-    def test_X(benchmark, nqubits):
-        benchmark.group = "X"
-        gate_test = GateTest(nqubits, qml.X, [0])
-        run_bench(gate_test)
-    
-    def test_H(benchmark, nqubits):
-        benchmark.group = "H"
-        gate_test = GateTest(nqubits, qml.H, [0])
-        run_bench(gate_test)
-    
-    def test_T(benchmark, nqubits):
-        benchmark.group = "T"
-        gate_test = GateTest(nqubits, qml.T, [0])
-        run_bench(gate_test)
-    
-    def test_CX(benchmark, nqubits):
-        benchmark.group = "CNOT"
-        gate_test = GateTest(nqubits, qml.CNOT, [0, 1])
-        run_bench(gate_test)
-    
-    def test_Toffoli(benchmark, nqubits):
-        benchmark.group = "Toffoli"
-        gate_test = GateTest(nqubits, qml.Toffoli, [0, 1, 2])
-        run_bench(gate_test)
+nqubit_list = range(4, 5)
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_QCBM(benchmark, nqubits):
+    benchmark.group = "QCBM"
+    qcbm = QCBM(nqubits, 9)
+    vars = qcbm.generate_random_vars()
+    benchmark(qcbm, vars)
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_X(benchmark, nqubits):
+    benchmark.group = "X"
+    gate_test = GateTest(nqubits, qml.PauliX, [0])
+    benchmark(gate_test)
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_H(benchmark, nqubits):
+    benchmark.group = "H"
+    gate_test = GateTest(nqubits, qml.Hadamard, [0])
+    benchmark(gate_test)
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_T(benchmark, nqubits):
+    benchmark.group = "T"
+    gate_test = GateTest(nqubits, qml.T, [0])
+    benchmark(gate_test)
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_CX(benchmark, nqubits):
+    benchmark.group = "CNOT"
+    gate_test = GateTest(nqubits, qml.CNOT, [0, 1])
+    benchmark(gate_test)
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_Toffoli(benchmark, nqubits):
+    benchmark.group = "Toffoli"
+    gate_test = GateTest(nqubits, qml.Toffoli, [0, 1, 2])
+    benchmark(gate_test)
