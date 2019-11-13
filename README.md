@@ -69,6 +69,7 @@ We thank the following people for reviewing our benchmarks:
 - [Craig Gidney](https://github.com/Strilanc) for reviewing Cirq
 - [corryvrequan](https://github.com/corryvrequan) for reviewing qulacs
 - [Damian Steiger](https://github.com/damiansteiger) for reviewing ProjectQ
+- [johannesjmeyer](https://github.com/johannesjmeyer) for reviewing PennyLane
 
 ## License
 
