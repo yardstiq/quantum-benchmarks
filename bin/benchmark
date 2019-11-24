@@ -31,9 +31,6 @@ install() {
     # install Julia dependencies
     echo "installing Julia dependencies"
     julia --project -e "using Pkg; Pkg.instantiate()"
-    echo "start building qulacs"
-    git submodule update --init --recursive
-    (cd qulacs/qulacs && python setup.py install)
 }
 
 benchmark_all_parallel(){
