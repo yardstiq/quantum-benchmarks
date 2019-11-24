@@ -1,0 +1,182 @@
+{
+    "machine_info": {
+        "node": "delta104",
+        "processor": "x86_64",
+        "machine": "x86_64",
+        "python_compiler": "GCC 7.3.0",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.7.3",
+        "python_version": "3.7.3",
+        "python_build": [
+            "default",
+            "Mar 27 2019 22:11:17"
+        ],
+        "release": "4.15.0-58-generic",
+        "system": "Linux",
+        "cpu": {
+            "vendor_id": "GenuineIntel",
+            "hardware": "unknown",
+            "brand": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+        }
+    },
+    "commit_info": {
+        "id": "f63b2a15f0cca4b6718df2d7b6aa82e71a7adae1",
+        "time": "2019-11-17T08:04:12+00:00",
+        "author_time": "2019-11-17T08:04:12+00:00",
+        "dirty": false,
+        "project": "quantum-benchmarks",
+        "branch": "master"
+    },
+    "benchmarks": [
+        {
+            "group": "QCBM",
+            "name": "test_QCBM[4]",
+            "fullname": "pennylane/benchmarks.py::test_QCBM[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.0018761884421110153,
+                "max": 0.002494029700756073,
+                "mean": 0.0019207887923327984,
+                "stddev": 4.820285551719811e-05,
+                "rounds": 329,
+                "median": 0.0019149677827954292,
+                "iqr": 3.450131043791771e-05,
+                "q1": 0.0018958235159516335,
+                "q3": 0.0019303248263895512,
+                "iqr_outliers": 18,
+                "stddev_outliers": 20,
+                "outliers": "20;18",
+                "ld15iqr": 0.0018761884421110153,
+                "hd15iqr": 0.001985173672437668,
+                "ops": 520.6194475892895,
+                "total": 0.6319395126774907,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "X",
+            "name": "test_X[4]",
+            "fullname": "pennylane/benchmarks.py::test_X[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00015337392687797546,
+                "max": 0.00033586379140615463,
+                "mean": 0.00016090157860574586,
+                "stddev": 1.3430133491745215e-05,
+                "rounds": 4281,
+                "median": 0.00015740375965833664,
+                "iqr": 2.232380211353302e-06,
+                "q1": 0.00015652156434953213,
+                "q3": 0.00015875394456088543,
+                "iqr_outliers": 642,
+                "stddev_outliers": 275,
+                "outliers": "275;642",
+                "ld15iqr": 0.00015337392687797546,
+                "hd15iqr": 0.0001621246337890625,
+                "ops": 6214.979421987408,
+                "total": 0.688819658011198,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "H",
+            "name": "test_H[4]",
+            "fullname": "pennylane/benchmarks.py::test_H[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00015245936810970306,
+                "max": 0.00031185615807771683,
+                "mean": 0.00015965169910044295,
+                "stddev": 1.2821646957662491e-05,
+                "rounds": 4199,
+                "median": 0.0001567089930176735,
+                "iqr": 1.882435753941536e-06,
+                "q1": 0.00015589524991810322,
+                "q3": 0.00015777768567204475,
+                "iqr_outliers": 505,
+                "stddev_outliers": 254,
+                "outliers": "254;505",
+                "ld15iqr": 0.00015309080481529236,
+                "hd15iqr": 0.00016060378402471542,
+                "ops": 6263.635186061265,
+                "total": 0.6703774845227599,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "CNOT",
+            "name": "test_CX[4]",
+            "fullname": "pennylane/benchmarks.py::test_CX[4]",
+            "params": {
+                "nqubits": 4
+            },
+            "param": "4",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00015641562640666962,
+                "max": 0.0017697401344776154,
+                "mean": 0.0001646246706388473,
+                "stddev": 2.9505960331090684e-05,
+                "rounds": 3712,
+                "median": 0.00016111182048916817,
+                "iqr": 2.3008324205875397e-06,
+                "q1": 0.00016004452481865883,
+                "q3": 0.00016234535723924637,
+                "iqr_outliers": 457,
+                "stddev_outliers": 105,
+                "outliers": "105;457",
+                "ld15iqr": 0.00015661679208278656,
+                "hd15iqr": 0.00016581732779741287,
+                "ops": 6074.42369433069,
+                "total": 0.6110867774114013,
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2019-11-17T08:04:38.047064",
+    "version": "3.2.2"
+}
