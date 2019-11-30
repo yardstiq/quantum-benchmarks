@@ -27,7 +27,8 @@ install() {
     # install Python dependencies
     echo "installing Python dependencies"
     conda install -y mkl-service pytest
-    pip install -r requirements.txt
+    pip install qiskit cirq projectq pyquest-cffi pennylane qulacs-gpu
+
     # install Julia dependencies
     echo "installing Julia dependencies"
     julia --project -e "using Pkg; Pkg.instantiate()"
