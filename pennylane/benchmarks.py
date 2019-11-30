@@ -99,10 +99,10 @@ class GateTest:
         return eval()
 
 
-nqubit_list = range(4, 5)
+nqubits_list = range(4,26)
 
 
-@pytest.mark.parametrize("nqubits", nqubit_list)
+@pytest.mark.parametrize("nqubits", nqubits_list)
 def test_QCBM(benchmark, nqubits):
     benchmark.group = "QCBM"
     qcbm = QCBM(nqubits, 9)
@@ -110,35 +110,35 @@ def test_QCBM(benchmark, nqubits):
     benchmark(qcbm, vars)
 
 
-@pytest.mark.parametrize("nqubits", nqubit_list)
+@pytest.mark.parametrize("nqubits", nqubits_list)
 def test_X(benchmark, nqubits):
     benchmark.group = "X"
     gate_test = GateTest(nqubits, qml.PauliX, [0])
     benchmark(gate_test)
 
 
-@pytest.mark.parametrize("nqubits", nqubit_list)
+@pytest.mark.parametrize("nqubits", nqubits_list)
 def test_H(benchmark, nqubits):
     benchmark.group = "H"
     gate_test = GateTest(nqubits, qml.Hadamard, [0])
     benchmark(gate_test)
 
 
-@pytest.mark.parametrize("nqubits", nqubit_list)
+@pytest.mark.parametrize("nqubits", nqubits_list)
 def test_T(benchmark, nqubits):
     benchmark.group = "T"
     gate_test = GateTest(nqubits, qml.T, [0])
     benchmark(gate_test)
 
 
-@pytest.mark.parametrize("nqubits", nqubit_list)
+@pytest.mark.parametrize("nqubits", nqubits_list)
 def test_CX(benchmark, nqubits):
     benchmark.group = "CNOT"
     gate_test = GateTest(nqubits, qml.CNOT, [0, 1])
     benchmark(gate_test)
 
 
-@pytest.mark.parametrize("nqubits", nqubit_list)
+@pytest.mark.parametrize("nqubits", nqubits_list)
 def test_Toffoli(benchmark, nqubits):
     benchmark.group = "Toffoli"
     gate_test = GateTest(nqubits, qml.Toffoli, [0, 1, 2])
