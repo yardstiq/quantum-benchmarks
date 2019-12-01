@@ -20,7 +20,7 @@ batch_circuit_data = parse_data(
 )
 
 # make up a fake data multiply single batch by 1000
-batch_circuit_data['yao x 1000'] = circuit_data['yao']
+batch_circuit_data['yao x 1000'] = circuit_data['yao'][0:12]
 batch_circuit_data['yao x 1000']['QCBM'] = batch_circuit_data['yao x 1000']['QCBM'].apply(lambda x: x * 1000)
 batch_circuit_data['yao x 1000'] = batch_circuit_data['yao x 1000'].rename(columns={'QCBM': 'QCBM (batch)'})
 
