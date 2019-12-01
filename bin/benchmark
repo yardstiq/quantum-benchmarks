@@ -31,7 +31,7 @@ install() {
     source activate ./env
     echo "installing Python dependencies"
     conda install -p env -y mkl-service pytest
-    pip install qiskit cirq projectq pyquest-cffi pennylane qulacs-gpu
+    ./env/bin/pip install qiskit cirq projectq pyquest-cffi pennylane qulacs-gpu
 
     # install Julia dependencies
     echo "installing Julia dependencies"
