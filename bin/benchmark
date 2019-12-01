@@ -26,7 +26,7 @@ benchmark_julia() {
 install() {
     # install Python dependencies
     echo "creating local virtualenv"
-    conda create --prefix=env
+    conda create -y --prefix=env
     echo "activating virtualenv"
     source active ./env
     echo "installing Python dependencies"
