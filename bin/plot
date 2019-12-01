@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plot_relative, image_path
 import matplotlib.pyplot as plt
 
