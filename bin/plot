@@ -19,6 +19,11 @@ batch_circuit_data = parse_data(
     labels=['QCBM (batch)']
 )
 
+# make up a fake data multiply single batch by 1000
+batch_circuit_data['yao x 1000'] = circuit_data['yao']
+batch_circuit_data['yao x 1000']['QCBM'] = batch_circuit_data['yao x 1000']['QCBM'].apply(lambda x: x * 1000)
+batch_circuit_data['yao x 1000'] = batch_circuit_data['yao x 1000'].rename(columns={'QCBM': 'QCBM (batch)'})
+
 # plot single gate absolute time
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8), sharey=True)
 ls, labels = plot_absolute(ax1, gate_data, 'X')
