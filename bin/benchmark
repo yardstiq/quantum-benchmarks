@@ -30,7 +30,7 @@ install() {
     echo "activating virtualenv"
     source activate ./env
     echo "installing Python dependencies"
-    conda install -p env -y mkl-service pytest
+    conda install -p env -y numpy matplotlib mkl-service pytest
     ./env/bin/pip install qiskit cirq projectq pyquest-cffi pennylane qulacs-gpu
 
     # install Julia dependencies
