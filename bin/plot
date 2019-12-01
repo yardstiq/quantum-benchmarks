@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plot_relative, image_path
 import matplotlib.pyplot as plt
 
@@ -77,54 +77,36 @@ lgd = fig.legend(
 
 
 # plot parameterized quantum circuit absolute time
-fig = plt.figure(figsize=(8, 6))
-ax = plt.subplot(111)
-ls, labels = plot_absolute(ax, circuit_data, 'QCBM')
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6), sharey=True)
+ls1, labels1 = plot_absolute(ax1, circuit_data, 'QCBM')
 
-ax.set(title="Parameterized Circuit")
-lgd = ax.legend(
-    ls,
-    labels=labels,
-    loc="upper left")
+ax1.set(title="Parameterized Circuit")
+
+# plot batched parameterized quantum circuit absolute time
+ls2, labels2 = plot_absolute(ax2, batch_circuit_data, 'QCBM (batch)')
+ax2.set(title="Batched Parameterized Circuit")
+
+fig.legend(labels1 + labels2, loc='upper center', ncol=4)
+
+plt.tight_layout()
+plt.subplots_adjust(top=0.83)
+
 plt.savefig(image_path('pcircuit.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.savefig(image_path('pcircuit.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 # parameterized quantum circuit relative time
-fig = plt.figure(figsize=(8, 6))
-ax = plt.subplot(111)
-ls, labels = plot_relative(ax, circuit_data, 'QCBM')
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6), sharey=True)
+ls, labels = plot_relative(ax1, circuit_data, 'QCBM')
 
-ax.set(title="Parameterized Circuit (relative time)")
-lgd = ax.legend(
-    ls,
-    labels=labels,
-    loc="upper left",
-    borderaxespad=0.1,
-    bbox_to_anchor=(1.02, 0.9))
+ax1.set(title="Parameterized Circuit (relative time)")
+# batched parameterized quantum circuit relative time
+ls, labels = plot_relative(ax2, batch_circuit_data, 'QCBM (batch)', to='yao (cuda)', log=False)
+ax2.set(title="Batched Parameterized Circuit (relative time)")
+
+fig.legend(labels1 + labels2, loc='upper center', ncol=4)
+
+plt.tight_layout()
+plt.subplots_adjust(top=0.83)
+
 plt.savefig(image_path('pcircuit_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.savefig(image_path('pcircuit_relative.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
-
-
-# plot batched parameterized quantum circuit absolute time
-fig = plt.figure(figsize=(8, 6))
-ax = plt.subplot(111)
-ls, labels = plot_absolute(ax, batch_circuit_data, 'QCBM (batch)')
-ax.set(title="Batched Parameterized Circuit")
-lgd = ax.legend(
-    ls,
-    labels=labels,
-    loc="upper left")
-plt.savefig(image_path('pcircuit_batch.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
-plt.savefig(image_path('pcircuit_batch.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
-
-# batched parameterized quantum circuit relative time
-fig = plt.figure(figsize=(8, 6))
-ax = plt.subplot(111)
-ls, labels = plot_relative(ax, batch_circuit_data, 'QCBM (batch)', to='yao (cuda)', log=False)
-ax.set(title="Batched Parameterized Circuit (relative time)")
-lgd = ax.legend(
-    ls,
-    labels=labels,
-    loc="upper left")
-plt.savefig(image_path('pcircuit_batch_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
-plt.savefig(image_path('pcircuit_batch_relative.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')

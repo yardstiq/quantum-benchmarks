@@ -89,11 +89,11 @@ def plot_absolute(ax, data : dict, gate):
         d = data[k]
         
         if k == 'yao':
-            ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3, color=COLOR[k]))
+            ls.append(ax.semilogy(d["nqubits"], d[gate], 'o', markersize=4, color=COLOR[k]))
         elif k == 'yao (cuda)':
-            ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3, color=COLOR[k]))
+            ls.append(ax.semilogy(d["nqubits"], d[gate], 'o', markersize=4, color=COLOR[k]))
         else:
-            ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3, color=COLOR[k]))
+            ls.append(ax.semilogy(d["nqubits"], d[gate], 'o', markersize=4, color=COLOR[k]))
         
         if k == 'quest':
             labels.append('pyquest-cffi')
