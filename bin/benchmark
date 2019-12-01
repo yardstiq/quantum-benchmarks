@@ -28,7 +28,7 @@ install() {
     echo "creating local virtualenv"
     conda create -y --prefix=env
     echo "activating virtualenv"
-    source active ./env
+    source activate ./env
     echo "installing Python dependencies"
     conda install -p env -y mkl-service pytest
     pip install qiskit cirq projectq pyquest-cffi pennylane qulacs-gpu
