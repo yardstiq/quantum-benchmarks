@@ -86,7 +86,7 @@ ax1.set(title="Parameterized Circuit")
 ls2, labels2 = plot_absolute(ax2, batch_circuit_data, 'QCBM (batch)')
 ax2.set(title="Batched Parameterized Circuit")
 
-fig.legend(labels1 + labels2, loc='upper center', ncol=4)
+lgd = fig.legend(labels1 + labels2, loc='upper center', ncol=4)
 
 plt.tight_layout()
 plt.subplots_adjust(top=0.83)
@@ -103,7 +103,7 @@ ax1.set(title="Parameterized Circuit (relative time)")
 ls, labels = plot_relative(ax2, batch_circuit_data, 'QCBM (batch)', to='yao (cuda)', log=False)
 ax2.set(title="Batched Parameterized Circuit (relative time)")
 
-fig.legend(labels1 + labels2, loc='upper center', ncol=4)
+lgd = fig.legend(labels1 + labels2, loc='upper center', ncol=4)
 
 plt.tight_layout()
 plt.subplots_adjust(top=0.83)
