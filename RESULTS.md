@@ -61,8 +61,3 @@ NOTE: qiskit state vector simulator does not support rotation x/z gate, thus the
 
 ![pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit.png)
 ![pcircuit-relative](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit_relative.png)
-
-### Batched parameterized circuit of Yao and CuYao
-
-![batch-pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit_batch.png)
-![batch-pcircuit-relative](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit_batch_relative.png)

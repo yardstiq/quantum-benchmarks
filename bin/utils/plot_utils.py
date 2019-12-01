@@ -113,9 +113,9 @@ def plot_relative(ax, data: dict, gate, to='yao', log=True):
         else:
             d = data[k]
             if log:
-                ls.append(ax.semilogy(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3, color=COLOR[k]))
+                ls.append(ax.semilogy(d["nqubits"], d[gate]/d_yao[gate], 'o', markersize=4, color=COLOR[k]))
             else:
-                ls.append(ax.plot(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3, color=COLOR[k]))
+                ls.append(ax.plot(d["nqubits"], d[gate]/d_yao[gate], 'o', markersize=4, color=COLOR[k]))
             
             if k == 'quest':
                 labels.append('pyquest-cffi')

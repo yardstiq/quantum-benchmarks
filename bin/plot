@@ -75,6 +75,8 @@ lgd = fig.legend(
     borderaxespad=-0.4,
     bbox_to_anchor=(0.5, 0.97))
 
+plt.savefig(image_path('gates_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.savefig(image_path('gates_relative.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 # plot parameterized quantum circuit absolute time
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6), sharey=True)
