@@ -25,8 +25,12 @@ benchmark_julia() {
 
 install() {
     # install Python dependencies
+    echo "creating local virtualenv"
+    conda create --prefix=env
+    echo "activating virtualenv"
+    source active ./env
     echo "installing Python dependencies"
-    conda install -y mkl-service pytest
+    conda install -p env -y mkl-service pytest
     pip install qiskit cirq projectq pyquest-cffi pennylane qulacs-gpu
 
     # install Julia dependencies
