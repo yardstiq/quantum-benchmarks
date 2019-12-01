@@ -18,8 +18,8 @@ Julia & CPU Info
 
 ```
 julia> versioninfo()
-Julia Version 1.2.0
-Commit c6da87ff4b (2019-08-20 00:03 UTC)
+Julia Version 1.3.0
+Commit 46ce4d7933 (2019-11-26 06:09 UTC)
 Platform Info:
   OS: Linux (x86_64-pc-linux-gnu)
   CPU: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
