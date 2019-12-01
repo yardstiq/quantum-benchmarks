@@ -5,6 +5,19 @@ import json
 ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 IMAGE_PATH = os.path.join(ROOT_PATH, 'images')
 
+COLOR = {
+    'yao': 'tab:red',
+    'yao (cuda)': 'tab:orange',
+    'yao x 1000': 'tab:blue',
+    'qiskit': 'tab:green',
+    'projectq': 'tab:blue',
+    'cirq': 'tab:cyan',
+    'quest': 'tab:olive',
+    'qulacs': 'tab:brown',
+    'qulacs (cuda)': 'tab:pink',
+    'pennylane': 'tab:purple',
+}
+
 def image_path(name):
     if not os.path.isdir(IMAGE_PATH):
         os.makedirs(IMAGE_PATH, exist_ok=True)
@@ -76,11 +89,11 @@ def plot_absolute(ax, data : dict, gate):
         d = data[k]
         
         if k == 'yao':
-            ls.append(ax.semilogy(d["nqubits"], d[gate], '-ro', markersize=3))
+            ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3, color=COLOR[k]))
         elif k == 'yao (cuda)':
-            ls.append(ax.semilogy(d["nqubits"], d[gate], '-yo', markersize=3))
+            ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3, color=COLOR[k]))
         else:
-            ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3))
+            ls.append(ax.semilogy(d["nqubits"], d[gate], '-o', markersize=3, color=COLOR[k]))
         
         if k == 'quest':
             labels.append('pyquest-cffi')
@@ -100,9 +113,9 @@ def plot_relative(ax, data: dict, gate, to='yao', log=True):
         else:
             d = data[k]
             if log:
-                ls.append(ax.semilogy(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3))
+                ls.append(ax.semilogy(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3, color=COLOR[k]))
             else:
-                ls.append(ax.plot(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3))
+                ls.append(ax.plot(d["nqubits"], d[gate]/d_yao[gate], '-o', markersize=3, color=COLOR[k]))
             
             if k == 'quest':
                 labels.append('pyquest-cffi')
