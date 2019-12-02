@@ -57,7 +57,11 @@ GPU: Tesla V100
 
 ### Parameterized Circuit Benchmark
 
-NOTE: qiskit state vector simulator does not support rotation x/z gate, thus there is no benchmark on the following circuits.
+NOTE: 
+
+- qiskit state vector simulator does not support rotation x/z gate, thus there is no benchmark on the following circuits.
+- PennyLane benchmark contains some overhead from error handling since we do not include measurement in this benchmark (#7)
+- the performance of CUDA may vary on different machine (#6), although the difference is not very huge
 
 ![pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit.png)
 ![pcircuit-relative](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit_relative.png)
