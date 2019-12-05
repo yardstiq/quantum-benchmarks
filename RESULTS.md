@@ -52,10 +52,14 @@ GPU: Tesla V100
 
 ### Single Gate Benchmark
 
+Benchmarks of a) Pauli-X gate; b) Hadamard gate; c) CNOT gate; d) Toffolli gate.
+
 ![gates](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/gates.png)
 ![gates-relative](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/gates_relative.png)
 
 ### Parameterized Circuit Benchmark
+
+b) Benchmarks of parameterized circuit. c) Benchmarks of parametrized circuit with batched registers (batch size = 1000).
 
 NOTE: 
 
