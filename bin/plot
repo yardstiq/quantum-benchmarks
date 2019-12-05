@@ -79,7 +79,7 @@ plt.savefig(image_path('gates_relative.png'), bbox_extra_artists=(lgd,), bbox_in
 plt.savefig(image_path('gates_relative.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 # plot parameterized quantum circuit absolute time
-fig = plt.figure(figsize=(12, 4), constrained_layout=False)
+fig = plt.figure(figsize=(12, 6), constrained_layout=False)
 gs = fig.add_gridspec(1, 12)
 ax1 = fig.add_subplot(gs[0, :-6])
 ax2 = fig.add_subplot(gs[0:, -6:])
@@ -101,7 +101,7 @@ plt.savefig(image_path('pcircuit.png'), bbox_extra_artists=(lgd1,lgd2), bbox_inc
 plt.savefig(image_path('pcircuit.pdf'), bbox_extra_artists=(lgd1,lgd2), bbox_inches='tight')
 
 # parameterized quantum circuit relative time
-fig = plt.figure(figsize=(12, 4), constrained_layout=False)
+fig = plt.figure(figsize=(12, 6), constrained_layout=False)
 gs = fig.add_gridspec(1, 12)
 ax1 = fig.add_subplot(gs[0, :-6])
 ax2 = fig.add_subplot(gs[0:, -6:])
