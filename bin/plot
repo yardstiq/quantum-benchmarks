@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plot_relative, image_path
 import matplotlib.pyplot as plt
 
@@ -81,11 +81,12 @@ plt.savefig(image_path('gates_relative.pdf'), bbox_extra_artists=(lgd,), bbox_in
 # plot parameterized quantum circuit absolute time
 fig = plt.figure(figsize=(12, 4), constrained_layout=False)
 gs = fig.add_gridspec(1, 12)
-ax1 = fig.add_subplot(gs[0, :-5])
-ax2 = fig.add_subplot(gs[0:, -5:])
+ax1 = fig.add_subplot(gs[0, :-6])
+ax2 = fig.add_subplot(gs[0:, -6:])
 ls1, labels1 = plot_absolute(ax1, circuit_data, 'QCBM')
 
 ax1.set(title="a) Parameterized Circuit")
+ax1.set_ylim([0, 1e14])
 ax2.set(title="b) Batched Parameterized Circuit")
 
 # plot batched parameterized quantum circuit absolute time
@@ -102,11 +103,12 @@ plt.savefig(image_path('pcircuit.pdf'), bbox_extra_artists=(lgd1,lgd2), bbox_inc
 # parameterized quantum circuit relative time
 fig = plt.figure(figsize=(12, 4), constrained_layout=False)
 gs = fig.add_gridspec(1, 12)
-ax1 = fig.add_subplot(gs[0, :-5])
-ax2 = fig.add_subplot(gs[0:, -5:])
+ax1 = fig.add_subplot(gs[0, :-6])
+ax2 = fig.add_subplot(gs[0:, -6:])
 ls, labels = plot_relative(ax1, circuit_data, 'QCBM')
 
 ax1.set(title="a) Parameterized Circuit (relative time)")
+ax1.set_ylim([0, 1e14])
 ax2.set(title="b) Batched Parameterized Circuit (relative time)")
 
 # batched parameterized quantum circuit relative time
