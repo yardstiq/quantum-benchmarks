@@ -31,10 +31,10 @@ plot_absolute(ax2, gate_data, 'H')
 plot_absolute(ax3, gate_data, 'CNOT')
 plot_absolute(ax4, gate_data, 'Toffoli')
 
-ax1.set(title="(a)")
-ax2.set(title="(b)")
-ax3.set(title="(c)")
-ax4.set(title="(d)")
+ax1.set_title("(a)", loc='left')
+ax2.set_title("(b)", loc='left')
+ax3.set_title("(c)", loc='left')
+ax4.set_title("(d)", loc='left')
 
 plt.tight_layout()
 plt.subplots_adjust(top=0.85)
@@ -85,9 +85,9 @@ ax1 = fig.add_subplot(gs[0, :-6])
 ax2 = fig.add_subplot(gs[0:, -6:])
 ls1, labels1 = plot_absolute(ax1, circuit_data, 'QCBM')
 
-ax1.set(title="(b)")
+ax1.set_title("(b)", loc='left')
 ax1.set_ylim([0, 1e14])
-ax2.set(title="(c)")
+ax2.set_title("(c)", loc='left')
 
 # plot batched parameterized quantum circuit absolute time
 ls2, labels2 = plot_absolute(ax2, batch_circuit_data, 'QCBM (batch)')
