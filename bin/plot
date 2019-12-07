@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plot_relative, image_path
 import matplotlib.pyplot as plt
 
@@ -25,7 +25,12 @@ batch_circuit_data['yao x 1000']['QCBM'] = batch_circuit_data['yao x 1000']['QCB
 batch_circuit_data['yao x 1000'] = batch_circuit_data['yao x 1000'].rename(columns={'QCBM': 'QCBM (batch)'})
 
 # plot single gate absolute time
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8), sharey=True)
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8))
+ax2.yaxis.set_label_position("right")
+ax4.yaxis.set_label_position("right")
+ax2.yaxis.tick_right()
+ax4.yaxis.tick_right()
+
 ls, labels = plot_absolute(ax1, gate_data, 'X')
 plot_absolute(ax2, gate_data, 'H')
 plot_absolute(ax3, gate_data, 'CNOT')
@@ -85,9 +90,9 @@ ax1 = fig.add_subplot(gs[0, :-6])
 ax2 = fig.add_subplot(gs[0:, -6:])
 ls1, labels1 = plot_absolute(ax1, circuit_data, 'QCBM')
 
-ax1.set_title("(b)", loc='left')
+# ax1.set_title("(b)", loc='left')
 ax1.set_ylim([0, 1e14])
-ax2.set_title("(c)", loc='left')
+# ax2.set_title("(c)", loc='left')
 
 # plot batched parameterized quantum circuit absolute time
 ls2, labels2 = plot_absolute(ax2, batch_circuit_data, 'QCBM (batch)')
