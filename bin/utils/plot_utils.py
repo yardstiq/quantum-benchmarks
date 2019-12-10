@@ -100,7 +100,8 @@ def plot_absolute(ax, data : dict, gate):
         else:
             labels.append(k)
 
-    ax.set(xlabel="nqubits", ylabel="ns")
+    ax.set_xlabel("nqubits", size=16)
+    ax.set_ylabel("ns", size=16)
     return ls, labels
 
 
@@ -124,5 +125,6 @@ def plot_relative(ax, data: dict, gate, to='yao', log=True):
 
     ax.axhline(y=1, linestyle='--')
     labels.append(to)
-    ax.set(xlabel="nqubits", ylabel="relative time ({} = 1)".format(to))
+    ax.set_xlabel("nqubits", size=16)
+    ax.set_ylabel("relative time ({} = 1)".format(to), size=16)
     return ls, labels
