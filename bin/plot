@@ -26,10 +26,10 @@ batch_circuit_data['yao x 1000'] = batch_circuit_data['yao x 1000'].rename(colum
 
 # plot single gate absolute time
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8))
-ax2.yaxis.set_label_position("right")
-ax4.yaxis.set_label_position("right")
-ax2.yaxis.tick_right()
-ax4.yaxis.tick_right()
+ax2.yaxis.set_label_position("left")
+ax4.yaxis.set_label_position("left")
+ax2.yaxis.tick_left()
+ax4.yaxis.tick_left()
 
 ls, labels = plot_absolute(ax1, gate_data, 'X')
 plot_absolute(ax2, gate_data, 'H')
