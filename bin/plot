@@ -5,7 +5,7 @@ from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plo
 import matplotlib.pyplot as plt
 
 gate_data = parse_data(
-    packages=['projectq', 'qiskit', 'cirq', 'quest', 'qulacs', 'yao', 'pennylane'],
+    packages=['projectq', 'qiskit', 'yao', 'cirq', 'quest', 'qulacs', 'pennylane'],
     labels=['X', 'H', 'T', 'CNOT', 'Toffoli']
 )
 
