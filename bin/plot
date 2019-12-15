@@ -85,17 +85,8 @@ plt.savefig(image_path('gates_relative.pdf'), bbox_extra_artists=(lgd,), bbox_in
 
 # plot parameterized quantum circuit absolute time
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), sharey=False)
-# fig = plt.figure(figsize=(10, 4), constrained_layout=False)
-# gs = fig.add_gridspec(1, 12)
-# ax1 = fig.add_subplot(gs[0, :-6])
-# ax2 = fig.add_subplot(gs[0:, -6:])
 ls1, labels1 = plot_absolute(ax1, circuit_data, 'QCBM')
-
-# ax1.set_title("(b)", loc='left')
 ax1.set_ylim([1e3, 1e15])
-# ax2.set_title("(c)", loc='left')
-
-# plot batched parameterized quantum circuit absolute time
 ls2, labels2 = plot_absolute(ax2, batch_circuit_data, 'QCBM (batch)')
 
 lgd1 = ax1.legend(labels1, loc='upper left', ncol=2)
@@ -107,21 +98,16 @@ plt.savefig(image_path('pcircuit.png'), bbox_extra_artists=(lgd1,lgd2), bbox_inc
 plt.savefig(image_path('pcircuit.pdf'), bbox_extra_artists=(lgd1,lgd2), bbox_inches='tight')
 
 # parameterized quantum circuit relative time
-fig = plt.figure(figsize=(10, 4), constrained_layout=False)
-gs = fig.add_gridspec(1, 12)
-ax1 = fig.add_subplot(gs[0, :-6])
-ax2 = fig.add_subplot(gs[0:, -6:])
-ls, labels = plot_relative(ax1, circuit_data, 'QCBM')
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), sharey=False)
+ls1, labels1 = plot_relative(ax1, circuit_data, 'QCBM')
+ax1.set_ylim([1e-2, 1e5])
+ls2, labels2 = plot_relative(ax2, batch_circuit_data, 'QCBM (batch)', to='yao (cuda)', log=False)
 
-ax1.set(title="b) Parameterized Circuit (relative time)")
-ax1.set_ylim([0, 1e14])
-ax2.set(title="c) Batched Parameterized Circuit (relative time)")
+lgd1 = ax1.legend(labels1, loc='upper right', ncol=2)
+lgd2 = ax2.legend(labels2, loc='upper right', ncol=1)
 
-# batched parameterized quantum circuit relative time
-ls, labels = plot_relative(ax2, batch_circuit_data, 'QCBM (batch)', to='yao (cuda)', log=False)
-
-lgd1 = ax1.legend(labels1, loc='upper left', ncol=3)
-lgd2 = ax2.legend(labels2, loc='upper left', ncol=1)
+ax1.set(title="Parameterized Circuit (relative time)")
+ax2.set(title="Batched Parameterized Circuit (relative time)")
 
 plt.tight_layout()
 
