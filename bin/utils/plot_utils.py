@@ -9,6 +9,7 @@ COLOR = {
     'yao': 'tab:red',
     'yao (cuda)': 'tab:orange',
     'yao x 1000': 'tab:blue',
+    'yao x 64': 'tab:blue',
     'qiskit': 'tab:green',
     'projectq': 'tab:blue',
     'cirq': 'tab:cyan',
