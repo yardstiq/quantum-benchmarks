@@ -5,7 +5,7 @@ from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plo
 import matplotlib.pyplot as plt
 
 gate_data = parse_data(
-    packages=['projectq', 'qiskit', 'yao', 'cirq', 'quest', 'qulacs', 'pennylane'],
+    packages=['projectq', 'qiskit', 'cirq', 'quest', 'qulacs', 'pennylane', 'yao'],
     labels=['X', 'H', 'T', 'CNOT', 'Toffoli']
 )
 
@@ -47,7 +47,7 @@ lgd = fig.legend(
     ls,
     labels=labels,
     loc="upper center",
-    ncol=3,
+    ncol=4,
     frameon=False,
     prop={'size': 15},
     borderaxespad=-0.4,
