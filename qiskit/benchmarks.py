@@ -94,3 +94,16 @@ def test_qcbm(benchmark, nqubits):
     pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
     circuit = generate_qcbm_circuit(nqubits, 9, pairs)
     native_execute(benchmark, circuit, default_options)
+
+# NOTE: The following benchmark requires installing Qiskit Aer with GPU
+# which is currently only available for Linux
+# install with: `pip install qiskit qiskit-aer-gpu`
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_qcbm_cuda(benchmark, nqubits):
+    benchmark.group = "QCBM (cuda)"
+    pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
+    circuit = generate_qcbm_circuit(nqubits, 9, pairs)
+    # Set simulation method to the GPU statevector
+    gpu_options = default_options.copy()
+    gpu_options["method"] = "statevector_gpu"
+    native_execute(benchmark, circuit, gpu_options)

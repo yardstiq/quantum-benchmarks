@@ -11,6 +11,7 @@ COLOR = {
     'yao x 1000': 'tab:blue',
     'yao x 64': 'tab:blue',
     'qiskit': 'tab:green',
+    'qiskit (cuda)': 'tab:gray',
     'projectq': 'tab:blue',
     'cirq': 'tab:cyan',
     'quest': 'tab:olive',
@@ -76,6 +77,12 @@ def parse_data(packages, labels=['X', 'H', 'T', 'CNOT', 'Toffoli']):
             if len(labels) == 1 and 'QCBM' in labels:
                 gate_data['qulacs'] = wash_benchmark_data(each_package, ['QCBM'])
                 gate_data['qulacs (cuda)'] = wash_benchmark_data(each_package, ['QCBM (cuda)']).rename(columns={'QCBM (cuda)': 'QCBM'})
+            else:
+                gate_data[each_package] = wash_benchmark_data(each_package, labels)
+        elif each_package == 'qiskit':
+            if len(labels) == 1 and 'QCBM' in labels:
+                gate_data['qiskit'] = wash_benchmark_data(each_package, ['QCBM'])
+                gate_data['qiskit (cuda)'] = wash_benchmark_data(each_package, ['QCBM (cuda)']).rename(columns={'QCBM (cuda)': 'QCBM'})
             else:
                 gate_data[each_package] = wash_benchmark_data(each_package, labels)
         else:
