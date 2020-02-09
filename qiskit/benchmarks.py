@@ -15,13 +15,13 @@ default_options = {
 def _execute(circuit, backend_options=None):
     experiment = transpile(circuit, backend)
     qobj = assemble(experiment, shots=1)
-    qobj_aer = backend._format_qobj_str(qobj, backend_options, None)
+    qobj_aer = backend._format_qobj(qobj, backend_options, None)
     return backend._controller(qobj_aer)
 
 def native_execute(benchmark, circuit, backend_options=None):
     experiment = transpile(circuit, backend)
     qobj = assemble(experiment, shots=1)
-    qobj_aer = backend._format_qobj_str(qobj, backend_options, None)
+    qobj_aer = backend._format_qobj(qobj, backend_options, None)
     benchmark(backend._controller, qobj_aer)
 
 def run_bench(benchmark, nqubits, gate, locs=(1, )):
