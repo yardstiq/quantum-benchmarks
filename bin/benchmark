@@ -85,6 +85,8 @@ single_arg() {
         ;;
         run) (cd $ROOT_PATH && benchmark)
         ;;
+        benchmark) (cd $ROOT_PATH && benchmark_all)
+        ;;
         parallel) (cd $ROOT_PATH && benchmark_all_parallel)
         ;;
         *) help
