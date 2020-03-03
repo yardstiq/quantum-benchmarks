@@ -65,7 +65,7 @@ Please feel free to update and add new benchmarks. Check [CONTRIBUTING.md](CONTR
 
 We thank the following people for reviewing our benchmarks:
 
-- [Juan Gomez](https://github.com/atilag) for reviewing qiskit
+- [Juan Gomez](https://github.com/atilag), [Christopher J. Wood](https://github.com/chriseclectic) for reviewing qiskit
 - [Craig Gidney](https://github.com/Strilanc) for reviewing Cirq
 - [corryvrequan](https://github.com/corryvrequan) for reviewing qulacs
 - [Damian Steiger](https://github.com/damiansteiger) for reviewing ProjectQ
