@@ -2,16 +2,21 @@
 FILE_PATH=$(readlink -f "$0")
 BASE_PATH=$(dirname "$FILE_PATH")
 ROOT_PATH="$BASE_PATH/.."
+BENCHMARK_DATA_PATH="$ROOT_PATH/data"
+BENCHMARK_LOG_PATH="$ROOT_PATH/log"
 NCORES=$(grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $4}')
 
 # benchmark pytest-benchmark based scripts
 benchmark_pytest() {
+    source activate ./env
     # set threads to one
     export OMP_NUM_THREADS=1
     export MKL_NUM_THREADS=1
     export MKL_DOMAIN_NUM_THREADS=1
 
-    pytest "$1/benchmarks.py" --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5 > $1.out 2> $1.err
+    pytest "$1/benchmarks.py" --benchmark-storage="file://$BENCHMARK_DATA_PATH" \
+        --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5\
+        >$BENCHMARK_LOG_PATH/$1.out 2> $BENCHMARK_LOG_PATH$1.err
 }
 
 # benchmark Julia BenchmarkTools based scripts
@@ -20,7 +25,11 @@ benchmark_julia() {
     export OMP_NUM_THREADS=1
     export MKL_NUM_THREADS=1
 
-    julia --project yao/benchmarks.jl yao.csv yao_qcbm.csv yao_qcbm_batch.csv > yao.out 2> yao.err
+    julia --project yao/benchmarks.jl\
+        $BENCHMARK_DATA_PATH/yao.csv\
+        $BENCHMARK_DATA_PATH/yao_qcbm.csv\
+        $BENCHMARK_DATA_PATH/yao_qcbm_batch.csv\
+        > $BENCHMARK_LOG_PATH/yao.out 2> $BENCHMARK_LOG_PATH/yao.err
 }
 
 install() {
@@ -31,7 +40,13 @@ install() {
     source activate ./env
     echo "installing Python dependencies"
     conda install -p env -y numpy matplotlib mkl-service pytest pybind11 pytest-benchmark ipython
-    ./env/bin/pip install qiskit qiskit-aer-gpu cirq projectq pyquest-cffi pennylane qulacs-gpu
+    ./env/bin/pip install\
+        qiskit qiskit-aer-gpu\
+        cirq\
+        projectq\
+        pyquest-cffi\
+        pennylane\
+        qulacs-gpu
 
     # install Julia dependencies
     echo "installing Julia dependencies"
