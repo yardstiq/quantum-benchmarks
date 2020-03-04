@@ -39,7 +39,10 @@ install() {
     echo "activating virtualenv"
     source activate ./env
     echo "installing Python dependencies"
-    conda install -p env -y numpy matplotlib mkl-service pytest pybind11 pytest-benchmark ipython
+    conda install -p env -y\
+        numpy matplotlib mkl-service\
+        pytest pybind11 pytest-benchmark\
+        ipython cffi
     ./env/bin/pip install\
         qiskit qiskit-aer-gpu\
         cirq\
