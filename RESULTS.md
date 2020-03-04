@@ -38,15 +38,15 @@ GPU: Tesla V100
 
 |       Package        | Version |
 | -------------------- | ------- |
-| Yao                  | v0.6.0-DEV  |
-| CuYao                | v0.1.3  |
-| qiskit               | 0.13.0  |
-| qiskit-aer           | 0.3.2   |
-| qiskit-terra         | 0.10.2  |
-| qulacs               | 0.1.8   |
+| Yao                  | v0.6.1  |
+| CuYao                | v0.2.0  |
+| qiskit               | 0.16.0  |
+| qiskit-aer           | 0.4.0   |
+| qiskit-terra         | 0.12.0  |
+| qulacs               | 0.1.9   |
 | projectq             | 0.4.2   |
-| Cirq                 | 0.6.0   |
-| PennyLane            | 0.7.0   |
+| Cirq                 | 0.7.0   |
+| PennyLane            | 0.8.1   |
 | QuEST (pyquest-cffi) | 0.1.1   |
 
 
