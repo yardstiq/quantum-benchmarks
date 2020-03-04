@@ -28,7 +28,7 @@ def image_path(name):
 def find_json(name):
     """find the first matchable json benchmark file.
     """
-    benchmark_dir = os.path.join(ROOT_PATH, '.benchmarks')
+    benchmark_dir = os.path.join(ROOT_PATH, 'data')
     benchmark_path = os.path.join(benchmark_dir, os.listdir(benchmark_dir)[0])
     file_stack = []
     for each in os.listdir(benchmark_path):
@@ -64,15 +64,15 @@ def parse_data(packages, labels=['X', 'H', 'T', 'CNOT', 'Toffoli']):
     for each_package in packages:
         if each_package == 'yao':
             if len(labels) == 1 and 'QCBM' in labels:
-                pd_data = pd.read_csv(os.path.join(ROOT_PATH, 'yao_qcbm.csv'))
+                pd_data = pd.read_csv(os.path.join(ROOT_PATH, 'data', 'yao_qcbm.csv'))
                 gate_data[each_package] = pd_data[['nqubits', 'QCBM']]
                 gate_data['yao (cuda)'] = pd_data[['nqubits', 'QCBM_cuda']].rename(columns={'QCBM_cuda' : 'QCBM'})
             elif len(labels) == 1 and 'QCBM (batch)' in labels:
-                pd_data = pd.read_csv(os.path.join(ROOT_PATH, 'yao_qcbm_batch.csv'))
+                pd_data = pd.read_csv(os.path.join(ROOT_PATH, 'data', 'yao_qcbm_batch.csv'))
                 gate_data['yao'] = pd_data[['nqubits', 'QCBM_batch']].rename(columns={'QCBM_batch' : 'QCBM (batch)'})
                 gate_data['yao (cuda)'] = pd_data[['nqubits', 'QCBM_cuda_batch']].rename(columns={'QCBM_cuda_batch' : 'QCBM (batch)'})
             else:
-                gate_data[each_package] = pd.read_csv(os.path.join(ROOT_PATH, 'yao.csv'))
+                gate_data[each_package] = pd.read_csv(os.path.join(ROOT_PATH,'data',  'yao.csv'))
         elif each_package == 'qulacs':
             if len(labels) == 1 and 'QCBM' in labels:
                 gate_data['qulacs'] = wash_benchmark_data(each_package, ['QCBM'])
