@@ -32,7 +32,7 @@ help                    print this message
 - [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html?highlight=conda)
 - [Python 3](https://www.python.org/downloads/)
 - [Julia 1.0+](https://julialang.org/)
-- [CUDA Toolkit (optional)](https://developer.nvidia.com/cuda-toolkit) for benchmarking Yao's CUDA backend
+- [CUDA Toolkit (optional)](https://developer.nvidia.com/cuda-toolkit) for benchmarking CUDA backend
 
 Make sure you have the above required dependency installed, then run the following script, which will install
 all the dependencies for you.
