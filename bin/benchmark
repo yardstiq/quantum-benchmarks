@@ -92,6 +92,7 @@ help() {
 
 install                 install dependencies
 run [package]           run benchmark of [package] or run all benchmarks by default
+benchmark               benchmark in sequence to make sure every benchmark is run in the same envrionment
 parallel [package]      spawn [package] benchmark in a process or run all benchmark in parallel by default
 help                    print this message
 "
