@@ -13,5 +13,4 @@ cd "$BASE_PATH"
 #export BENCHMARK_OUT="$BENCHMARK_DATA_PATH/jku-ddsim.csv"
 
 
-build/apps/ddsim_benchmark --benchmark_out_format=json --benchmark_out="$BENCHMARK_DATA_PATH/jku-ddsim.json" \
-    > "$BENCHMARK_LOG_PATH/jku-ddsim.out" 2> "$BENCHMARK_LOG_PATH/jku-ddsim.err"
+build/apps/ddsim_benchmark --benchmark_filter=BIM_sim_[XHTC] --benchmark_out_format=json --benchmark_out="$BENCHMARK_DATA_PATH/jku-ddsim.json" 
