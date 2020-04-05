@@ -48,6 +48,7 @@ GPU: Tesla V100
 | Cirq                 | 0.7.0   |
 | PennyLane            | 0.8.1   |
 | QuEST (pyquest-cffi) | 0.1.1   |
+| JKQ DDSIM            | master  |
 
 
 ### Single Gate Benchmark

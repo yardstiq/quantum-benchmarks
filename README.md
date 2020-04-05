@@ -10,9 +10,9 @@ This benchmark is written with the following principles:
 
 ## Results
 
-<img src="https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/gates.png" alt="single gate benchmark (absolute timing)" height=600></img>
+<img src="images/gates.png" alt="single gate benchmark (absolute timing)" height=600></img>
 
-The complete results are included in [RESULTS.md](https://github.com/Roger-luo/quantum-benchmarks/blob/master/RESULTS.md)
+The complete results are included in [RESULTS.md](RESULTS.md)
 
 ## Installation
 
@@ -35,23 +35,20 @@ help                    print this message
 - [CUDA Toolkit (optional)](https://developer.nvidia.com/cuda-toolkit) for benchmarking CUDA backend
 
 Make sure you have the above required dependency installed, then run the following script, which will install
-all the dependencies for you.
+all the dependencies for you in a new environment.
 
 ```sh
 bin/benchmark install
 ```
 
-If you prefer a virtual environment to run the benchmark, please create one using either `conda` or `virtualenv`
-before you install the dependencies with `bin/benchmark`.
-
 ## Run Benchmark
 
 ```sh
-bin/benchmark run
+bin/benchmark benchmark
 ```
 
-This will usually take a few hours to finish, thus if you want to run it in the backend, you can use `parallel`.
-You can generate the plot by running:
+This will usually take a few hours to finish, thus if you want to run it in the backend, you can use `parallel` instead of `benchmark`.
+Afterwards, you can generate the plot by running:
 
 ```sh
 bin/plot
