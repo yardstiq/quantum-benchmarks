@@ -5,7 +5,11 @@ BASE_PATH=$(dirname "$FILE_PATH")
 
 cd "$BASE_PATH"
 
-git clone https://github.com/iic-jku/ddsim ddsim
+if [ ! -d "ddsim" ]; then
+    git clone https://github.com/iic-jku/ddsim ddsim
+else
+    git -C ddsim pull
+fi
 git -C ddsim submodule update --init --recursive
 
 

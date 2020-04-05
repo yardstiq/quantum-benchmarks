@@ -54,8 +54,9 @@ GPU: Tesla V100
 
 Benchmarks of a) Pauli-X gate; b) Hadamard gate; c) CNOT gate; d) Toffolli gate.
 
-![gates](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/gates.png)
-![gates-relative](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/gates_relative.png)
+![gates](images/gates.png)
+
+![gates-relative](images/gates_relative.png)
 
 ### Parameterized Circuit Benchmark
 
@@ -67,5 +68,6 @@ NOTE:
 - PennyLane benchmark contains some overhead from error handling since we do not include measurement in this benchmark (https://github.com/Roger-luo/quantum-benchmarks/pull/7)
 - the performance of CUDA may vary on different machine (https://github.com/Roger-luo/quantum-benchmarks/issues/6), although the difference is not very huge
 
-![pcircuit](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit.png)
-![pcircuit-relative](https://github.com/Roger-luo/quantum-benchmarks/blob/master/images/pcircuit_relative.png)
+![pcircuit](images/pcircuit.png)
+
+![pcircuit-relative](images/pcircuit_relative.png)

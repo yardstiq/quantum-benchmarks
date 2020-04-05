@@ -38,7 +38,7 @@ benchmark_julia() {
 benchmark_misc() {
     echo "Benchmark misc: $1 "($(date +"%Y-%m-%d-%H-%M-%S"))
     mkdir -p "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
-    "$1/benchmark.sh" "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
+    "$1/benchmarks.sh" "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
 
 }
 
@@ -67,7 +67,7 @@ benchmark_all_parallel(){
     benchmark_pytest qiskit     &
     benchmark_pytest projectq   &
     benchmark_pytest pennylane  &
-    benchmark_pytest quest      &
+    #benchmark_pytest quest      &
     #benchmark_pytest qulacs     &
     benchmark_julia             &
     benchmark_misc jkq-ddsim    &
@@ -79,7 +79,7 @@ benchmark_all(){
     benchmark_pytest qiskit
     benchmark_pytest projectq
     benchmark_pytest pennylane
-    benchmark_pytest quest
+    #benchmark_pytest quest
     #benchmark_pytest qualacs
     benchmark_julia
     benchmark_misc jkq-ddsim
@@ -89,7 +89,7 @@ benchmark(){
     case $1 in
         yao) (cd $ROOT_PATH && benchmark_julia)
         ;;
-        jkq-ddsim) (cd $ROOT_PATH && benchmark_misc jkq-ddsim)
+        jkq-ddsim) (cd $ROOT_PATH && benchmark_misc $1)
         ;;
         *) (cd $ROOT_PATH && benchmark_pytest $1)
     esac

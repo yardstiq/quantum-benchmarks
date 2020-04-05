@@ -69,7 +69,8 @@ def wash_google_benchmark_data(name: str, labels: List[str]) -> pd.DataFrame:
     with open(os.path.join(ROOT_PATH, 'data', f'{name}.json')) as f:
         data = json.load(f)
 
-    cols = [int(each['name'].split('/')[1]) for each in data['benchmarks'] if each['label'] == labels[0]]
+    # cols = [int(each['name'].split('/')[1]) for each in data['benchmarks'] if each['label'] == labels[0]]
+    cols = list(range(4, 26))
     dd = {'nqubits': cols}
     for lb in labels:
         time_data = [each['cpu_time'] for each in data['benchmarks'] if each['label'] == lb]
