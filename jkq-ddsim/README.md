@@ -22,3 +22,5 @@ This folder contains two files:
 - `benchmarks.sh` runs the benchmarks. It provides console output and saves a JSON file to `../data/jkq-ddsim.json`.
 
 The user does not need to call the scripts by themself, it is handled via the `../bin/benchmark` script.
+
+The QCBM executions takes very long, so this might be skipped by adjusting the filter as described in the script as comment.

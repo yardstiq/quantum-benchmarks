@@ -13,4 +13,5 @@ cd "$BASE_PATH"
 #export BENCHMARK_OUT="$BENCHMARK_DATA_PATH/jku-ddsim.csv"
 
 
+# to restrict the benchmarks to the single gate ones, use --benchmark_filter=BM_sim_[XHTC]
 build/apps/ddsim_benchmark --benchmark_filter=BM_sim_ --benchmark_out_format=json --benchmark_out="$BENCHMARK_DATA_PATH/jkq-ddsim.json" 

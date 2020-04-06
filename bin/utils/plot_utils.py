@@ -69,8 +69,10 @@ def wash_google_benchmark_data(name: str, labels: List[str]) -> pd.DataFrame:
     with open(os.path.join(ROOT_PATH, 'data', f'{name}.json')) as f:
         data = json.load(f)
 
+    # If the first series of benchmarks does not have enough data, the following commented line yields the wrong list
     # cols = [int(each['name'].split('/')[1]) for each in data['benchmarks'] if each['label'] == labels[0]]
-    cols = list(range(4, 26))
+    # It might be better to explicitly set the range and have it as parameter for parsing?
+    cols = list(range(4, 26))  # TODO: move to parameter list?
     dd = {'nqubits': cols}
     for lb in labels:
         time_data = [each['cpu_time'] for each in data['benchmarks'] if each['label'] == lb]

@@ -45,7 +45,7 @@ benchmark_misc() {
 install() {
     # install Python dependencies
     echo "creating local virtualenv"
-    conda create -y --prefix=env
+    conda create -y --prefix=env python=3.8
     echo "activating virtualenv"
     conda activate ./env
     echo "installing Python dependencies"
