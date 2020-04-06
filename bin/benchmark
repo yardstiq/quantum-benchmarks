@@ -17,7 +17,8 @@ benchmark_pytest() {
     
     mkdir -p "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
     pytest "$1/benchmarks.py" --benchmark-storage="file://$BENCHMARK_DATA_PATH" \
-        --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5
+        --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5 \
+        > "$BENCHMARK_LOG_PATH/$1.out" 2> "$BENCHMARK_LOG_PATH/$1.err"
 }
 
 # benchmark Julia BenchmarkTools based scripts
@@ -31,14 +32,15 @@ benchmark_julia() {
     julia --project yao/benchmarks.jl\
         $BENCHMARK_DATA_PATH/yao.csv\
         $BENCHMARK_DATA_PATH/yao_qcbm.csv\
-        $BENCHMARK_DATA_PATH/yao_qcbm_batch.csv
+        $BENCHMARK_DATA_PATH/yao_qcbm_batch.csv\
+        > "$BENCHMARK_LOG_PATH/yao.out" 2> "$BENCHMARK_LOG_PATH/yao.err"
 }
 
 # benchmark misc
 benchmark_misc() {
-    echo "Benchmark misc: $1 "($(date +"%Y-%m-%d-%H-%M-%S"))
+    echo "Benchmark misc: $1 ($(date +"%Y-%m-%d-%H-%M-%S"))"
     mkdir -p "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
-    "$1/benchmarks.sh" "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
+    "$1/benchmarks.sh" "$BENCHMARK_DATA_PATH" > "$BENCHMARK_LOG_PATH/$1.out" 2> "$BENCHMARK_LOG_PATH/$1.err"
 
 }
 
