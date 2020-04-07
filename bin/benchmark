@@ -52,7 +52,7 @@ install() {
     conda activate ./env
     echo "installing Python dependencies"
     conda install -p env -y numpy matplotlib mkl-service pytest pybind11 pytest-benchmark ipython cffi
-    ./env/bin/pip install qiskit qiskit-aer-gpu cirq projectq pyquest-cffi pennylane # qulacs-gpu
+    ./env/bin/pip install qiskit qiskit-aer-gpu cirq projectq pyquest-cffi pennylane qulacs-gpu
 
     # install Julia dependencies
     echo "installing Julia dependencies"
@@ -69,8 +69,8 @@ benchmark_all_parallel(){
     benchmark_pytest qiskit     &
     benchmark_pytest projectq   &
     benchmark_pytest pennylane  &
-    #benchmark_pytest quest      &
-    #benchmark_pytest qulacs     &
+    benchmark_pytest quest      &
+    benchmark_pytest qulacs     &
     benchmark_julia             &
     benchmark_misc jkq-ddsim    &
 }
@@ -81,8 +81,8 @@ benchmark_all(){
     benchmark_pytest qiskit
     benchmark_pytest projectq
     benchmark_pytest pennylane
-    #benchmark_pytest quest
-    #benchmark_pytest qualacs
+    benchmark_pytest quest
+    benchmark_pytest qualacs
     benchmark_julia
     benchmark_misc jkq-ddsim
 }
