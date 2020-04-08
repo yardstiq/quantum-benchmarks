@@ -36,20 +36,21 @@ GPU: Tesla V100
 
 ### Package Info
 
-|       Package        | Version |
-| -------------------- | ------- |
-| Yao                  | v0.6.1  |
-| CuYao                | v0.2.0  |
-| qiskit               | 0.16.0  |
-| qiskit-aer           | 0.4.0   |
-| qiskit-terra         | 0.12.0  |
-| qulacs               | 0.1.9   |
-| projectq             | 0.4.2   |
-| Cirq                 | 0.7.0   |
-| PennyLane            | 0.8.1   |
-| QuEST (pyquest-cffi) | 0.1.1   |
-| JKQ DDSIM            | master  |
+|       Package        | Version | Type of Simulator |
+| -------------------- | ------- | ----------------- |
+| Yao                  | v0.6.1  | full amplitudes   |
+| CuYao                | v0.2.0  | full amplitudes   |
+| qiskit               | 0.16.0  | full amplitudes   |
+| qiskit-aer           | 0.4.0   | full amplitudes   |
+| qiskit-terra         | 0.12.0  | full amplitudes   |
+| qulacs               | 0.1.9   | full amplitudes   |
+| projectq             | 0.4.2   | full amplitudes   |
+| Cirq                 | 0.7.0   | full amplitudes   |
+| PennyLane            | 0.8.1   | full amplitudes   |
+| QuEST (pyquest-cffi) | 0.1.1   | full amplitudes   |
+| JKQ DDSIM¹           | v1.0.1a | decision diagrams |
 
+¹ This benchmark uses the mean estimator for the timings. To get accurate timings when recreating the results, please ensure no other other applications run concurrently.
 
 ### Single Gate Benchmark
 
