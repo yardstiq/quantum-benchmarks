@@ -1,3 +1,5 @@
+from typing import List
+
 import pandas as pd
 import os
 import json
@@ -18,18 +20,26 @@ COLOR = {
     'qulacs': 'tab:brown',
     'qulacs (cuda)': 'tab:pink',
     'pennylane': 'tab:purple',
+    'jkq-ddsim': 'darkblue'
 }
+
 
 def image_path(name):
     if not os.path.isdir(IMAGE_PATH):
         os.makedirs(IMAGE_PATH, exist_ok=True)
     return os.path.join(IMAGE_PATH, name)
 
+
 def find_json(name):
     """find the first matchable json benchmark file.
     """
     benchmark_dir = os.path.join(ROOT_PATH, 'data')
-    benchmark_path = os.path.join(benchmark_dir, os.listdir(benchmark_dir)[0])
+    sub_dirs = [f.path for f in os.scandir(benchmark_dir) if f.is_dir()]
+    if not sub_dirs:
+        raise FileNotFoundError('Did not find any directory with in data/')
+    elif len(sub_dirs) > 1:
+        print('WARNING: Found more than one suitable subdir. Arbitrarily choose {}'.format(sub_dirs[0]))
+    benchmark_path = os.path.join(benchmark_dir, sub_dirs[0])
     file_stack = []
     for each in os.listdir(benchmark_path):
         if name in each:
@@ -45,14 +55,29 @@ def wash_benchmark_data(name, labels):
         data = json.load(f)
 
     cols = [each['params']['nqubits'] for each in data['benchmarks'] if each['group'] == labels[0]]
-    dd = {}
-    dd['nqubits'] = cols
+    dd = {'nqubits': cols}
     for lb in labels:
-        time_data = [each['stats']['min']*1e9
-            for each in data['benchmarks'] if each['group'] == lb]
+        time_data = [each['stats']['min']*1e9 for each in data['benchmarks'] if each['group'] == lb]
         if len(time_data) is not len(cols):
-            time_data.append([float('inf') for _ in range(len(cols) - len(time_data) + 1)])
+            time_data.extend([float('inf') for _ in range(len(cols) - len(time_data))])
+        dd[lb] = time_data
+    return pd.DataFrame(data=dd)
 
+
+def wash_google_benchmark_data(name: str, labels: List[str]) -> pd.DataFrame:
+    print(f'{name} {labels}')
+    with open(os.path.join(ROOT_PATH, 'data', f'{name}.json')) as f:
+        data = json.load(f)
+
+    # If the first series of benchmarks does not have enough data, the following commented line yields the wrong list
+    # cols = [int(each['name'].split('/')[1]) for each in data['benchmarks'] if each['label'] == labels[0]]
+    # It might be better to explicitly set the range and have it as parameter for parsing?
+    cols = list(range(4, 26))  # TODO: move to parameter list?
+    dd = {'nqubits': cols}
+    for lb in labels:
+        time_data = [each['cpu_time'] for each in data['benchmarks'] if each['label'] == lb]
+        if len(time_data) is not len(cols):
+            time_data.extend([float('inf') for _ in range(len(cols) - len(time_data))])
         dd[lb] = time_data
     return pd.DataFrame(data=dd)
 
@@ -72,7 +97,7 @@ def parse_data(packages, labels=['X', 'H', 'T', 'CNOT', 'Toffoli']):
                 gate_data['yao'] = pd_data[['nqubits', 'QCBM_batch']].rename(columns={'QCBM_batch' : 'QCBM (batch)'})
                 gate_data['yao (cuda)'] = pd_data[['nqubits', 'QCBM_cuda_batch']].rename(columns={'QCBM_cuda_batch' : 'QCBM (batch)'})
             else:
-                gate_data[each_package] = pd.read_csv(os.path.join(ROOT_PATH,'data',  'yao.csv'))
+                gate_data[each_package] = pd.read_csv(os.path.join(ROOT_PATH, 'data', 'yao.csv'))
         elif each_package == 'qulacs':
             if len(labels) == 1 and 'QCBM' in labels:
                 gate_data['qulacs'] = wash_benchmark_data(each_package, ['QCBM'])
@@ -85,6 +110,8 @@ def parse_data(packages, labels=['X', 'H', 'T', 'CNOT', 'Toffoli']):
                 gate_data['qiskit (cuda)'] = wash_benchmark_data(each_package, ['QCBM (cuda)']).rename(columns={'QCBM (cuda)': 'QCBM'})
             else:
                 gate_data[each_package] = wash_benchmark_data(each_package, labels)
+        elif each_package == 'jkq-ddsim':
+            gate_data[each_package] = wash_google_benchmark_data(each_package, labels)
         else:
             gate_data[each_package] = wash_benchmark_data(each_package, labels)
 

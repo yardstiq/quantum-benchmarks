@@ -5,12 +5,12 @@ from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plo
 import matplotlib.pyplot as plt
 
 gate_data = parse_data(
-    packages=['projectq', 'qiskit', 'cirq', 'quest', 'qulacs', 'pennylane', 'yao'],
+    packages=['projectq', 'qiskit', 'cirq', 'quest', 'qulacs', 'pennylane', 'yao', 'jkq-ddsim'],
     labels=['X', 'H', 'T', 'CNOT', 'Toffoli']
 )
 
 circuit_data = parse_data(
-    packages=['projectq', 'qiskit', 'cirq', 'quest', 'pennylane', 'qulacs', 'yao'],
+    packages=['projectq', 'qiskit', 'cirq', 'quest', 'pennylane', 'qulacs', 'yao', 'jkq-ddsim'],
     labels=['QCBM']
 )
 
@@ -36,10 +36,10 @@ plot_absolute(ax2, gate_data, 'H')
 plot_absolute(ax3, gate_data, 'CNOT')
 plot_absolute(ax4, gate_data, 'Toffoli')
 
-ax1.set_title("(a)", loc='left')
-ax2.set_title("(b)", loc='left')
-ax3.set_title("(c)", loc='left')
-ax4.set_title("(d)", loc='left')
+ax1.set_title("X gate", loc='left')
+ax2.set_title("H gate", loc='left')
+ax3.set_title("CNOT gate", loc='left')
+ax4.set_title("Toffoli gate", loc='left')
 
 plt.tight_layout()
 plt.subplots_adjust(top=0.85)
