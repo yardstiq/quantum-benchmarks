@@ -10,10 +10,9 @@ Base.@kwdef struct Project
     name::String
     author::Vector{String} = []
     path::String = ""
-    executable::String = "julia"
-    script::String = "benchmarks.jl"
-    setup_file::String = "setup.jl"
-    data_file::String = "data.json"
+    benchmark::String = "julia --color=yes benchmarks.jl"
+    setup::String = "julia --color=yes setup.jl"
+    env::Dict{String, String} = Dict("OMP_NUM_THREADS"=>"1", "MKL_NUM_THREADS"=>"1", "MKL_DOMAIN_NUM_THREADS"=>"1", "JULIA_NUM_THREADS"=>"1")
     version::VersionNumber = v"0.0.0"
 end
 
@@ -48,8 +47,9 @@ function Base.show(io::IO, pj::Project)
 end
 
 function Base.run(project::Project; wait=true)
-    script = joinpath(project.path, project.script)
-    cmd = `$(project.executable) $script`
+    ex = Base.shell_parse(project.benchmark, special=Base.shell_special)[1]
+    cmd = Base.cmd_gen(Base.eval(@__MODULE__, ex))
+    cmd = Cmd(cmd; env=merge((xs...)->last(xs), ENV, project.env), dir=project.path)
     return run(cmd; wait=wait)
 end
 
@@ -91,13 +91,16 @@ function scan_projects(path::String, excludes=["bin", "images", "img", "data", "
 end
 
 function setup(project::Project)
-    exec = project.executable
-    setup = joinpath(project.path, project.setup_file)
+    ex = Base.shell_parse(project.setup, special=Base.shell_special)[1]
+    cmd = Base.cmd_gen(Base.eval(@__MODULE__, ex))
 
     printstyled("setting up  ", color=:light_blue)
     printstyled(project.name, color=:bold)
     printstyled("  ...\n", color=:light_blue)
-    run(`$exec $setup`)
+    
+    cd(project.path) do
+        run(cmd)
+    end
     return
 end
 

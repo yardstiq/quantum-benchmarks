@@ -1,6 +1,7 @@
 using Yao, Yao.YaoBlocks.ConstGate, BenchmarkTools
 using DataFrames, JSON
 using LinearAlgebra, Pkg
+using CuYao, CuArrays
 
 project = Pkg.TOML.parsefile(joinpath(@__DIR__, "Benchmark.toml"))
 
@@ -95,9 +96,7 @@ end
     end
 end
 
-@static if "CuYao" in keys(Pkg.installed())
-
-    using CuYao, CuArrays
+@static if CuArrays.functional()
 
     @task "QCBM_cuda" nqubits=qcbm_nqubits begin
         map(qcbm_nqubits) do k
