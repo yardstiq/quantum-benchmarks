@@ -1,0 +1,9 @@
+name = "Yao.jl"
+author = ["Roger luo"]
+version = "0.0.0"
+
+task = [
+    "julia --color=yes benchmarks.jl"
+]
+
+setup = "julia --color=yes setup.jl"

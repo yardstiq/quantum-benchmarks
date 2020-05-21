@@ -1,0 +1,7 @@
+name = "Yao.jl"
+author = ["Roger luo"]
+script = "benchmarks.jl"
+executable = "julia"
+setup_file = "setup.jl"
+data_file = "data.json"
+version = "0.0.0"
