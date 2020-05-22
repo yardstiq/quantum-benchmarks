@@ -18,3 +18,9 @@ else
     printf "${RED}system $OSTYPE not supported${NC}" >&2;
     exit 1;
 fi
+
+function pytest_benchmark {
+    ./env/bin/pytest benchmarks.py --benchmark-storage="file://data" \
+        --benchmark-save="data" --benchmark-sort=name --benchmark-min-rounds=5 \
+        > "log.out" 2> "log.err"
+}
