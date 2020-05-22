@@ -16,6 +16,18 @@ function run_benchmark {
 }
 
 function setup {
+    case $1 in
+        essentials)     setup_essientials
+        ;;
+        *)              (cd $1 && sh setup.sh)
+        ;;
+    esac
+
+    printf "${BLUE}setting up:${NC} ${BOLD}$1${NC}\n"
+    (cd $1 && sh setup.sh)
+}
+
+function setup_essientials {
     if [ ! -f "$CONDA" ]; then
         bash "$BINDIR/install_conda.sh"
     fi
@@ -23,9 +35,6 @@ function setup {
     if [ ! -f "$JULIA" ]; then
         bash "$BINDIR/install_julia.sh"
     fi
-
-    printf "${BLUE}setting up:${NC} ${BOLD}$1${NC}\n"
-    (cd $1 && sh setup.sh)
 }
 
 function setup_projects {
