@@ -2,7 +2,7 @@
 single gate benchmark
 """
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 import cirq
 import numpy as np
 from cirq import Simulator

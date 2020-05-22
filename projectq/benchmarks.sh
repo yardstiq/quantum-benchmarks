@@ -5,5 +5,5 @@ BINDIR="$ROOT_PATH/bin"
 . $BINDIR/utils/constants.sh
 
 $ACTIVATE ./env
-pytest benchmarks.py --benchmark-storage="file://data" --benchmark-sort=name --benchmark-min-rounds=5 \
+./env/bin/pytest benchmarks.py --benchmark-storage="file://data" --benchmark-sort=name --benchmark-min-rounds=5 \
         > "log.out" 2> "log.err"
