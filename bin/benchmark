@@ -36,6 +36,7 @@ function setup_essentials {
 }
 
 function setup_projects {
+    setup essentials
     for pj in "${PROJECTS[@]}"
     do
         setup $pj
