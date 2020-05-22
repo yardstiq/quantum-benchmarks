@@ -22,3 +22,5 @@ mkdir -p $CONDA_PATH
 curl -L -o $INSTALLER $URL
 chmod 755 $INSTALLER
 $INSTALLER -b -f -p $CONDA_PATH
+$CONDA update -n base -c defaults conda
+$CONDA init bash
