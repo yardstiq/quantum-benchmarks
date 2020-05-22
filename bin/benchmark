@@ -12,6 +12,7 @@ function run_benchmark {
     export MKL_DOMAIN_NUM_THREADS=1
     export JULIA_NUM_THREADS=1
 
+    printf "${BLUE}benchmarking:${NC} ${BOLD}$1${NC}\n"
     (cd $1 && sh benchmarks.sh)
 }
 
