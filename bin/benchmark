@@ -20,7 +20,7 @@ function setup {
         essentials)     setup_essentials
                         ;;
         *)              printf "${BLUE}setting up:${NC} ${BOLD}$1${NC}\n"
-                        (cd $1 && sh setup.sh)
+                        (cd $1 && bash setup.sh)
                         ;;
     esac
 }
