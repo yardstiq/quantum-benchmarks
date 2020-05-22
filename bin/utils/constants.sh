@@ -4,9 +4,9 @@ FILE_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 ROOT_PATH=$(dirname "$FILE_PATH")
 BENCHMARK_DATA_PATH="$ROOT_PATH/data"
 BENCHMARK_LOG_PATH="$ROOT_PATH/log"
-CONDA_PATH=$FILE_PATH/conda
+CONDA_PATH=$ROOT_PATH/bin/conda
 CONDA=$CONDA_PATH/bin/conda
-JULIA_PATH=$FILE_PATH/julia
+JULIA_PATH=$ROOT_PATH/bin/julia
 JULIA=$JULIA_PATH/bin/julia
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
