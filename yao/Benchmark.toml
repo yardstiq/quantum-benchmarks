@@ -1,6 +1,0 @@
-name = "Yao.jl"
-author = ["Roger luo"]
-version = "0.0.0"
-
-setup = "julia --color=yes setup.jl"
-benchmark = "julia --color=yes benchmarks.jl"

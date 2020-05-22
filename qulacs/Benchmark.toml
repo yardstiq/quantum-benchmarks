@@ -1,0 +1,5 @@
+name = "qulacs"
+version = "0.0.0"
+
+setup = "pytest benchmarks.py --benchmark-storage='file://data' --benchmark-save=qulacs --benchmark-sort=name --benchmark-min-rounds=5 > 'log.txt'"
+benchmark = "sh install.sh"
