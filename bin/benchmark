@@ -16,7 +16,7 @@ function run_benchmark {
 }
 
 function setup {
-    echo "${BLUE}setting up:${NC} ${BOLD}$1${NC}"
+    printf "${BLUE}setting up:${NC} ${BOLD}$1${NC}\n"
     (cd $1 && sh setup.sh)
 }
 
@@ -53,11 +53,11 @@ function run_projects {
 }
 
 function info {
-    echo "CPU CORES: $NCORES"
+    printf "CPU CORES: $NCORES\n"
 }
 
 function help {
-    echo """
+    printf """
     bin/benchmark <options> args...
 
 Quantum Circuit Simulation Benchmark.
