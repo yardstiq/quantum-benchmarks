@@ -4,5 +4,4 @@ ROOT_PATH=`dirname $FILE_PATH`
 BINDIR="$ROOT_PATH/bin"
 . $BINDIR/utils/constants.sh
 
-$JULIA -e 'println(Threads.nthreads())'
 $JULIA --project benchmarks.jl
