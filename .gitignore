@@ -156,3 +156,4 @@ docs/site/
 # environment.
 bin/conda
 bin/julia
+bin/*.tar.gz
