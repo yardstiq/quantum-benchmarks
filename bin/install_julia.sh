@@ -24,7 +24,7 @@ function install_julia_linux() {
   fi
   if [ ! -d julia-$version ]; then
     mkdir -p $JULIA_PATH
-    tar zxf julia-$version.tar.gz -C $JULIA_PATH --strip-components 1
+    tar zxf $BINDIR/julia-$version.tar.gz -C $JULIA_PATH --strip-components 1
   fi
 }
 
