@@ -30,11 +30,11 @@ function setup {
 
 function setup_essentials {
     if [ ! -f "$CONDA" ]; then
-        bash "$BINDIR/install_conda.sh"
+        (cd BINDIR; bash "$BINDIR/install_conda.sh")
     fi
 
     if [ ! -f "$JULIA" ]; then
-        bash "$BINDIR/install_julia.sh"
+        (cd BINDIR; bash "$BINDIR/install_julia.sh")
     fi
 }
 
