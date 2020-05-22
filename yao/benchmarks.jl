@@ -3,8 +3,6 @@ using JSON
 using LinearAlgebra, Pkg
 using CuYao, CuArrays
 
-project = Pkg.TOML.parsefile(joinpath(@__DIR__, "Benchmark.toml"))
-
 BLAS.set_num_threads(1)
 
 const nqubits=4:25
@@ -114,4 +112,4 @@ end
 
 end
 
-write(project["data_file"], JSON.json(benchmarks))
+write("data/data.json", JSON.json(benchmarks))
