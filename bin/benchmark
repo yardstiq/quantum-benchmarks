@@ -17,7 +17,7 @@ function run_benchmark {
 
 function setup {
     case $1 in
-        essentials)     setup_essientials
+        essentials)     setup_essentials
         ;;
         *)              (cd $1 && sh setup.sh)
         ;;
@@ -27,7 +27,7 @@ function setup {
     (cd $1 && sh setup.sh)
 }
 
-function setup_essientials {
+function setup_essentials {
     if [ ! -f "$CONDA" ]; then
         bash "$BINDIR/install_conda.sh"
     fi
@@ -83,7 +83,7 @@ ${BOLD}OPTIONS${NC}
 
 setup [project]         setup the given project, if project is not specified,
                         all projects in this benchmark will be setup. If the project
-                        is essientials, it will try to install all essiential dependencies
+                        is essentials, it will try to install all essentials dependencies
 
 run [project]           run the given project benchmark, if project is not
                         specified, all projects in this benchmark will be
