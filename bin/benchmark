@@ -64,7 +64,7 @@ function run_projects {
             project_ptr=$(( project_ptr+1 ))
         done
 
-        wait
+        # wait
     done
 }
 
