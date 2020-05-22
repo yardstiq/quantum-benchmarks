@@ -5,6 +5,6 @@ BINDIR="$ROOT_PATH/bin"
 . $BINDIR/utils/constants.sh
 
 $CONDA create -y --prefix=env python=3.8
-source $CONDA_PATH/activate ./env
+$ACTIVATE ./env
 $CONDA install -p env -y numpy mkl-service pytest pybind11 pytest-benchmark cffi
 ./env/bin/pip install qiskit qiskit-aer-gpu
