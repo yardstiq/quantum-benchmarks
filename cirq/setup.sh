@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 FILE_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 ROOT_PATH=`dirname $FILE_PATH`
 CONDA="$ROOT_PATH/bin/conda/bin/conda"

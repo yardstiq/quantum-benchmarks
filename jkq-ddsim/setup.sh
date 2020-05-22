@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 FILE_PATH=$(readlink -f "$0")
 BASE_PATH=$(dirname "$FILE_PATH")

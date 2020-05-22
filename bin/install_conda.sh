@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 BINDIR="$(dirname $0)"
-source $BINDIR/utils/constants.sh
-source $BINDIR/utils/colors.sh
+. $BINDIR/utils/constants.sh
+. $BINDIR/utils/colors.sh
 
 ARCH=`uname -m`
 
