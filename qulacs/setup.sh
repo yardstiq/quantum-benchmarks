@@ -5,7 +5,7 @@ BINDIR="$ROOT_PATH/bin"
 . $BINDIR/utils/constants.sh
 
 $CONDA create -y --prefix=env python=3.8
-$CONDA activate ./env
+source activate ./env
 $CONDA install -p env -y numpy mkl-service pytest pybind11 pytest-benchmark cffi
 # try to install the GPU version first
 ./env/bin/pip install qulacs-gpu || ./env/bin/pip install qulacs
