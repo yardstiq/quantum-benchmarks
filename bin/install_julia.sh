@@ -13,7 +13,7 @@ else
     exit 1;
 fi
 
-URL = https://julialang-s3.julialang.org/bin/linux/x64/$version/julia-$version-latest-linux-x86_64.tar.gz
+URL="https://julialang-s3.julialang.org/bin/linux/x64/$version/julia-$version-latest-linux-x86_64.tar.gz"
 
 function install_julia_linux() {
   mkdir -p $JULIA_PATH
