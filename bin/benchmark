@@ -82,7 +82,8 @@ Quantum Circuit Simulation Benchmark.
 ${BOLD}OPTIONS${NC}
 
 setup [project]         setup the given project, if project is not specified,
-                        all projects in this benchmark will be setup.
+                        all projects in this benchmark will be setup. If the project
+                        is essientials, it will try to install all essiential dependencies
 
 run [project]           run the given project benchmark, if project is not
                         specified, all projects in this benchmark will be
