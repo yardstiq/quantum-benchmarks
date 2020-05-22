@@ -3,7 +3,7 @@ FILE_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 ROOT_PATH=`dirname $FILE_PATH`
 CONDA="$ROOT_PATH/bin/conda/bin/conda"
 
-if ![ -d "$CONDA" ]; then
+if [ ! -d "$CONDA" ]; then
     sh "$ROOT_PATH/bin/install_conda.sh"
 fi
 
