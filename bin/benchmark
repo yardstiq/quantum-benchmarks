@@ -1,5 +1,99 @@
 #!/bin/sh
-BASEDIR=$(dirname "$0")
-JULIA_BIN="/usr/bin/env julia"
-JULIA_PROJECT_DIR=$(dirname $BASEDIR)
-JULIA_PROJECT=$JULIA_PROJECT_DIR $JULIA_BIN --color=yes -e "using Benchmark; Benchmark.main()" $1 $2
+BINDIR="$(dirname $0)"
+source $BINDIR/utils/constants.sh
+source $BINDIR/utils/colors.sh
+
+# variables
+PROJECTS=()
+
+function run_benchmark {
+    export OMP_NUM_THREADS=1
+    export MKL_NUM_THREADS=1
+    export MKL_DOMAIN_NUM_THREADS=1
+    export JULIA_NUM_THREADS=1
+
+    (cd $1 && sh benchmarks.sh)
+}
+
+function setup {
+    echo "${BLUE}setting up:${NC} ${BOLD}$1${NC}"
+    (cd $1 && sh setup.sh)
+}
+
+function setup_projects {
+    for pj in "${PROJECTS[@]}"
+    do
+        setup $pj
+    done
+}
+
+function scan_projects {
+    for d in $ROOT_PATH/*/ ; do
+        if [ -e $d/benchmarks.sh ]; then
+            PROJECTS+=($d)
+        fi
+    done
+}
+
+function run_projects {
+    project_ptr=0
+    len=${#PROJECTS[@]}
+    while [[ $project_ptr < $len ]]
+    do
+        pids=()
+        for i in {1...$NCORES}
+        do
+            run_benchmark ${PROJECTS[project_ptr]} &
+            pids+=($!)
+            project_ptr=$(( project_ptr+1 ))
+        done
+
+        wait
+    done
+}
+
+function info {
+    echo "CPU CORES: $NCORES"
+}
+
+function help {
+    echo """
+    bin/benchmark <options> args...
+
+Quantum Circuit Simulation Benchmark.
+
+${BOLD}OPTIONS${NC}
+
+setup [project]         setup the given project, if project is not specified,
+                        all projects in this benchmark will be setup.
+
+run [project]           run the given project benchmark, if project is not
+                        specified, all projects in this benchmark will be
+                        setup.
+
+info                    print current machine info.
+
+help                    print this message.
+"""
+}
+
+function main {
+    case $#$1 in
+        1setup)     scan_projects && setup_projects
+                    ;;
+        1run)       scan_projects && run_projects
+                    ;;
+        2setup)     setup $2
+                    ;;
+        2run)       run_benchmark $2
+                    ;;
+        1info)      info
+                    ;;
+        *)          help
+                    ;;
+    esac
+}
+
+# scan_projects
+# run_projects
+main "$@"
