@@ -18,6 +18,7 @@ function run_benchmark {
 function setup {
     case $1 in
         essentials)     setup_essentials
+                        break
         ;;
         *)              (cd $1 && sh setup.sh)
         ;;
@@ -98,12 +99,16 @@ help                    print this message.
 function main {
     case $#$1 in
         1setup)     scan_projects && setup_projects
+                    break
                     ;;
         1run)       scan_projects && run_projects
+                    break
                     ;;
         2setup)     setup $2
+                    break
                     ;;
         2run)       run_benchmark $2
+                    break
                     ;;
         1info)      info
                     ;;
