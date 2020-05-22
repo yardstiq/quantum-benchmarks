@@ -16,8 +16,8 @@ fi
 
 URL="https://repo.continuum.io/miniconda/Miniconda3-latest-$SYS-$ARCH.sh"
 INSTALLER=$CONDA_PATH/Miniconda3-latest-$SYS-$ARCH.sh
-echo "${BLUE}downloading miniconda installer to:${NC}"
-echo "${BOLD}${CONDA_PATH}/Miniconda3-latest-$SYS-$ARCH.sh${NC}"
+printf "${BLUE}downloading miniconda installer to:${NC}\n"
+printf "${BOLD}${CONDA_PATH}/Miniconda3-latest-$SYS-$ARCH.sh${NC}\n"
 mkdir -p $CONDA_PATH
 curl -L -o $INSTALLER $URL
 chmod 755 $INSTALLER
