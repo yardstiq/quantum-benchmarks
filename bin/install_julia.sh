@@ -18,7 +18,7 @@ URL="https://julialang-s3.julialang.org/bin/linux/x64/$version/julia-$version-la
 function install_julia_linux() {
   echo "Downloading Julia version $version"
   if [ ! -f julia-$version.tar.gz ]; then
-    curl -L -o julia-$version.tar.gz $URL
+    curl -L -o $BINDIR/julia-$version.tar.gz $URL
   else
     echo "already downloaded"
   fi
