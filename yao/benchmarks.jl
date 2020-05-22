@@ -1,5 +1,5 @@
 using Yao, Yao.YaoBlocks.ConstGate, BenchmarkTools
-using DataFrames, JSON
+using JSON
 using LinearAlgebra, Pkg
 using CuYao, CuArrays
 
