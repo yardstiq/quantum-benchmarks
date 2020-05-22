@@ -112,4 +112,9 @@ end
 
 end
 
+
+if !ispath("data")
+    mkpath("data")
+end
+
 write("data/data.json", JSON.json(benchmarks))
