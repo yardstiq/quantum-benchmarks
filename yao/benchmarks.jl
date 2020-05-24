@@ -87,7 +87,7 @@ const qcbm_nqubits = 4:25
     end
 end
 
-@task "QCBM_batch" nqubits=4:15 begin
+@task "QCBM (batch)" nqubits=4:15 begin
     map(4:15) do k
         t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=zero_state($k, nbatch=1000))
         minimum(t).time
@@ -96,14 +96,14 @@ end
 
 @static if CuArrays.functional()
 
-    @task "QCBM_cuda" nqubits=qcbm_nqubits begin
+    @task "QCBM (cuda)" nqubits=qcbm_nqubits begin
         map(qcbm_nqubits) do k
             t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k)))
             minimum(t).time
         end
     end
 
-    @task "QCBM_cuda_batch" nqubits=4:15 begin
+    @task "QCBM (batch) (cuda)" nqubits=4:15 begin
         map(4:15) do k
             t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k, nbatch=1000)))
             minimum(t).time
