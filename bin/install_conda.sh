@@ -24,3 +24,4 @@ chmod 755 $INSTALLER
 $INSTALLER -b -f -p $CONDA_PATH
 $CONDA update -n base -c defaults conda -y
 $CONDA init bash
+$CONDA install -y numpy matplotlib
