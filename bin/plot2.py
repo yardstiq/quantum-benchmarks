@@ -106,12 +106,13 @@ colors = {
 report = BenchmarkReport(
     projects,
     layout = {
-        'Parameterized Circuit Benchmark' : labels,
+        '' : labels,
     },
     colors = colors,
 )
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), sharey=False)
+ax1.set_ylim([1e3, 1e15])
 plots = report.plot_absolute(ax1)
 labels = []
 for each in plots[0]._lines:
@@ -125,10 +126,10 @@ lgd1 = plots[0].ax.legend(
 )
 
 yao_project = projects[0]
-ax2.set_title('Batched Parameterized Circuit Benchmark')
+# ax2.set_title('Batched Parameterized Circuit Benchmark')
 yao_project.update_table(['QCBM', 'QCBM (batch)', 'QCBM (batch) (cuda)'])
 d = yao_project.table['QCBM']
-ax2.semilogy(d["nqubits"], d["times"], '-o', markersize=4, color=COLOR['yao x 1000'])
+ax2.semilogy(d["nqubits"][:12], [each * 1000 for each in d["times"][:12]], '-o', markersize=4, color=COLOR['yao x 1000'])
 d = yao_project.table['QCBM (batch)']
 ax2.semilogy(d["nqubits"], d["times"], '-o', markersize=4, color=COLOR['yao'])
 d = yao_project.table['QCBM (batch) (cuda)']
