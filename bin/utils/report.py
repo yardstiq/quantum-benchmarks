@@ -49,6 +49,8 @@ class BenchmarkReport:
 
         plots = []
         for (ax, title) in zip(axes_list, self.layout):
+            ax.set_xlabel("nqubits", size=16)
+            ax.set_ylabel("ns", size=16)
             plots.append(Plot(ax, title, self.layout[title]))
 
         return plots

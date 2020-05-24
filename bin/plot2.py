@@ -47,6 +47,8 @@ report = BenchmarkReport(
 )
 
 fig, ax = plt.subplots(2, 2, figsize=(10, 8))
+((ax1, ax2), (ax3, ax4)) = ax
+
 plots = report.plot_absolute(ax)
 plt.tight_layout()
 plt.subplots_adjust(top=0.85)
@@ -61,8 +63,8 @@ lgd = fig.legend(
     bbox_to_anchor=(0.5, 0.97)
 )
 
-plt.savefig(image_path('gate.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
-plt.savefig(image_path('gate.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.savefig(image_path('gates.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.savefig(image_path('gates.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 fig, ax = plt.subplots(2, 2, figsize=(10, 8))
 plots = report.plot_relative(projects[0], ax)
@@ -135,6 +137,8 @@ ax2.semilogy(d["nqubits"], d["times"], '-o', markersize=4, color=COLOR['yao'])
 d = yao_project.table['QCBM (batch) (cuda)']
 ax2.semilogy(d["nqubits"], d["times"], '-o', markersize=4, color=COLOR['yao (cuda)'])
 
+ax2.set_xlabel("nqubits", size=16)
+ax2.set_ylabel("ns", size=16)
 lgd2 = ax2.legend(['yao x 1000', 'yao', 'yao (cuda)'], loc='upper left', ncol=1)
 
 plt.tight_layout()
