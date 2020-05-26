@@ -28,7 +28,7 @@ def native_execute(benchmark, circuit, backend_options=None):
     experiment = transpile(circuit, backend)
     qobj = assemble(experiment, shots=1)
     qobj_aer = backend._format_qobj(qobj, backend_options, None)
-    benchmark(_execute, qobj_aer)
+    benchmark(_execute, backend._controller, qobj_aer)
 
 def run_bench(benchmark, nqubits, gate, locs=(1, )):
     qc = QuantumCircuit(nqubits)
