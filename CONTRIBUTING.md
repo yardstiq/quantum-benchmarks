@@ -45,6 +45,6 @@ Currently we use the following labels in benchmark group:
 
 The circuit we benchmark is shown as below:
 
-![QCBM](https://quantumbfs.github.io/Yao.jl/latest/assets/figures/differentiable.png)
+![QCBM](http://tutorials.yaoquantum.org/dev/generated/quick-start/6.quantum-circuit-born-machine/assets/differentiable.png)
 
 Each benchmark script benchmarks such a circuit with 9 entanglers from 4 qubits to 25 qubits.
