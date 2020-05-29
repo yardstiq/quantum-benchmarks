@@ -88,16 +88,17 @@ class Project(object):
     def relative(self, project, plots : List, colors = None):
         for each in plots:
             for label in each.labels:
-                d = self.table[label]
-                if colors is None:
-                    color = self.random_color()
-                else:
-                    color = colors[label]
+                if label in self.table:
+                    d = self.table[label]
+                    if colors is None:
+                        color = self.random_color()
+                    else:
+                        color = colors[label]
 
 
-                line = each.ax.semilogy(d["nqubits"],
-                    np.array(d['times'])/np.array(project.table[label]['times']), '-o', markersize=4, color=color)
-                each.add_line(self, line)
+                    line = each.ax.semilogy(d["nqubits"],
+                        np.array(d['times'])/np.array(project.table[label]['times']), '-o', markersize=4, color=color)
+                    each.add_line(self, line)
 
 
 class PythonProject(Project):
@@ -126,8 +127,8 @@ class PythonProject(Project):
 class JuliaProject(Project):
 
     def __init__(self, path : str, name : str = None):
-        if name is None:
-            name = path.capitalize()
+        name = os.path.basename(path)
+        name = name.capitalize()
         super(JuliaProject, self).__init__(path, name)
 
     def get_label(self, data, label : str):

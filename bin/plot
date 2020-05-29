@@ -1,80 +1,85 @@
 #!/usr/bin/env python3
+
+import os
+from utils import BenchmarkReport, JuliaProject, PythonProject, image_path
+from utils.project import Plot
 import matplotlib
-matplotlib.use('Agg')
-from utils.plot_utils import wash_benchmark_data, parse_data, plot_absolute, plot_relative, image_path
 import matplotlib.pyplot as plt
 
-gate_data = parse_data(
-    packages=['projectq', 'qiskit', 'cirq', 'quest', 'qulacs', 'pennylane', 'yao', 'jkq-ddsim'],
-    labels=['X', 'H', 'T', 'CNOT', 'Toffoli']
+BIN_PATH = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(BIN_PATH)
+
+COLOR = {
+    'yao': 'tab:red',
+    'yao (cuda)': 'tab:orange',
+    'yao x 1000': 'tab:blue',
+    'yao x 64': 'tab:blue',
+    'qiskit': 'tab:green',
+    'qiskit (cuda)': 'tab:gray',
+    'projectq': 'tab:blue',
+    'cirq': 'tab:cyan',
+    'quest': 'tab:olive',
+    'qulacs': 'tab:brown',
+    'qulacs (cuda)': 'tab:pink',
+    'pennylane': 'tab:purple',
+    'jkq-ddsim': 'darkblue'
+}
+
+projects = [
+    JuliaProject(os.path.join(PROJECT_ROOT, 'yao')),
+    PythonProject(os.path.join(PROJECT_ROOT, 'qiskit')),
+    PythonProject(os.path.join(PROJECT_ROOT, 'cirq')),
+    PythonProject(os.path.join(PROJECT_ROOT, 'projectq')),
+    PythonProject(os.path.join(PROJECT_ROOT, 'pennylane')),
+    PythonProject(os.path.join(PROJECT_ROOT, 'quest'), 'pyquest-cffi'),
+    PythonProject(os.path.join(PROJECT_ROOT, 'qulacs')),
+]
+
+# Single Gate Benchmark Report
+labels = ['X', 'H', 'CNOT', 'T']
+report = BenchmarkReport(
+    projects,
+    layout = {l + ' gate' : [l] for l in labels},
+    colors = {
+        projects[0] : {l: COLOR['yao'] for l in labels},
+        projects[1] : {l: COLOR['qiskit'] for l in labels},
+        projects[2] : {l: COLOR['cirq'] for l in labels},
+        projects[3] : {l: COLOR['projectq'] for l in labels},
+        projects[4] : {l: COLOR['pennylane'] for l in labels},
+        projects[5] : {l: COLOR['quest'] for l in labels},
+        projects[6] : {l: COLOR['qulacs'] for l in labels},
+    },
 )
 
-circuit_data = parse_data(
-    packages=['projectq', 'qiskit', 'cirq', 'quest', 'pennylane', 'qulacs', 'yao', 'jkq-ddsim'],
-    labels=['QCBM']
-)
+fig, ax = plt.subplots(2, 2, figsize=(10, 8))
+((ax1, ax2), (ax3, ax4)) = ax
 
-batch_circuit_data = parse_data(
-    packages=['yao'],
-    labels=['QCBM (batch)']
-)
-
-# make up a fake data multiply single batch by 1000
-batch_circuit_data['yao x 1000'] = circuit_data['yao'][0:12].copy()
-batch_circuit_data['yao x 1000']['QCBM'] = batch_circuit_data['yao x 1000']['QCBM'].apply(lambda x: x * 1000)
-batch_circuit_data['yao x 1000'] = batch_circuit_data['yao x 1000'].rename(columns={'QCBM': 'QCBM (batch)'})
-
-# plot single gate absolute time
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8))
-ax2.yaxis.set_label_position("left")
-ax4.yaxis.set_label_position("left")
-ax2.yaxis.tick_left()
-ax4.yaxis.tick_left()
-
-ls, labels = plot_absolute(ax1, gate_data, 'X')
-plot_absolute(ax2, gate_data, 'H')
-plot_absolute(ax3, gate_data, 'CNOT')
-plot_absolute(ax4, gate_data, 'Toffoli')
-
-ax1.set_title("X gate", loc='left')
-ax2.set_title("H gate", loc='left')
-ax3.set_title("CNOT gate", loc='left')
-ax4.set_title("Toffoli gate", loc='left')
-
+plots = report.plot_absolute(ax)
 plt.tight_layout()
 plt.subplots_adjust(top=0.85)
 lgd = fig.legend(
-    ls,
-    labels=labels,
+    plots[0].lines,
+    labels=report.project_names(),
     loc="upper center",
     ncol=4,
     frameon=False,
     prop={'size': 15},
     borderaxespad=-0.4,
-    bbox_to_anchor=(0.5, 0.97))
+    bbox_to_anchor=(0.5, 0.97)
+)
 
 plt.savefig(image_path('gates.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.savefig(image_path('gates.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
-# plot single gate relative time
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8), sharey=True)
-ls, labels = plot_relative(ax1, gate_data, 'X')
-plot_relative(ax2, gate_data, 'H')
-plot_relative(ax3, gate_data, 'CNOT')
-plot_relative(ax4, gate_data, 'Toffoli')
-
-ax1.set(title="X gate (relative time)")
-ax2.set(title="H gate (relative time)")
-ax3.set(title="CNOT gate (relative time)")
-ax4.set(title="Toffoli gate (relative time)")
-
+fig, ax = plt.subplots(2, 2, figsize=(10, 8))
+plots = report.plot_relative(projects[0], ax)
 plt.tight_layout()
 plt.subplots_adjust(top=0.85)
 lgd = fig.legend(
-    ls,
-    labels=labels,
+    plots[0].lines,
+    labels=report.project_names(),
     loc="upper center",
-    ncol=3,
+    ncol=4,
     frameon=False,
     prop={'size': 15},
     borderaxespad=-0.4,
@@ -83,33 +88,82 @@ lgd = fig.legend(
 plt.savefig(image_path('gates_relative.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.savefig(image_path('gates_relative.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
-# plot parameterized quantum circuit absolute time
+
+# Parameterized Circuit Benchmark Report
+labels = ['QCBM', 'QCBM (cuda)']
+colors = {
+        projects[0] : {
+            'QCBM': COLOR['yao'],
+            'QCBM (cuda)': COLOR['yao (cuda)']
+        },
+        projects[1] : {
+            'QCBM': COLOR['qiskit'],
+            'QCBM (cuda)': COLOR['qiskit (cuda)'],
+        },
+        projects[2] : {'QCBM': COLOR['cirq']},
+        projects[3] : {'QCBM': COLOR['projectq']},
+        projects[4] : {'QCBM': COLOR['pennylane']},
+        projects[5] : {'QCBM': COLOR['quest']},
+        projects[6] : {
+            'QCBM': COLOR['qulacs'],
+            'QCBM (cuda)': COLOR['qulacs (cuda)'],
+        },
+}
+
+report = BenchmarkReport(
+    projects,
+    layout = {
+        '' : labels,
+    },
+    colors = colors,
+)
+
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), sharey=False)
-ls1, labels1 = plot_absolute(ax1, circuit_data, 'QCBM')
 ax1.set_ylim([1e3, 1e15])
-ls2, labels2 = plot_absolute(ax2, batch_circuit_data, 'QCBM (batch)')
+plots = report.plot_absolute(ax1)
+labels = []
+for each in plots[0]._lines:
+    for (k, l) in enumerate(plots[0]._lines[each]):
+        labels.append(each.name + plots[0].labels[k][4:])
 
-lgd1 = ax1.legend(labels1, loc='upper left', ncol=2)
-lgd2 = ax2.legend(labels2, loc='upper left', ncol=1)
+lgd1 = plots[0].ax.legend(
+    plots[0].lines,
+    labels=labels,
+    loc='upper left', ncol=2
+)
+
+yao_project = projects[0]
+# ax2.set_title('Batched Parameterized Circuit Benchmark')
+yao_project.update_table(['QCBM', 'QCBM (batch)', 'QCBM (batch) (cuda)'])
+d = yao_project.table['QCBM']
+ax2.semilogy(d["nqubits"][:12], [each * 1000 for each in d["times"][:12]], '-o', markersize=4, color=COLOR['yao x 1000'])
+d = yao_project.table['QCBM (batch)']
+ax2.semilogy(d["nqubits"], d["times"], '-o', markersize=4, color=COLOR['yao'])
+d = yao_project.table['QCBM (batch) (cuda)']
+ax2.semilogy(d["nqubits"], d["times"], '-o', markersize=4, color=COLOR['yao (cuda)'])
+
+ax2.set_xlabel("nqubits", size=16)
+ax2.set_ylabel("ns", size=16)
+lgd2 = ax2.legend(['yao x 1000', 'yao', 'yao (cuda)'], loc='upper left', ncol=1)
 
 plt.tight_layout()
+plt.savefig(image_path('pcircuit.png'), bbox_extra_artists=(lgd1, lgd2), bbox_inches='tight')
+plt.savefig(image_path('pcircuit.pdf'), bbox_extra_artists=(lgd1, lgd2), bbox_inches='tight')
 
-plt.savefig(image_path('pcircuit.png'), bbox_extra_artists=(lgd1,lgd2), bbox_inches='tight')
-plt.savefig(image_path('pcircuit.pdf'), bbox_extra_artists=(lgd1,lgd2), bbox_inches='tight')
+# relative
+fig, ax = plt.subplots(1, 1, figsize=(10, 6), sharey=False)
+plots = report.plot_relative(projects[0], ax)
+labels = []
+for each in plots[0]._lines:
+    for (k, l) in enumerate(plots[0]._lines[each]):
+        labels.append(each.name + plots[0].labels[k][4:])
 
-# parameterized quantum circuit relative time
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), sharey=False)
-ls1, labels1 = plot_relative(ax1, circuit_data, 'QCBM')
-ax1.set_ylim([1e-2, 1e5])
-ls2, labels2 = plot_relative(ax2, batch_circuit_data, 'QCBM (batch)', to='yao (cuda)', log=False)
-
-lgd1 = ax1.legend(labels1, loc='upper right', ncol=2)
-lgd2 = ax2.legend(labels2, loc='upper right', ncol=1)
-
-ax1.set(title="Parameterized Circuit (relative time)")
-ax2.set(title="Batched Parameterized Circuit (relative time)")
+lgd1 = plots[0].ax.legend(
+    plots[0].lines,
+    labels=labels,
+    loc='upper right', ncol=2
+)
 
 plt.tight_layout()
-
-plt.savefig(image_path('pcircuit_relative.png'), bbox_extra_artists=(lgd1,lgd2), bbox_inches='tight')
-plt.savefig(image_path('pcircuit_relative.pdf'), bbox_extra_artists=(lgd1,lgd2), bbox_inches='tight')
+plt.savefig(image_path('pcircuit_relative.png'), bbox_extra_artists=(lgd1, ), bbox_inches='tight')
+plt.savefig(image_path('pcircuit_relative.pdf'), bbox_extra_artists=(lgd1, ), bbox_inches='tight')
