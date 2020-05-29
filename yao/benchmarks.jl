@@ -1,10 +1,12 @@
 using Yao, Yao.YaoBlocks.ConstGate, BenchmarkTools
-using DataFrames, CSV
+using JSON
 using LinearAlgebra, Pkg
+using CuYao, CuArrays
+
 BLAS.set_num_threads(1)
 
-nqubits=4:25
-benchmarks = Dict()
+const nqubits=4:25
+const benchmarks = Dict()
 
 layer(nbit::Int, x::Symbol) = layer(nbit, Val(x))
 layer(nbit::Int, ::Val{:first}) = chain(nbit, put(i=>chain(Rx(0), Rz(0))) for i = 1:nbit);
@@ -23,100 +25,96 @@ function build_circuit(n, nlayers, pairs)
     return circuit
 end
 
-@info "benchmarking X"
-benchmarks["X"] = map(nqubits) do k
-    t = @benchmark apply!(st, $(put(k, 2=>X))) setup=(st=rand_state($k))
-    minimum(t).time
+macro task(name::String, nqubits_ex, body)
+    nqubits = nqubits_ex.args[2]
+    msg = "benchmarking $name"
+    quote
+        @info $msg
+        benchmarks[$(name)] = Dict()
+        benchmarks[$(name)]["nqubits"] = $(esc(nqubits))
+        benchmarks[$(name)]["times"] = $(esc(body))
+    end
 end
 
-@info "benchmarking H"
-benchmarks["H"] = map(nqubits) do k
-    t = @benchmark apply!(st, $(put(k, 2=>H))) setup=(st=rand_state($k))
-    minimum(t).time
+@task "X" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(put(k, 2=>X))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
 end
 
-@info "benchmarking T"
-benchmarks["T"] = map(nqubits) do k
-    t = @benchmark apply!(st, $(put(k, 2=>ConstGate.T))) setup=(st=rand_state($k))
-    minimum(t).time
+@task "H" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(put(k, 2=>H))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
 end
 
-@info "benchmarking CNOT"
-benchmarks["CNOT"] = map(nqubits) do k
-    t = @benchmark apply!(st, $(control(k, 2, 3=>X))) setup=(st=rand_state($k))
-    minimum(t).time
+@task "T" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(put(k, 2=>T))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
 end
 
-@info "benchmarking CRx"
-benchmarks["CRx(0.5)"] = map(nqubits) do k
-    t = @benchmark apply!(st, $(control(k, 2, 3=>Rx(0.5)))) setup=(st=rand_state($k))
-    minimum(t).time
+@task "CNOT" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(control(k, 2, 3=>X))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
 end
 
-@info "benchmarking Toffoli"
-benchmarks["Toffoli"] = map(nqubits) do k
-    t = @benchmark apply!(st, $(control(k, (2, 3), 1=>X))) setup=(st=rand_state($k))
-    minimum(t).time
+@task "CRx(0.5)" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(control(k, 2, 3=>Rx(0.5)))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
 end
 
-df = DataFrame(
-    nqubits=nqubits,
-    X=benchmarks["X"],
-    H=benchmarks["H"],
-    T=benchmarks["T"],
-    CNOT=benchmarks["CNOT"],
-    CRx=benchmarks["CRx(0.5)"],
-    Toffoli=benchmarks["Toffoli"])
-
+@task "Toffoli" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(control(k, (2, 3), 1=>X))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
+end
 
 const qcbm_nqubits = 4:25
 
-@info "benchmarking QCBM"
-benchmarks["QCBM"] = map(qcbm_nqubits) do k
-    t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=zero_state($k))
-    minimum(t).time
-end
-
-@info "benchmarking QCBM batch"
-benchmarks["QCBM_batch"] = map(4:15) do k
-    t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=zero_state($k, nbatch=1000))
-    minimum(t).time
-end
-
-@static if "CuYao" in keys(Pkg.installed())
-
-    using CuYao, CuArrays
-
-    @info "benchmarking QCBM cuda"
-    benchmarks["QCBM_cuda"] = map(qcbm_nqubits) do k
-        t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k)))
+@task "QCBM" nqubits=qcbm_nqubits begin
+    map(qcbm_nqubits) do k
+        t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=zero_state($k))
         minimum(t).time
     end
+end
 
-    @info "benchmarking QCBM batch cuda"
-    benchmarks["QCBM_cuda_batch"] = map(4:15) do k
-        t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k, nbatch=1000)))
+@task "QCBM (batch)" nqubits=4:15 begin
+    map(4:15) do k
+        t = @benchmark apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k]))) setup=(st=zero_state($k, nbatch=1000))
         minimum(t).time
+    end
+end
+
+@static if CuArrays.functional()
+
+    @task "QCBM (cuda)" nqubits=qcbm_nqubits begin
+        map(qcbm_nqubits) do k
+            t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k)))
+            minimum(t).time
+        end
+    end
+
+    @task "QCBM (batch) (cuda)" nqubits=4:15 begin
+        map(4:15) do k
+            t = @benchmark CuArrays.@sync(apply!(st, $(build_circuit(k, 9, [(i, mod1(i+1, k)) for i in 1:k])))) setup=(st=cu(zero_state($k, nbatch=1000)))
+            minimum(t).time
+        end
     end
 
 end
 
-@static if "CuYao" in keys(Pkg.installed())
 
-df_qcbm = DataFrame(
-    nqubits=qcbm_nqubits,
-    QCBM=benchmarks["QCBM"],
-    QCBM_cuda=benchmarks["QCBM_cuda"],
-)
-
-df_batch_qcbm = DataFrame(
-    nqubits=4:15,
-    QCBM_batch=benchmarks["QCBM_batch"],
-    QCBM_cuda_batch=benchmarks["QCBM_cuda_batch"]
-)
-
+if !ispath("data")
+    mkpath("data")
 end
 
-CSV.write(ARGS[1], df)
-CSV.write(ARGS[2], df_qcbm)
-CSV.write(ARGS[3], df_batch_qcbm)
+write("data/data.json", JSON.json(benchmarks))

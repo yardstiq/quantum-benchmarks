@@ -1,143 +1,122 @@
-#!/bin/sh
-FILE_PATH=$(readlink -f "$0")
-BASE_PATH=$(dirname "$FILE_PATH")
-ROOT_PATH="$BASE_PATH/.."
-BENCHMARK_DATA_PATH="$ROOT_PATH/data"
-BENCHMARK_LOG_PATH="$ROOT_PATH/log"
-NCORES=$(grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $4}')
+#!/bin/bash
+BINDIR="$(dirname $0)"
+. $BINDIR/utils/constants.sh
+. $BINDIR/utils/colors.sh
 
-# benchmark pytest-benchmark based scripts
-benchmark_pytest() {
-    #source activate ./env
-    # set threads to one
-    echo "Benchmark pytest: $1 ($(date +"%Y-%m-%d-%H-%M-%S"))"
+# variables
+PROJECTS=()
+
+function run_benchmark {
     export OMP_NUM_THREADS=1
     export MKL_NUM_THREADS=1
     export MKL_DOMAIN_NUM_THREADS=1
-    
-    mkdir -p "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
-    pytest "$1/benchmarks.py" --benchmark-storage="file://$BENCHMARK_DATA_PATH" \
-        --benchmark-save=$1 --benchmark-sort=name --benchmark-min-rounds=5 \
-        > "$BENCHMARK_LOG_PATH/$1.out" 2> "$BENCHMARK_LOG_PATH/$1.err"
-}
-
-# benchmark Julia BenchmarkTools based scripts
-benchmark_julia() {
-    echo "Bechnmark julia: yao ($(date +"%Y-%m-%d-%H-%M-%S"))"
     export JULIA_NUM_THREADS=1
-    export OMP_NUM_THREADS=1
-    export MKL_NUM_THREADS=1
 
-    mkdir -p "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
-    julia --project yao/benchmarks.jl\
-        $BENCHMARK_DATA_PATH/yao.csv\
-        $BENCHMARK_DATA_PATH/yao_qcbm.csv\
-        $BENCHMARK_DATA_PATH/yao_qcbm_batch.csv\
-        > "$BENCHMARK_LOG_PATH/yao.out" 2> "$BENCHMARK_LOG_PATH/yao.err"
+    printf "${BLUE}benchmarking:${NC} ${BOLD}$1${NC}\n"
+    (cd $1 && sh benchmarks.sh)
 }
 
-# benchmark misc
-benchmark_misc() {
-    echo "Benchmark misc: $1 ($(date +"%Y-%m-%d-%H-%M-%S"))"
-    mkdir -p "$BENCHMARK_LOG_PATH" "$BENCHMARK_DATA_PATH"
-    "$1/benchmarks.sh" "$BENCHMARK_DATA_PATH" > "$BENCHMARK_LOG_PATH/$1.out" 2> "$BENCHMARK_LOG_PATH/$1.err"
-
-}
-
-install() {
-    # install Python dependencies
-    echo "creating local virtualenv"
-    conda create -y --prefix=env python=3.8
-    echo "activating virtualenv"
-    conda activate ./env
-    echo "installing Python dependencies"
-    conda install -p env -y numpy matplotlib mkl-service pytest pybind11 pytest-benchmark ipython cffi
-    ./env/bin/pip install qiskit qiskit-aer-gpu cirq projectq pyquest-cffi pennylane qulacs-gpu
-
-    # install Julia dependencies
-    echo "installing Julia dependencies"
-    julia --project -e "using Pkg; Pkg.instantiate()"
-    
-    # install jku-ddsim from github
-    echo "installing jkq-ddsim dependencies"
-    jkq-ddsim/install.sh
-}
-
-benchmark_all_parallel(){
-    # start benchmark
-    benchmark_pytest cirq       &
-    benchmark_pytest qiskit     &
-    benchmark_pytest projectq   &
-    benchmark_pytest pennylane  &
-    benchmark_pytest quest      &
-    benchmark_pytest qulacs     &
-    benchmark_julia             &
-    benchmark_misc jkq-ddsim    &
-}
-
-benchmark_all(){
-    # start benchmark
-    benchmark_pytest cirq
-    benchmark_pytest qiskit
-    benchmark_pytest projectq
-    benchmark_pytest pennylane
-    benchmark_pytest quest
-    benchmark_pytest qualacs
-    benchmark_julia
-    benchmark_misc jkq-ddsim
-}
-
-benchmark(){
+function setup {
     case $1 in
-        yao) (cd $ROOT_PATH && benchmark_julia)
-        ;;
-        jkq-ddsim) (cd $ROOT_PATH && benchmark_misc $1)
-        ;;
-        *) (cd $ROOT_PATH && benchmark_pytest $1)
+        essentials)     setup_essentials
+                        ;;
+        *)              printf "${BLUE}setting up:${NC} ${BOLD}$1${NC}\n"
+                        (cd $1 && bash setup.sh)
+                        ;;
     esac
 }
 
-help() {
-    echo "
-    Quantum Circuit Simulation Benchmark
+function setup_essentials {
+    if [ ! -f "$CONDA" ]; then
+        bash "$BINDIR/install_conda.sh"
+    fi
 
-install                 install dependencies
-run [package]           run benchmark of [package] or run all benchmarks by default
-benchmark               benchmark in sequence to make sure every benchmark is run in the same envrionment
-parallel [package]      spawn [package] benchmark in a process or run all benchmark in parallel by default
-help                    print this message
-"
+    if [ ! -f "$JULIA" ]; then
+        bash "$BINDIR/install_julia.sh"
+    fi
 }
 
-single_arg() {
-    case $1 in
-        install) (cd $ROOT_PATH && install)
-        ;;
-        run) (cd $ROOT_PATH && benchmark)
-        ;;
-        benchmark) (cd $ROOT_PATH && benchmark_all)
-        ;;
-        parallel) (cd $ROOT_PATH && benchmark_all_parallel)
-        ;;
-        *) help
-        ;;
+function setup_projects {
+    setup essentials
+    for pj in "${PROJECTS[@]}"
+    do
+        setup $pj
+    done
+}
+
+function scan_projects {
+    for d in $ROOT_PATH/*/ ; do
+        if [ -e $d/benchmarks.sh ]; then
+            PROJECTS+=($d)
+        fi
+    done
+}
+
+function run_projects {
+    project_ptr=0
+    len=${#PROJECTS[@]}
+    while [[ $project_ptr < $len ]]
+    do
+        pids=()
+        for i in {1...$NCORES}
+        do
+            run_benchmark ${PROJECTS[project_ptr]} &
+            pids+=($!)
+            project_ptr=$(( project_ptr+1 ))
+        done
+
+        # wait
+    done
+}
+
+function info {
+    printf "CPU CORES: $NCORES\n"
+}
+
+function help {
+    printf """
+Quantum Circuit Simulation Benchmark.
+Copyright (C) 2020 Xiu-Zhe (Roger) Luo <rogerluo.rl18@gmail.com>
+Distributed under terms of the MIT license.
+
+${BOLD}COMMAND${NC}
+
+    bin/benchmark <options> args...
+
+
+${BOLD}OPTIONS${NC}
+
+setup [project]         setup the given project, if project is not specified,
+                        all projects in this benchmark will be setup. If the project
+                        is essentials, it will try to install all essentials dependencies
+
+run [project]           run the given project benchmark, if project is not
+                        specified, all projects in this benchmark will be
+                        setup.
+
+info                    print current machine info.
+
+help                    print this message.
+"""
+}
+
+function main {
+    case $#$1 in
+        1setup)     scan_projects && setup_projects
+                    ;;
+        1run)       scan_projects && run_projects
+                    ;;
+        2setup)     setup $2
+                    ;;
+        2run)       run_benchmark $2
+                    ;;
+        1info)      info
+                    ;;
+        *)          help
+                    ;;
     esac
 }
 
-double_arg() {
-    case $1 in
-        run) benchmark $2
-        ;;
-        parallel) benchmark $2 &
-        ;;
-        *) help
-    esac
-}
-
-case $# in
-    1) single_arg $1
-    ;;
-    2) double_arg $1 $2
-    ;;
-    *) help
-esac
+# scan_projects
+# run_projects
+main "$@"

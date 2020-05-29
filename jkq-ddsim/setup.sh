@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
-FILE_PATH=$(readlink -f "$0")
-BASE_PATH=$(dirname "$FILE_PATH")
+FILE_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+ROOT_PATH=`dirname $FILE_PATH`
+BINDIR="$ROOT_PATH/bin"
+. $BINDIR/utils/constants.sh
 
-cd "$BASE_PATH"
+# cd "$BASE_PATH"
 
 if [ ! -d "ddsim" ]; then
     git clone --branch "v1.0.1a" --depth 1  https://github.com/iic-jku/ddsim ddsim
