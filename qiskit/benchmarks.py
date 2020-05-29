@@ -1,7 +1,6 @@
 import pytest
 import mkl
 import uuid
-from numba import cuda
 from qiskit import Aer, QuantumCircuit
 from qiskit.compiler import transpile, assemble
 mkl.set_num_threads(1)
@@ -13,22 +12,17 @@ default_options = {
     "max_parallel_threads": 1  # Disable OpenMP parallelization for benchmarks
 }
 
-# def _execute(circuit, backend_options=None):
-#     experiment = transpile(circuit, backend)
-#     qobj = assemble(experiment, shots=1)
-#     qobj_aer = backend._format_qobj(qobj, backend_options, None)
-#     return backend._controller(qobj_aer)
-
-def _execute(controller, qobj_aer):
-    controller(qobj_aer)
-    cuda.synchronize()
-    return
+def _execute(circuit, backend_options=None):
+    experiment = transpile(circuit, backend)
+    qobj = assemble(experiment, shots=1)
+    qobj_aer = backend._format_qobj(qobj, backend_options, None)
+    return backend._controller(qobj_aer)
 
 def native_execute(benchmark, circuit, backend_options=None):
     experiment = transpile(circuit, backend)
     qobj = assemble(experiment, shots=1)
     qobj_aer = backend._format_qobj(qobj, backend_options, None)
-    benchmark(_execute, backend._controller, qobj_aer)
+    benchmark(backend._controller, qobj_aer)
 
 def run_bench(benchmark, nqubits, gate, locs=(1, )):
     qc = QuantumCircuit(nqubits)
@@ -69,37 +63,37 @@ def generate_qcbm_circuit(nqubits, depth, pairs):
 
 nqubit_list = range(4, 26)
 
-# @pytest.mark.parametrize('nqubits', nqubit_list)
-# def test_X(benchmark, nqubits):
-#     benchmark.group = "X"
-#     run_bench(benchmark, nqubits, 'x')
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_X(benchmark, nqubits):
+    benchmark.group = "X"
+    run_bench(benchmark, nqubits, 'x')
 
-# @pytest.mark.parametrize('nqubits', nqubit_list)
-# def test_H(benchmark, nqubits):
-#     benchmark.group = "H"
-#     run_bench(benchmark, nqubits, 'h')
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_H(benchmark, nqubits):
+    benchmark.group = "H"
+    run_bench(benchmark, nqubits, 'h')
 
-# @pytest.mark.parametrize('nqubits', nqubit_list)
-# def test_T(benchmark, nqubits):
-#     benchmark.group = "T"
-#     run_bench(benchmark, nqubits, 't')
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_T(benchmark, nqubits):
+    benchmark.group = "T"
+    run_bench(benchmark, nqubits, 't')
 
-# @pytest.mark.parametrize('nqubits', nqubit_list)
-# def test_CX(benchmark, nqubits):
-#     benchmark.group = "CNOT"
-#     run_bench(benchmark, nqubits, 'cx', (1, 2))
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_CX(benchmark, nqubits):
+    benchmark.group = "CNOT"
+    run_bench(benchmark, nqubits, 'cx', (1, 2))
 
-# @pytest.mark.parametrize('nqubits', nqubit_list)
-# def test_Toffoli(benchmark, nqubits):
-#     benchmark.group = "Toffoli"
-#     run_bench(benchmark, nqubits, 'ccx', (2, 3, 0))
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_Toffoli(benchmark, nqubits):
+    benchmark.group = "Toffoli"
+    run_bench(benchmark, nqubits, 'ccx', (2, 3, 0))
 
-# @pytest.mark.parametrize('nqubits', nqubit_list)
-# def test_qcbm(benchmark, nqubits):
-#     benchmark.group = "QCBM"
-#     pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
-#     circuit = generate_qcbm_circuit(nqubits, 9, pairs)
-#     native_execute(benchmark, circuit, default_options)
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_qcbm(benchmark, nqubits):
+    benchmark.group = "QCBM"
+    pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
+    circuit = generate_qcbm_circuit(nqubits, 9, pairs)
+    native_execute(benchmark, circuit, default_options)
 
 # NOTE: The following benchmark requires installing Qiskit Aer with GPU
 # which is currently only available for Linux
