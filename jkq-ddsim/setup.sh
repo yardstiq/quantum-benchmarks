@@ -13,6 +13,6 @@ if [ ! -d "ddsim" ]; then
 fi
 
 
-cmake -DGIT_SUBMODULE=OFF -DBENCHMARK_ENABLE_LTO=true -DCMAKE_BUILD_TYPE=Release -S ddsim -B build
+cmake -DGIT_SUBMODULE=OFF -DBENCHMARK_ENABLE_LTO=true -DCMAKE_BUILD_TYPE=Release -S ddsim -B ddsim/build
 cmake --build build --config Release --target ddsim_benchmark
 
