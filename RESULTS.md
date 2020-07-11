@@ -48,7 +48,7 @@ GPU: Tesla V100
 | Cirq                 | 0.7.0   | full amplitudes   |
 | PennyLane            | 0.8.1   | full amplitudes   |
 | QuEST (pyquest-cffi) | 0.1.1   | full amplitudes   |
-| JKQ DDSIM¹           | v1.0.1a | decision diagrams |
+| JKQ DDSIM¹           | v1.1    | decision diagrams |
 
 ¹ This benchmark uses the mean estimator for the timings. To get accurate timings when recreating the results, please ensure no other other applications run concurrently.
 
