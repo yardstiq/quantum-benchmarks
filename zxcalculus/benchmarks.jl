@@ -17,7 +17,7 @@ function run_benchmark()
     for circ_name in filenames
         zxd = zx_load_qasm(circ_name)
         b = @benchmark phase_teleportation($zxd)
-        println(circ_name, "\t time = ", (mean(b).time / 1e9))
+        println(circ_name, "\t time = ", (mean(b).time / 1e9), tcount(phase_teleportation(zxd)))
         bms[circ_name] = b
     end
     return bms
