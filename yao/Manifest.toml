@@ -6,11 +6,17 @@ git-tree-sha1 = "051c95d6836228d120f5f4b984dd5aba1624f716"
 uuid = "621f4979-c628-5d54-868e-fcf4e3e8185c"
 version = "0.5.0"
 
+[[AbstractTrees]]
+deps = ["Markdown"]
+git-tree-sha1 = "33e450545eaf7699da1a6e755f9ea65f14077a45"
+uuid = "1520ce14-60c1-5f80-bbc7-55ef81b5835c"
+version = "0.3.3"
+
 [[Adapt]]
 deps = ["LinearAlgebra"]
-git-tree-sha1 = "c88cfc7f9c1f9f8633cddf0b56e86302b70f64c5"
+git-tree-sha1 = "fd04049c7dd78cfef0b06cdc1f0f181467655712"
 uuid = "79e6a3ab-5dfb-504d-930d-738a2a938a0e"
-version = "1.0.1"
+version = "1.1.0"
 
 [[Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -23,15 +29,15 @@ version = "0.5.0"
 
 [[BinaryProvider]]
 deps = ["Libdl", "Logging", "SHA"]
-git-tree-sha1 = "428e9106b1ff27593cbd979afac9b45b82372b8c"
+git-tree-sha1 = "ecdec412a9abc8db54c0efc5548c64dfce072058"
 uuid = "b99e7846-7c00-51b0-8f62-c81ae34c0232"
-version = "0.5.9"
+version = "0.5.10"
 
 [[BitBasis]]
-deps = ["LinearAlgebra", "LuxurySparse", "StaticArrays"]
-git-tree-sha1 = "67850a58d0a1838afc03c16bd2d795f4eed36475"
+deps = ["LinearAlgebra", "StaticArrays"]
+git-tree-sha1 = "c22d181d2cfa0f649295d9ee8316bc105cd05280"
 uuid = "50ba71b6-fa0f-514d-ae9a-0916efc90dcf"
-version = "0.6.2"
+version = "0.7.0"
 
 [[CEnum]]
 git-tree-sha1 = "1b77a77c3b28e0b3f413f7567c9bb8dd9bdccd14"
@@ -52,9 +58,9 @@ version = "6.3.0"
 
 [[CUDAnative]]
 deps = ["Adapt", "BinaryProvider", "CEnum", "CUDAapi", "CUDAdrv", "ExprTools", "GPUCompiler", "LLVM", "Libdl", "Pkg", "Printf"]
-git-tree-sha1 = "ac86db2b05fdfec96b011e25a504ffe7476e8a68"
+git-tree-sha1 = "7902d4cdb1b13084ffc88565c20867525765f4cc"
 uuid = "be33ccc6-a3ff-5ff2-a52e-74243cff1e17"
-version = "3.1.0"
+version = "3.2.0"
 
 [[CacheServers]]
 deps = ["Distributed", "Test"]
@@ -64,27 +70,27 @@ version = "0.2.0"
 
 [[CodeTracking]]
 deps = ["InteractiveUtils", "UUIDs"]
-git-tree-sha1 = "cab4da992adc0a64f63fa30d2db2fd8bec40cab4"
+git-tree-sha1 = "04af584df8b7974af7bf9ac08ce6208ddec7c004"
 uuid = "da1fd8a2-8d9e-5ec2-8556-3022fb5608a2"
-version = "0.5.11"
+version = "1.0.1"
 
 [[Cthulhu]]
-deps = ["CodeTracking", "InteractiveUtils", "REPL", "UUIDs", "Unicode"]
-git-tree-sha1 = "f3643e78353199d3097821e806348bd83f364155"
+deps = ["CodeTracking", "FoldingTrees", "InteractiveUtils", "REPL", "UUIDs", "Unicode"]
+git-tree-sha1 = "7312835f32e8dfb2ed49c869e102c7d5fa121614"
 uuid = "f68482b8-f384-11e8-15f7-abe071a5a75f"
-version = "1.1.1"
+version = "1.2.2"
 
 [[CuArrays]]
 deps = ["AbstractFFTs", "Adapt", "CEnum", "CUDAapi", "CUDAdrv", "CUDAnative", "DataStructures", "GPUArrays", "Libdl", "LinearAlgebra", "MacroTools", "NNlib", "Pkg", "Printf", "Random", "Reexport", "Requires", "SparseArrays", "Statistics", "TimerOutputs"]
-git-tree-sha1 = "870a4ac61e99c36f42d15e496fd290c841541d90"
+git-tree-sha1 = "55ab24cc3fcf96f74246cf7e14bc9c2f818facbc"
 uuid = "3a865a2d-5b23-5a0f-bc46-62713ec82fae"
-version = "2.2.0"
+version = "2.2.2"
 
 [[CuYao]]
 deps = ["BitBasis", "CUDAnative", "CuArrays", "GPUArrays", "LinearAlgebra", "LuxurySparse", "Random", "Reexport", "StaticArrays", "StatsBase", "TupleTools", "Yao"]
-git-tree-sha1 = "254735753349ee1c56469e8424c1ca047c49c505"
+git-tree-sha1 = "22222f86799e0b1e9cf5113cc6d7d3522a5855f0"
 uuid = "b48ca7a8-dd42-11e8-2b8e-1b7706800275"
-version = "0.2.2"
+version = "0.2.3"
 
 [[DataAPI]]
 git-tree-sha1 = "176e23402d80e7743fc26c19c681bfb11246af32"
@@ -93,9 +99,9 @@ version = "1.3.0"
 
 [[DataStructures]]
 deps = ["InteractiveUtils", "OrderedCollections"]
-git-tree-sha1 = "7d7578b00789cf16c5f68fad71868e773edd58a2"
+git-tree-sha1 = "88d48e133e6d3dd68183309877eac74393daa7eb"
 uuid = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
-version = "0.17.16"
+version = "0.17.20"
 
 [[Dates]]
 deps = ["Printf"]
@@ -106,27 +112,27 @@ deps = ["Random", "Serialization", "Sockets"]
 uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[ExponentialUtilities]]
-deps = ["LinearAlgebra", "Printf", "SparseArrays"]
-git-tree-sha1 = "1672dedeacaab85345fd359ad56dde8fb5d48a45"
+deps = ["LinearAlgebra", "Printf", "Requires", "SparseArrays"]
+git-tree-sha1 = "4e7db935d55d4a11acb74856ee6cb113a7808c6f"
 uuid = "d4d017d3-3776-5f7e-afef-a10c40355c18"
-version = "1.6.0"
+version = "1.8.0"
 
 [[ExprTools]]
 git-tree-sha1 = "6f0517056812fd6aa3af23d4b70d5325a2ae4e95"
 uuid = "e2ba6199-217a-4e67-a87a-7c52f15ade04"
 version = "0.1.1"
 
-[[FillArrays]]
-deps = ["LinearAlgebra", "Random", "SparseArrays"]
-git-tree-sha1 = "6c89d5b673e59b8173c546c84127e5f623d865f6"
-uuid = "1a297f60-69ca-5386-bcde-b61e274b549b"
-version = "0.8.9"
+[[FoldingTrees]]
+deps = ["AbstractTrees", "REPL"]
+git-tree-sha1 = "e0c730b2d920d29edf8c381695e16c0a28055466"
+uuid = "1eca21be-9b9b-4ed8-839a-6d8ae26b1781"
+version = "1.0.1"
 
 [[GPUArrays]]
 deps = ["AbstractFFTs", "Adapt", "LinearAlgebra", "Printf", "Random", "Serialization"]
-git-tree-sha1 = "ce4579ebffef43e07318e9544ffeb6532c95d04d"
+git-tree-sha1 = "d887693eb1bd5e1fd573262a978745481895ec7d"
 uuid = "0c68f7d7-f131-5f86-a1c3-88cf8149b2d7"
-version = "3.3.0"
+version = "3.4.1"
 
 [[GPUCompiler]]
 deps = ["Cthulhu", "DataStructures", "InteractiveUtils", "LLVM", "Libdl", "TimerOutputs"]
@@ -140,15 +146,15 @@ uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 
 [[JSON]]
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
-git-tree-sha1 = "b34d7cef7b337321e97d22242c3c2b91f476748e"
+git-tree-sha1 = "81690084b6198a2e1da36fcfda16eeca9f9f24e4"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
-version = "0.21.0"
+version = "0.21.1"
 
 [[LLVM]]
 deps = ["CEnum", "Libdl", "Printf", "Unicode"]
-git-tree-sha1 = "93d2e1e960fe47db1a9015e86fad1d47cf67cf59"
+git-tree-sha1 = "d9c6e1efcaa6c2fcd043da812a62b3e489a109a3"
 uuid = "929cbde3-209d-540e-8aea-75f648917ca0"
-version = "1.4.1"
+version = "1.7.0"
 
 [[LegibleLambdas]]
 deps = ["MLStyle", "MacroTools", "Test"]
@@ -171,15 +177,15 @@ uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
 
 [[LuxurySparse]]
-deps = ["FillArrays", "LinearAlgebra", "Random", "SparseArrays", "StaticArrays"]
-git-tree-sha1 = "da795394571b24ceb4ae7700428ff090d993363c"
+deps = ["LinearAlgebra", "Random", "SparseArrays", "StaticArrays"]
+git-tree-sha1 = "3dd487d46c79e5d0ab843580d9333737b60cfee4"
 uuid = "d05aeea4-b7d4-55ac-b691-9e7fabb07ba2"
-version = "0.6.3"
+version = "0.6.4"
 
 [[MLStyle]]
-git-tree-sha1 = "67f9a88611bc79f992aa705d9bbc833a2547dec7"
+git-tree-sha1 = "937eda9ce36fcce082a42edd7181c8d23f4eb550"
 uuid = "d8e11817-5142-5d16-987a-aa16d5891078"
-version = "0.3.1"
+version = "0.4.6"
 
 [[MacroTools]]
 deps = ["Markdown", "Random"]
@@ -193,29 +199,29 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 
 [[Missings]]
 deps = ["DataAPI"]
-git-tree-sha1 = "de0a5ce9e5289f27df672ffabef4d1e5861247d5"
+git-tree-sha1 = "ed61674a0864832495ffe0a7e889c0da76b0f4c8"
 uuid = "e1d29d7a-bbdc-5cf2-9ac0-f12de2c33e28"
-version = "0.4.3"
+version = "0.4.4"
 
 [[Mmap]]
 uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 
 [[NNlib]]
-deps = ["BinaryProvider", "Libdl", "LinearAlgebra", "Requires", "Statistics"]
-git-tree-sha1 = "d9f196d911f55aeaff11b11f681b135980783824"
+deps = ["Libdl", "LinearAlgebra", "Pkg", "Requires", "Statistics"]
+git-tree-sha1 = "8ec4693a5422f0b064ce324f59351f24aa474893"
 uuid = "872c559c-99b0-510c-b3b7-b6c96a88d5cd"
-version = "0.6.6"
+version = "0.7.4"
 
 [[OrderedCollections]]
-git-tree-sha1 = "12ce190210d278e12644bcadf5b21cbdcf225cd3"
+git-tree-sha1 = "293b70ac1780f9584c89268a6e2a560d938a7065"
 uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
-version = "1.2.0"
+version = "1.3.0"
 
 [[Parsers]]
 deps = ["Dates", "Test"]
-git-tree-sha1 = "f0abb338b4d00306500056a3fd44c221b8473ef2"
+git-tree-sha1 = "8077624b3c450b15c087944363606a6ba12f925e"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "1.0.4"
+version = "1.0.10"
 
 [[Pkg]]
 deps = ["Dates", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
@@ -241,9 +247,9 @@ version = "0.2.0"
 
 [[Requires]]
 deps = ["UUIDs"]
-git-tree-sha1 = "d37400976e98018ee840e0ca4f9d20baa231dc6b"
+git-tree-sha1 = "8c08d0c7812169e438a8478dae2a529377ad13f7"
 uuid = "ae029012-a4dd-5104-9daa-d747884805df"
-version = "1.0.1"
+version = "1.0.2"
 
 [[SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
@@ -253,9 +259,9 @@ uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 
 [[SimpleTraits]]
 deps = ["InteractiveUtils", "MacroTools"]
-git-tree-sha1 = "2ee666b24ab8be6a922f9d6c11a86e1a703a7dda"
+git-tree-sha1 = "daf7aec3fe3acb2131388f93a4c409b8c7f62226"
 uuid = "699a6c99-e7fa-54fc-8d76-47d257e15c1d"
-version = "0.9.2"
+version = "0.9.3"
 
 [[Sockets]]
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
@@ -272,9 +278,9 @@ uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 
 [[StaticArrays]]
 deps = ["LinearAlgebra", "Random", "Statistics"]
-git-tree-sha1 = "5c06c0aeb81bef54aed4b3f446847905eb6cbda0"
+git-tree-sha1 = "016d1e1a00fabc556473b07161da3d39726ded35"
 uuid = "90137ffa-7385-5640-81b9-e52037218182"
-version = "0.12.3"
+version = "0.12.4"
 
 [[Statistics]]
 deps = ["LinearAlgebra", "SparseArrays"]
@@ -282,9 +288,9 @@ uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 
 [[StatsBase]]
 deps = ["DataAPI", "DataStructures", "LinearAlgebra", "Missings", "Printf", "Random", "SortingAlgorithms", "SparseArrays", "Statistics"]
-git-tree-sha1 = "a6102b1f364befdb05746f386b67c6b7e3262c45"
+git-tree-sha1 = "d72a47c47c522e283db774fc8c459dd5ed773710"
 uuid = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
-version = "0.33.0"
+version = "0.33.1"
 
 [[Test]]
 deps = ["Distributed", "InteractiveUtils", "Logging", "Random"]
@@ -292,9 +298,9 @@ uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [[TimerOutputs]]
 deps = ["Printf"]
-git-tree-sha1 = "0cc8db57cb537191b02948d4fabdc09eb7f31f98"
+git-tree-sha1 = "f458ca23ff80e46a630922c555d838303e4b9603"
 uuid = "a759f4b9-e2f1-59dc-863e-4aeb61b1ea8f"
-version = "0.5.5"
+version = "0.5.6"
 
 [[TupleTools]]
 git-tree-sha1 = "62a7a6cd5a608ff71cecfdb612e67a0897836069"
@@ -310,30 +316,35 @@ uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 
 [[Yao]]
 deps = ["BitBasis", "Reexport", "YaoArrayRegister", "YaoBase", "YaoBlocks", "YaoSym"]
-git-tree-sha1 = "0690ca83f9175775a11ffe2aef77eaa580f1e9c5"
+git-tree-sha1 = "19803001db1fbcad77421e749eb28c086ef40ee9"
 uuid = "5872b779-8223-5990-8dd0-5abbb0748c8c"
-version = "0.6.2"
+version = "0.6.3"
+
+[[YaoAPI]]
+git-tree-sha1 = "dc4edfcda2e59fd2624f84941da040a4e30220e3"
+uuid = "0843a435-28de-4971-9e8b-a9641b2983a8"
+version = "0.1.0"
 
 [[YaoArrayRegister]]
 deps = ["BitBasis", "LinearAlgebra", "LuxurySparse", "Random", "StaticArrays", "StatsBase", "TupleTools", "YaoBase"]
-git-tree-sha1 = "e85fe1fc25f02992999bff68226a16d924650ff5"
+git-tree-sha1 = "62b072d827c67223b8875143eb07e841ad979add"
 uuid = "e600142f-9330-5003-8abb-0ebd767abc51"
-version = "0.6.2"
+version = "0.7.1"
 
 [[YaoBase]]
-deps = ["BitBasis", "LegibleLambdas", "LinearAlgebra", "LuxurySparse", "MLStyle", "MacroTools", "Random", "SparseArrays", "Test", "TupleTools"]
-git-tree-sha1 = "8fa3148d67100e683675e3913ea8ec48a1840043"
+deps = ["BitBasis", "LegibleLambdas", "LinearAlgebra", "LuxurySparse", "MLStyle", "Random", "Reexport", "SparseArrays", "TupleTools", "YaoAPI"]
+git-tree-sha1 = "17d71e0ff1576c97b6990aa7ae24be312f0d0ab4"
 uuid = "a8f54c17-34bc-5a9d-b050-f522fe3f755f"
-version = "0.13.3"
+version = "0.14.1"
 
 [[YaoBlocks]]
 deps = ["BitBasis", "CacheServers", "ExponentialUtilities", "InteractiveUtils", "LegibleLambdas", "LinearAlgebra", "LuxurySparse", "MLStyle", "Random", "SimpleTraits", "SparseArrays", "StaticArrays", "StatsBase", "TupleTools", "YaoArrayRegister", "YaoBase"]
-git-tree-sha1 = "875e9d7ac65e784cb80678cb956cec5ee0576487"
+git-tree-sha1 = "cc2be2974ff92d9c8ae97bd72b09fcdba776244e"
 uuid = "418bc28f-b43b-5e0b-a6e7-61bbc1a2c1df"
-version = "0.10.3"
+version = "0.11.0"
 
 [[YaoSym]]
 deps = ["BitBasis", "LinearAlgebra", "LuxurySparse", "Requires", "SparseArrays", "YaoArrayRegister", "YaoBase", "YaoBlocks"]
-git-tree-sha1 = "2e651562cfbd5a814f47da86dea167dde0a95da0"
+git-tree-sha1 = "019e4aae62f8cf2f97e0960c9f64154681b31506"
 uuid = "3b27209a-d3d6-11e9-3c0f-41eb92b2cb9d"
-version = "0.4.2"
+version = "0.4.5"
