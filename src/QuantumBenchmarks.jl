@@ -79,8 +79,7 @@ function project_env(path::String)
     PROJECT_ENV["BENCHMARK_LOG_PATH"] = joinpath(path, "log")
     PROJECT_ENV["PYTEST_BENCHMARK"] = raw"""
     ./env/bin/pytest benchmarks.py --benchmark-storage="file://data" \
-        --benchmark-save="data" --benchmark-sort=name --benchmark-min-rounds=5 \
-        > "log.out" 2> "log.err"
+        --benchmark-save="data" --benchmark-sort=name --benchmark-min-rounds=5
     """
     return PROJECT_ENV
 end
@@ -120,7 +119,7 @@ function execute_project(project::String)
     script = check_script(project, "benchmarks")
 
     cd(project) do
-        Base.run(set_project_env(`./benchmarks`, project))
+        Base.run(pipeline(set_project_env(`./benchmarks`, project); stdout="log.out", stderr="log.err"))
     end
 end
 
