@@ -44,7 +44,7 @@ conda_path(xs...) = PATH.project(QuantumBenchmarks, "bin", "conda", xs...)
 conda_exe() = conda_path("bin", "conda")
 conda_cmd(commands::String...) = Cmd([conda_exe(), commands...])
 conda_cmd(cmd::Cmd) = conda_cmd(cmd.exec...)
-conda(commands...) = Base.run(conda_cmd(commands))
+conda(commands...) = Base.run(conda_cmd(commands...))
 
 function setup_conda()
     installer = PATH.project(QuantumBenchmarks, "bin", "miniconda.sh")
