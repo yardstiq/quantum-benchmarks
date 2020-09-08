@@ -201,6 +201,27 @@ run a benchmark project or all benchmark projects under `root` directory.
 end
 
 """
+setup a benchmark project or all benchmark projects under `root` directory.
+
+# Arguments
+
+- `project`: name of the project, optional.
+
+# Options
+
+- `--root <path>`: path of the root directory, default is this package directory.
+"""
+@cast function setup(project::String=""; root::String=PATH.project(QuantumBenchmarks))
+    if isempty(project)
+        for each in scan_projects(root)
+            setup_project(joinpath(root, each))
+        end
+    else
+        setup_project(joinpath(root, project))
+    end
+end
+
+"""
 print version info of given benchmark project.
 
 # Arguments
