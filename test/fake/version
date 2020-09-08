@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "fake=0.1.0"
+echo "foo=0.2.0"
+echo "c=0.3.0"

@@ -1,0 +1,3 @@
+#!/bin/bash
+$ACTIVATE ./env
+pytest_benchmark

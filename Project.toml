@@ -1,9 +1,12 @@
-name = "Benchmark"
+name = "QuantumBenchmarks"
 uuid = "82c275cb-58a2-4ee6-a965-cd7cf8f0542c"
 authors = ["Roger-luo"]
 version = "0.1.0"
 
 [deps]
+Comonicon = "863f3e99-da2a-4334-8734-de3dacbe5542"
+Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [compat]
