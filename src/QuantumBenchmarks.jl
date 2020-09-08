@@ -212,6 +212,10 @@ setup a benchmark project or all benchmark projects under `root` directory.
 - `--root <path>`: path of the root directory, default is this package directory.
 """
 @cast function setup(project::String=""; root::String=PATH.project(QuantumBenchmarks))
+    if !ispath(conda_path())
+        setup_conda()
+    end
+    
     if isempty(project)
         for each in scan_projects(root)
             setup_project(joinpath(root, each))
