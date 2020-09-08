@@ -38,10 +38,9 @@ def build_circuit(nqubits, depth, pairs):
     last_rotation(circuit, nqubits)
     return circuit
 
-
-def bench_gate(benchmark, nqubits, gate, locs):
+def bench_gate(benchmark, nqubits, gate, args):
     st = QuantumState(nqubits)
-    g = gate(*locs)
+    g = gate(*args)
     benchmark(g.update_quantum_state, st)
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
@@ -58,6 +57,16 @@ def test_T(benchmark, nqubits):
 def test_H(benchmark, nqubits):
     benchmark.group = "H"
     bench_gate(benchmark, nqubits, H, (3, ))
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_Rx(benchmark, nqubits):
+    benchmark.group = "Rx"
+    bench_gate(benchmark, nqubits, ParametricRX, (3, 0.5))
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_Rz(benchmark, nqubits):
+    benchmark.group = "Rz"
+    bench_gate(benchmark, nqubits, ParametricRZ, (3, 0.5))
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_CNOT(benchmark, nqubits):

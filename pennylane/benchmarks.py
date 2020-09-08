@@ -73,7 +73,7 @@ def _raise_exception(self):
 
 
 class GateTest:
-    def __init__(self, n, gate, wires, dev="default.qubit"):
+    def __init__(self, n, gate, wires, dev="default.qubit", args=()):
         self.n = n
         self.dev = qml.device(dev, wires=n)
 
@@ -81,13 +81,13 @@ class GateTest:
         # which would skew the results for gate tests
         self.dev.pre_measure = _raise_exception
         self.gate = gate
+        self.args = args
         self.wires = wires
 
     def __call__(self):
         @qml.qnode(self.dev)
         def gate_circuit():
-            self.gate(wires=self.wires)
-
+            self.gate(*self.args, wires=self.wires)
             return qml.expval(qml.PauliZ(0))
 
         def eval():
@@ -113,23 +113,32 @@ def test_QCBM(benchmark, nqubits):
 @pytest.mark.parametrize("nqubits", nqubits_list)
 def test_X(benchmark, nqubits):
     benchmark.group = "X"
-    gate_test = GateTest(nqubits, qml.PauliX, [0])
+    gate_test = GateTest(nqubits, qml.PauliX, [2])
     benchmark(gate_test)
-
 
 @pytest.mark.parametrize("nqubits", nqubits_list)
 def test_H(benchmark, nqubits):
     benchmark.group = "H"
-    gate_test = GateTest(nqubits, qml.Hadamard, [0])
+    gate_test = GateTest(nqubits, qml.Hadamard, [2])
     benchmark(gate_test)
-
 
 @pytest.mark.parametrize("nqubits", nqubits_list)
 def test_T(benchmark, nqubits):
     benchmark.group = "T"
-    gate_test = GateTest(nqubits, qml.T, [0])
+    gate_test = GateTest(nqubits, qml.T, [2])
     benchmark(gate_test)
 
+@pytest.mark.parametrize("nqubits", nqubits_list)
+def test_Rz(benchmark, nqubits):
+    benchmark.group = "Rz"
+    gate_test = GateTest(nqubits, qml.RZ, [2], args=(0.5, ))
+    benchmark(gate_test)
+
+@pytest.mark.parametrize("nqubits", nqubits_list)
+def test_Rx(benchmark, nqubits):
+    benchmark.group = "Rx"
+    gate_test = GateTest(nqubits, qml.RX, [2], args=(0.5, ))
+    benchmark(gate_test)
 
 @pytest.mark.parametrize("nqubits", nqubits_list)
 def test_CX(benchmark, nqubits):

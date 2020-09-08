@@ -64,6 +64,20 @@ end
     end
 end
 
+@task "Rx(0.5)" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(put(k, 2=>Rx(0.5)))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
+end
+
+@task "Rz(0.5)" nqubits=nqubits begin
+    map(nqubits) do k
+        t = @benchmark apply!(st, $(put(k, 2=>Rz(0.5)))) setup=(st=rand_state($k))
+        minimum(t).time
+    end
+end
+
 @task "CRx(0.5)" nqubits=nqubits begin
     map(nqubits) do k
         t = @benchmark apply!(st, $(control(k, 2, 3=>Rx(0.5)))) setup=(st=rand_state($k))
