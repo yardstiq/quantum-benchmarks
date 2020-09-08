@@ -60,6 +60,12 @@ end
 
 function project_env(path::String)
     PROJECT_ENV = copy(ENV)
+
+    PROJECT_ENV[OMP_NUM_THREADS]="1"
+    PROJECT_ENV[MKL_NUM_THREADS]="1"
+    PROJECT_ENV[MKL_DOMAIN_NUM_THREADS]="1"
+    PROJECT_ENV[JULIA_NUM_THREADS]="1"
+
     PROJECT_ENV["CONDA"] = conda_exe()
     PROJECT_ENV["ACTIVATE"] = conda_path("bin", "activate")
     PROJECT_ENV["CONDA_PATH"] = conda_path()
