@@ -71,6 +71,11 @@ function project_env(path::String)
     PROJECT_ENV["BENCHMARK_PATH"] = path
     PROJECT_ENV["BENCHMARK_DATA_PATH"] = joinpath(path, "data")
     PROJECT_ENV["BENCHMARK_LOG_PATH"] = joinpath(path, "log")
+    PROJECT_ENV["PYTEST_BENCHMARK"] = """
+    ./env/bin/pytest benchmarks.py --benchmark-storage="file://data" \
+        --benchmark-save="data" --benchmark-sort=name --benchmark-min-rounds=5 \
+        > "log.out" 2> "log.err"
+    """
     return PROJECT_ENV
 end
 
