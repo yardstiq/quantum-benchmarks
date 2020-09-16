@@ -191,9 +191,9 @@ run a benchmark project or all benchmark projects under `root` directory.
 
 - `--root <path>`: path of the root directory, default is this package directory.
 """
-@cast function run(project::String=""; root::String=PATH.project(QuantumBenchmarks))
+@cast function run(project::String...; root::String=PATH.project(QuantumBenchmarks))
+    projects = scan_projects(root)
     if isempty(project)
-        projects = scan_projects(root)
         isempty(projects) && return
         length(projects) == 1 && return execute_project(joinpath(root, projects[1]))
 
@@ -205,7 +205,9 @@ run a benchmark project or all benchmark projects under `root` directory.
             end
         end
     else
-        execute_project(joinpath(root, project))
+        for each in project
+            execute_project(joinpath(root, project))
+        end
     end
     return
 end
@@ -253,6 +255,43 @@ print version info of given benchmark project.
         end
     else
         print_version(root, project)
+    end
+end
+
+function clean_project(path::String)
+    data_dir = joinpath(path, "data")
+    log_dir = joinpath(path, "log")
+
+    if isdir(data_dir)
+        @info "removing benchmark data: $data_dir"
+        rm(data_dir; force=true, recursive=true)
+    end
+
+    if isdir(log_dir)
+        @info "removing benchmark log: $log_dir"
+        rm(data_dir; force=true, recursive=true)
+    end
+    return
+end
+
+"""
+clean up given benchmark project.
+
+# Arguments
+
+- `project`: name of the project, optional.
+
+# Options
+
+- `--root <path>`: path of the root directory, default is this package directory.
+"""
+@cast function clean(project::String=""; root::String=PATH.project(QuantumBenchmarks))
+    if isempty(project)
+        for each in scan_projects(root)
+            clean_project(joinpath(root, each))
+        end
+    else
+        clean_project(project)
     end
 end
 
