@@ -24,9 +24,9 @@ def native_execute(benchmark, circuit, backend_options=None):
     qobj_aer = backend._format_qobj(qobj, backend_options, None)
     benchmark(backend._controller, qobj_aer)
 
-def run_bench(benchmark, nqubits, gate, locs=(1, )):
+def run_bench(benchmark, nqubits, gate, args=(3, )):
     qc = QuantumCircuit(nqubits)
-    getattr(qc, gate)(*locs)
+    getattr(qc, gate)(*args)
     native_execute(benchmark, qc, default_options)
 
 def first_rotation(circuit, nqubits):
@@ -77,6 +77,16 @@ def test_H(benchmark, nqubits):
 def test_T(benchmark, nqubits):
     benchmark.group = "T"
     run_bench(benchmark, nqubits, 't')
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_Rx(benchmark, nqubits):
+    benchmark.group = "Rx"
+    run_bench(benchmark, nqubits, 'rx', (0.5, 3))
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_Rz(benchmark, nqubits):
+    benchmark.group = "Rz"
+    run_bench(benchmark, nqubits, 'rz', (0.5, 3))
 
 @pytest.mark.parametrize('nqubits', nqubit_list)
 def test_CX(benchmark, nqubits):

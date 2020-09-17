@@ -3,7 +3,7 @@ BINDIR="$(dirname $0)"
 . $BINDIR/utils/constants.sh
 . $BINDIR/utils/colors.sh
 
-version="1.4"
+version="1.5"
 ARCH=`uname -m`
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then

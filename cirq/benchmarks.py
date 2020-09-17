@@ -68,6 +68,16 @@ def test_T(benchmark, nqubits):
     run_bench(benchmark, nqubits, cirq.T)
 
 @pytest.mark.parametrize('nqubits', nbit_list)
+def test_Rz(benchmark, nqubits):
+    benchmark.group = "Rz"
+    run_bench(benchmark, nqubits, cirq.ZPowGate(exponent=0.5))
+
+@pytest.mark.parametrize('nqubits', nbit_list)
+def test_Rx(benchmark, nqubits):
+    benchmark.group = "Rx"
+    run_bench(benchmark, nqubits, cirq.XPowGate(exponent=0.5))
+
+@pytest.mark.parametrize('nqubits', nbit_list)
 def test_CX(benchmark, nqubits):
     benchmark.group = "CNOT"
     run_bench(benchmark, nqubits, cirq.CNOT, (1, 2))

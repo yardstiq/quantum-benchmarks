@@ -52,6 +52,13 @@ function scan_projects {
     done
 }
 
+function show_projects {
+    for pj in "${PROJECTS[@]}"
+    do
+        echo "$pj"
+    done
+}
+
 function run_projects {
     project_ptr=0
     len=${#PROJECTS[@]}
@@ -76,7 +83,7 @@ function info {
 function help {
     printf """
 Quantum Circuit Simulation Benchmark.
-Copyright (C) 2020 Xiu-Zhe (Roger) Luo <rogerluo.rl18@gmail.com>
+Copyright (C) 2020 Xiu-Zhe (Roger) Luo <rogerluo.rl18@gmail.com> and contributors
 Distributed under terms of the MIT license.
 
 ${BOLD}COMMAND${NC}
@@ -94,6 +101,8 @@ run [project]           run the given project benchmark, if project is not
                         specified, all projects in this benchmark will be
                         setup.
 
+list                    list available projects to run.
+
 info                    print current machine info.
 
 help                    print this message.
@@ -105,6 +114,8 @@ function main {
         1setup)     scan_projects && setup_projects
                     ;;
         1run)       scan_projects && run_projects
+                    ;;
+        1list)      scan_projects && show_projects
                     ;;
         2setup)     setup $2
                     ;;

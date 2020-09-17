@@ -40,9 +40,9 @@ def run_qcbm(qubits, nqubits, depth, pairs):
     last_rotation(qubits, nqubits)
     return qubits
 
-def run_bench(benchmark, gate, nqubits, locs):
+def run_bench(benchmark, gate, nqubits, args):
     qubits = quest.createQureg(nqubits, env)
-    benchmark(gate, qubits, *locs)
+    benchmark(gate, qubits, *args)
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_X(benchmark, nqubits):
@@ -58,6 +58,16 @@ def test_H(benchmark, nqubits):
 def test_T(benchmark, nqubits):
     benchmark.group = "T"
     run_bench(benchmark, quest.tGate, nqubits, (3, ))
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_Rx(benchmark, nqubits):
+    benchmark.group = "Rx"
+    run_bench(benchmark, quest.rotateX, nqubits, (3, 0.5))
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_Rz(benchmark, nqubits):
+    benchmark.group = "Rz"
+    run_bench(benchmark, quest.rotateZ, nqubits, (3, 0.5))
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_CNOT(benchmark, nqubits):
