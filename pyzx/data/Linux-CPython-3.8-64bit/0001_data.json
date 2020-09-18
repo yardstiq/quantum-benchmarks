@@ -1,0 +1,1514 @@
+{
+    "machine_info": {
+        "node": "CZhao-Ubuntu",
+        "processor": "x86_64",
+        "machine": "x86_64",
+        "python_compiler": "GCC 7.5.0",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.8.5",
+        "python_version": "3.8.5",
+        "python_build": [
+            "default",
+            "Sep 16 2020 18:01:20"
+        ],
+        "release": "5.4.0-47-generic",
+        "system": "Linux",
+        "cpu": {
+            "vendor_id": "unknown",
+            "hardware": "unknown",
+            "brand": "unknown"
+        }
+    },
+    "commit_info": {
+        "id": "8dede7ab4efecab557e23b3d16ace1101acd79d1",
+        "time": "2020-09-17T15:19:51+08:00",
+        "author_time": "2020-09-17T15:19:51+08:00",
+        "dirty": false,
+        "project": "quantum-benchmarks",
+        "branch": "master"
+    },
+    "benchmarks": [
+        {
+            "group": "adder_8.qasm",
+            "name": "test_PyZX[adder_8.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[adder_8.qasm]",
+            "params": {
+                "circ_name": "adder_8.qasm"
+            },
+            "param": "adder_8.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.34553426000638865,
+                "max": 0.35601309199410025,
+                "mean": 0.34853325379954186,
+                "stddev": 0.004279117879031314,
+                "rounds": 5,
+                "median": 0.34678502700990066,
+                "iqr": 0.003923741987819085,
+                "q1": 0.34610675675139646,
+                "q3": 0.35003049873921555,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.34553426000638865,
+                "hd15iqr": 0.35601309199410025,
+                "ops": 2.8691666838055796,
+                "total": 1.7426662689977093,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "barenco_tof_10.qasm",
+            "name": "test_PyZX[barenco_tof_10.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[barenco_tof_10.qasm]",
+            "params": {
+                "circ_name": "barenco_tof_10.qasm"
+            },
+            "param": "barenco_tof_10.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.09497413100325502,
+                "max": 0.10372672299854457,
+                "mean": 0.09609598654787987,
+                "stddev": 0.002539508337616612,
+                "rounds": 11,
+                "median": 0.09535014600260183,
+                "iqr": 0.0003752152515517082,
+                "q1": 0.09518379550354439,
+                "q3": 0.0955590107550961,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.09497413100325502,
+                "hd15iqr": 0.10372672299854457,
+                "ops": 10.406261862994137,
+                "total": 1.0570558520266786,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "barenco_tof_3.qasm",
+            "name": "test_PyZX[barenco_tof_3.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[barenco_tof_3.qasm]",
+            "params": {
+                "circ_name": "barenco_tof_3.qasm"
+            },
+            "param": "barenco_tof_3.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.007911406995845027,
+                "max": 0.00829560900456272,
+                "mean": 0.008012023356665546,
+                "stddev": 6.188940836620164e-05,
+                "rounds": 123,
+                "median": 0.00800375099061057,
+                "iqr": 6.816350651206449e-05,
+                "q1": 0.007967089492012747,
+                "q3": 0.008035252998524811,
+                "iqr_outliers": 4,
+                "stddev_outliers": 26,
+                "outliers": "26;4",
+                "ld15iqr": 0.007911406995845027,
+                "hd15iqr": 0.008154056005878374,
+                "ops": 124.81241697430363,
+                "total": 0.9854788728698622,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "barenco_tof_4.qasm",
+            "name": "test_PyZX[barenco_tof_4.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[barenco_tof_4.qasm]",
+            "params": {
+                "circ_name": "barenco_tof_4.qasm"
+            },
+            "param": "barenco_tof_4.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01772438299667556,
+                "max": 0.018189285998232663,
+                "mean": 0.01785872378201351,
+                "stddev": 8.757622627124239e-05,
+                "rounds": 55,
+                "median": 0.01785156199184712,
+                "iqr": 0.00010840599134098738,
+                "q1": 0.01779675225407118,
+                "q3": 0.017905158245412167,
+                "iqr_outliers": 3,
+                "stddev_outliers": 9,
+                "outliers": "9;3",
+                "ld15iqr": 0.01772438299667556,
+                "hd15iqr": 0.018075271000270732,
+                "ops": 55.99504265848797,
+                "total": 0.982229808010743,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "barenco_tof_5.qasm",
+            "name": "test_PyZX[barenco_tof_5.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[barenco_tof_5.qasm]",
+            "params": {
+                "circ_name": "barenco_tof_5.qasm"
+            },
+            "param": "barenco_tof_5.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.03329432000464294,
+                "max": 0.03415451500040945,
+                "mean": 0.03360518730990187,
+                "stddev": 0.00018212339829369817,
+                "rounds": 29,
+                "median": 0.03360055999655742,
+                "iqr": 0.0001611715015314985,
+                "q1": 0.0334976190024463,
+                "q3": 0.0336587905039778,
+                "iqr_outliers": 2,
+                "stddev_outliers": 5,
+                "outliers": "5;2",
+                "ld15iqr": 0.03329432000464294,
+                "hd15iqr": 0.03405750499223359,
+                "ops": 29.757310702605334,
+                "total": 0.9745504319871543,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "csla_mux_3.qasm",
+            "name": "test_PyZX[csla_mux_3.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[csla_mux_3.qasm]",
+            "params": {
+                "circ_name": "csla_mux_3.qasm"
+            },
+            "param": "csla_mux_3.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.024092000996461138,
+                "max": 0.02557176699338015,
+                "mean": 0.02473098834019677,
+                "stddev": 0.0002861664419563656,
+                "rounds": 41,
+                "median": 0.024706611991859972,
+                "iqr": 0.00018578174785943702,
+                "q1": 0.024627813243569108,
+                "q3": 0.024813594991428545,
+                "iqr_outliers": 8,
+                "stddev_outliers": 8,
+                "outliers": "8;8",
+                "ld15iqr": 0.024568403998273425,
+                "hd15iqr": 0.025220106996130198,
+                "ops": 40.43510054042764,
+                "total": 1.0139705219480675,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "csum_mux_9.qasm",
+            "name": "test_PyZX[csum_mux_9.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[csum_mux_9.qasm]",
+            "params": {
+                "circ_name": "csum_mux_9.qasm"
+            },
+            "param": "csum_mux_9.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.06944324600044638,
+                "max": 0.07975065599021036,
+                "mean": 0.0707720638650547,
+                "stddev": 0.002507672964644467,
+                "rounds": 15,
+                "median": 0.07012460299301893,
+                "iqr": 0.00047323650505859405,
+                "q1": 0.06990920574753545,
+                "q3": 0.07038244225259405,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.06944324600044638,
+                "hd15iqr": 0.07975065599021036,
+                "ops": 14.129869123313393,
+                "total": 1.0615809579758206,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "cycle_17_3.qasm",
+            "name": "test_PyZX[cycle_17_3.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[cycle_17_3.qasm]",
+            "params": {
+                "circ_name": "cycle_17_3.qasm"
+            },
+            "param": "cycle_17_3.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 11.917132888993365,
+                "max": 12.220354466000572,
+                "mean": 11.999697292197379,
+                "stddev": 0.12543993153911567,
+                "rounds": 5,
+                "median": 11.957251594998525,
+                "iqr": 0.11031221099983668,
+                "q1": 11.925935130497237,
+                "q3": 12.036247341497074,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 11.917132888993365,
+                "hd15iqr": 12.220354466000572,
+                "ops": 0.08333543552388066,
+                "total": 59.998486460986896,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^10_mult.qasm",
+            "name": "test_PyZX[gf2^10_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^10_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^10_mult.qasm"
+            },
+            "param": "gf2^10_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.38872407098824624,
+                "max": 0.39928520799730904,
+                "mean": 0.3945865470013814,
+                "stddev": 0.004549880960133757,
+                "rounds": 5,
+                "median": 0.39296441500482615,
+                "iqr": 0.007365589510300197,
+                "q1": 0.3918030054992414,
+                "q3": 0.3991685950095416,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.38872407098824624,
+                "hd15iqr": 0.39928520799730904,
+                "ops": 2.5342982613051404,
+                "total": 1.972932735006907,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^16_mult.qasm",
+            "name": "test_PyZX[gf2^16_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^16_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^16_mult.qasm"
+            },
+            "param": "gf2^16_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 2.673813710003742,
+                "max": 2.714836844999809,
+                "mean": 2.6910156444035236,
+                "stddev": 0.015015294817804075,
+                "rounds": 5,
+                "median": 2.687011286005145,
+                "iqr": 0.014882306499202969,
+                "q1": 2.6834213090041885,
+                "q3": 2.6983036155033915,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 2.673813710003742,
+                "hd15iqr": 2.714836844999809,
+                "ops": 0.37160690688650927,
+                "total": 13.455078222017619,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^32_mult.qasm",
+            "name": "test_PyZX[gf2^32_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^32_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^32_mult.qasm"
+            },
+            "param": "gf2^32_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 36.06457874800253,
+                "max": 43.568614650997915,
+                "mean": 38.33360249940015,
+                "stddev": 3.0170173340758097,
+                "rounds": 5,
+                "median": 37.384784680994926,
+                "iqr": 2.8939164989969868,
+                "q1": 36.50095383175358,
+                "q3": 39.394870330750564,
+                "iqr_outliers": 0,
+                "stddev_outliers": 1,
+                "outliers": "1;0",
+                "ld15iqr": 36.06457874800253,
+                "hd15iqr": 43.568614650997915,
+                "ops": 0.02608677334763014,
+                "total": 191.66801249700075,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^4_mult.qasm",
+            "name": "test_PyZX[gf2^4_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^4_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^4_mult.qasm"
+            },
+            "param": "gf2^4_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.049685520003549755,
+                "max": 0.05121599600533955,
+                "mean": 0.05048826436809337,
+                "stddev": 0.0003743993775043082,
+                "rounds": 19,
+                "median": 0.050515979004558176,
+                "iqr": 0.0003792449933825992,
+                "q1": 0.05031889550082269,
+                "q3": 0.05069814049420529,
+                "iqr_outliers": 1,
+                "stddev_outliers": 7,
+                "outliers": "7;1",
+                "ld15iqr": 0.050014059990644455,
+                "hd15iqr": 0.05121599600533955,
+                "ops": 19.80658302510318,
+                "total": 0.9592770229937742,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^5_mult.qasm",
+            "name": "test_PyZX[gf2^5_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^5_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^5_mult.qasm"
+            },
+            "param": "gf2^5_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.06868685499648564,
+                "max": 0.08879872200486716,
+                "mean": 0.07034158353732588,
+                "stddev": 0.005112478143441349,
+                "rounds": 15,
+                "median": 0.06896454701200128,
+                "iqr": 0.000510369245603215,
+                "q1": 0.06881472500754171,
+                "q3": 0.06932509425314493,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.06868685499648564,
+                "hd15iqr": 0.08879872200486716,
+                "ops": 14.216341880750559,
+                "total": 1.0551237530598883,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^64_mult.qasm",
+            "name": "test_PyZX[gf2^64_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^64_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^64_mult.qasm"
+            },
+            "param": "gf2^64_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 420.556102247996,
+                "max": 444.74024698299763,
+                "mean": 433.3252985447965,
+                "stddev": 10.107889734933122,
+                "rounds": 5,
+                "median": 436.3086653139908,
+                "iqr": 16.919578818993614,
+                "q1": 424.08530856150173,
+                "q3": 441.00488738049535,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 420.556102247996,
+                "hd15iqr": 444.74024698299763,
+                "ops": 0.0023077350973003978,
+                "total": 2166.6264927239827,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^6_mult.qasm",
+            "name": "test_PyZX[gf2^6_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^6_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^6_mult.qasm"
+            },
+            "param": "gf2^6_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.10871745899203233,
+                "max": 0.11071676800202113,
+                "mean": 0.10925205770035973,
+                "stddev": 0.0005710199117169402,
+                "rounds": 10,
+                "median": 0.10900238149770303,
+                "iqr": 0.00041635800153017044,
+                "q1": 0.10894748900318518,
+                "q3": 0.10936384700471535,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.10871745899203233,
+                "hd15iqr": 0.11071676800202113,
+                "ops": 9.153145680263991,
+                "total": 1.0925205770035973,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^7_mult.qasm",
+            "name": "test_PyZX[gf2^7_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^7_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^7_mult.qasm"
+            },
+            "param": "gf2^7_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.15174673999717925,
+                "max": 0.15304200199898332,
+                "mean": 0.1524247112829471,
+                "stddev": 0.00040348989546337954,
+                "rounds": 7,
+                "median": 0.15250352100702003,
+                "iqr": 0.0003986550073022954,
+                "q1": 0.15221058324095793,
+                "q3": 0.15260923824826023,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.15174673999717925,
+                "hd15iqr": 0.15304200199898332,
+                "ops": 6.560616002373084,
+                "total": 1.0669729789806297,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^8_mult.qasm",
+            "name": "test_PyZX[gf2^8_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^8_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^8_mult.qasm"
+            },
+            "param": "gf2^8_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.31658453299314715,
+                "max": 0.4047471279918682,
+                "mean": 0.3351077193947276,
+                "stddev": 0.03894075635020088,
+                "rounds": 5,
+                "median": 0.3183953429979738,
+                "iqr": 0.023406607990182238,
+                "q1": 0.31689250099952915,
+                "q3": 0.3402991089897114,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.31658453299314715,
+                "hd15iqr": 0.4047471279918682,
+                "ops": 2.984115083371408,
+                "total": 1.675538596973638,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "gf2^9_mult.qasm",
+            "name": "test_PyZX[gf2^9_mult.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[gf2^9_mult.qasm]",
+            "params": {
+                "circ_name": "gf2^9_mult.qasm"
+            },
+            "param": "gf2^9_mult.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.28147873299894854,
+                "max": 0.2951532510051038,
+                "mean": 0.28494661780132446,
+                "stddev": 0.00573768883711019,
+                "rounds": 5,
+                "median": 0.28293335100170225,
+                "iqr": 0.003963993502111407,
+                "q1": 0.28203490899977623,
+                "q3": 0.28599890250188764,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.28147873299894854,
+                "hd15iqr": 0.2951532510051038,
+                "ops": 3.5094292668433695,
+                "total": 1.4247330890066223,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "grover_5.qasm",
+            "name": "test_PyZX[grover_5.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[grover_5.qasm]",
+            "params": {
+                "circ_name": "grover_5.qasm"
+            },
+            "param": "grover_5.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.21621904900530353,
+                "max": 0.2272668049990898,
+                "mean": 0.21908836120273917,
+                "stddev": 0.004612498742111102,
+                "rounds": 5,
+                "median": 0.21736225800123066,
+                "iqr": 0.0035712474928004667,
+                "q1": 0.2166227432571759,
+                "q3": 0.22019399074997636,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.21621904900530353,
+                "hd15iqr": 0.2272668049990898,
+                "ops": 4.564368433404017,
+                "total": 1.095441806013696,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "ham15-high.qasm",
+            "name": "test_PyZX[ham15-high.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[ham15-high.qasm]",
+            "params": {
+                "circ_name": "ham15-high.qasm"
+            },
+            "param": "ham15-high.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 5.53978723900218,
+                "max": 5.623101411998505,
+                "mean": 5.580127881196677,
+                "stddev": 0.03576060271679754,
+                "rounds": 5,
+                "median": 5.569701821994386,
+                "iqr": 0.06193677600094816,
+                "q1": 5.552411043245229,
+                "q3": 5.614347819246177,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 5.53978723900218,
+                "hd15iqr": 5.623101411998505,
+                "ops": 0.179207362499647,
+                "total": 27.900639405983384,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "ham15-low.qasm",
+            "name": "test_PyZX[ham15-low.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[ham15-low.qasm]",
+            "params": {
+                "circ_name": "ham15-low.qasm"
+            },
+            "param": "ham15-low.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.13430174000677653,
+                "max": 0.13591021900356282,
+                "mean": 0.13525192700035404,
+                "stddev": 0.0005017127776781453,
+                "rounds": 8,
+                "median": 0.13525361150095705,
+                "iqr": 0.0005173339959583245,
+                "q1": 0.13506539149966557,
+                "q3": 0.1355827254956239,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.13430174000677653,
+                "hd15iqr": 0.13591021900356282,
+                "ops": 7.393610000080682,
+                "total": 1.0820154160028324,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "ham15-med.qasm",
+            "name": "test_PyZX[ham15-med.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[ham15-med.qasm]",
+            "params": {
+                "circ_name": "ham15-med.qasm"
+            },
+            "param": "ham15-med.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.7216892290016403,
+                "max": 0.7337990509986412,
+                "mean": 0.7282093199959491,
+                "stddev": 0.0057107401391688455,
+                "rounds": 5,
+                "median": 0.7305566829891177,
+                "iqr": 0.010540903746004915,
+                "q1": 0.7222911969984125,
+                "q3": 0.7328321007444174,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.7216892290016403,
+                "hd15iqr": 0.7337990509986412,
+                "ops": 1.3732315318424693,
+                "total": 3.6410465999797452,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "hwb10.qasm",
+            "name": "test_PyZX[hwb10.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[hwb10.qasm]",
+            "params": {
+                "circ_name": "hwb10.qasm"
+            },
+            "param": "hwb10.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 1066.8598495670012,
+                "max": 1366.1934553040046,
+                "mean": 1270.0013550830015,
+                "stddev": 122.68178886720885,
+                "rounds": 5,
+                "median": 1306.9242076220107,
+                "iqr": 156.08812442624185,
+                "q1": 1204.8485744915015,
+                "q3": 1360.9366989177433,
+                "iqr_outliers": 0,
+                "stddev_outliers": 1,
+                "outliers": "1;0",
+                "ld15iqr": 1066.8598495670012,
+                "hd15iqr": 1366.1934553040046,
+                "ops": 0.0007874007346509047,
+                "total": 6350.006775415008,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "hwb6.qasm",
+            "name": "test_PyZX[hwb6.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[hwb6.qasm]",
+            "params": {
+                "circ_name": "hwb6.qasm"
+            },
+            "param": "hwb6.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.05327940499410033,
+                "max": 0.055088705994421616,
+                "mean": 0.05447285094366331,
+                "stddev": 0.00041205756774537503,
+                "rounds": 18,
+                "median": 0.054516921991307754,
+                "iqr": 0.00023747100203763694,
+                "q1": 0.05444185899978038,
+                "q3": 0.054679330001818016,
+                "iqr_outliers": 3,
+                "stddev_outliers": 4,
+                "outliers": "4;3",
+                "ld15iqr": 0.05437818499922287,
+                "hd15iqr": 0.055088705994421616,
+                "ops": 18.35776873573619,
+                "total": 0.9805113169859396,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "hwb8.qasm",
+            "name": "test_PyZX[hwb8.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[hwb8.qasm]",
+            "params": {
+                "circ_name": "hwb8.qasm"
+            },
+            "param": "hwb8.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 36.42718038499879,
+                "max": 37.92809632999706,
+                "mean": 36.947760412999195,
+                "stddev": 0.571948109098014,
+                "rounds": 5,
+                "median": 36.815909789002035,
+                "iqr": 0.452380359005474,
+                "q1": 36.65607524524603,
+                "q3": 37.1084556042515,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 36.42718038499879,
+                "hd15iqr": 37.92809632999706,
+                "ops": 0.027065239917712945,
+                "total": 184.73880206499598,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "mod5_4.qasm",
+            "name": "test_PyZX[mod5_4.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[mod5_4.qasm]",
+            "params": {
+                "circ_name": "mod5_4.qasm"
+            },
+            "param": "mod5_4.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.008587208998505957,
+                "max": 0.009775422004167922,
+                "mean": 0.008831579526664315,
+                "stddev": 0.0001195316032109995,
+                "rounds": 97,
+                "median": 0.008815922003122978,
+                "iqr": 7.534400356234983e-05,
+                "q1": 0.008782849745330168,
+                "q3": 0.008858193748892518,
+                "iqr_outliers": 4,
+                "stddev_outliers": 6,
+                "outliers": "6;4",
+                "ld15iqr": 0.008687768000527285,
+                "hd15iqr": 0.00902413901349064,
+                "ops": 113.23002832967748,
+                "total": 0.8566632140864385,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "mod_adder_1024.qasm",
+            "name": "test_PyZX[mod_adder_1024.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[mod_adder_1024.qasm]",
+            "params": {
+                "circ_name": "mod_adder_1024.qasm"
+            },
+            "param": "mod_adder_1024.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 2.059021856999607,
+                "max": 2.102574664997519,
+                "mean": 2.088234454600024,
+                "stddev": 0.017600099595867547,
+                "rounds": 5,
+                "median": 2.094795861004968,
+                "iqr": 0.021623858003295027,
+                "q1": 2.078680094997253,
+                "q3": 2.100303953000548,
+                "iqr_outliers": 0,
+                "stddev_outliers": 1,
+                "outliers": "1;0",
+                "ld15iqr": 2.059021856999607,
+                "hd15iqr": 2.102574664997519,
+                "ops": 0.47887343195452536,
+                "total": 10.44117227300012,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "mod_adder_1048576.qasm",
+            "name": "test_PyZX[mod_adder_1048576.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[mod_adder_1048576.qasm]",
+            "params": {
+                "circ_name": "mod_adder_1048576.qasm"
+            },
+            "param": "mod_adder_1048576.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 109.10699709600885,
+                "max": 136.25500579700747,
+                "mean": 126.47801491140562,
+                "stddev": 11.361523969861684,
+                "rounds": 5,
+                "median": 131.27249733300414,
+                "iqr": 16.96543399699658,
+                "q1": 118.09587373725662,
+                "q3": 135.0613077342532,
+                "iqr_outliers": 0,
+                "stddev_outliers": 1,
+                "outliers": "1;0",
+                "ld15iqr": 109.10699709600885,
+                "hd15iqr": 136.25500579700747,
+                "ops": 0.00790651245357126,
+                "total": 632.3900745570281,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "mod_mult_55.qasm",
+            "name": "test_PyZX[mod_mult_55.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[mod_mult_55.qasm]",
+            "params": {
+                "circ_name": "mod_mult_55.qasm"
+            },
+            "param": "mod_mult_55.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.019719086005352437,
+                "max": 0.021009030999266542,
+                "mean": 0.019968711447523053,
+                "stddev": 0.00027376857020422994,
+                "rounds": 47,
+                "median": 0.019830303004710004,
+                "iqr": 0.0003964207608078141,
+                "q1": 0.01978601674636593,
+                "q3": 0.020182437507173745,
+                "iqr_outliers": 1,
+                "stddev_outliers": 8,
+                "outliers": "8;1",
+                "ld15iqr": 0.019719086005352437,
+                "hd15iqr": 0.021009030999266542,
+                "ops": 50.07834394462349,
+                "total": 0.9385294380335836,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "mod_red_21.qasm",
+            "name": "test_PyZX[mod_red_21.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[mod_red_21.qasm]",
+            "params": {
+                "circ_name": "mod_red_21.qasm"
+            },
+            "param": "mod_red_21.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.05711582199728582,
+                "max": 0.05911511700833216,
+                "mean": 0.05830798153200543,
+                "stddev": 0.0006937707350555788,
+                "rounds": 17,
+                "median": 0.05865578600787558,
+                "iqr": 0.0011986944991804194,
+                "q1": 0.05761446875112597,
+                "q3": 0.05881316325030639,
+                "iqr_outliers": 0,
+                "stddev_outliers": 7,
+                "outliers": "7;0",
+                "ld15iqr": 0.05711582199728582,
+                "hd15iqr": 0.05911511700833216,
+                "ops": 17.150310707481736,
+                "total": 0.9912356860440923,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "qcla_adder_10.qasm",
+            "name": "test_PyZX[qcla_adder_10.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[qcla_adder_10.qasm]",
+            "params": {
+                "circ_name": "qcla_adder_10.qasm"
+            },
+            "param": "qcla_adder_10.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.10679795499891043,
+                "max": 0.10874144999252167,
+                "mean": 0.1080454432987608,
+                "stddev": 0.0006384359011047156,
+                "rounds": 10,
+                "median": 0.108189725993725,
+                "iqr": 0.000933757983148098,
+                "q1": 0.10770621700794436,
+                "q3": 0.10863997499109246,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.10679795499891043,
+                "hd15iqr": 0.10874144999252167,
+                "ops": 9.255364867492466,
+                "total": 1.080454432987608,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "qcla_com_7.qasm",
+            "name": "test_PyZX[qcla_com_7.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[qcla_com_7.qasm]",
+            "params": {
+                "circ_name": "qcla_com_7.qasm"
+            },
+            "param": "qcla_com_7.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.09871448400372174,
+                "max": 0.09986386500531808,
+                "mean": 0.09919006118434481,
+                "stddev": 0.00032306940255331587,
+                "rounds": 11,
+                "median": 0.09914003299491014,
+                "iqr": 0.00039003200799925253,
+                "q1": 0.09900562724942574,
+                "q3": 0.099395659257425,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.09871448400372174,
+                "hd15iqr": 0.09986386500531808,
+                "ops": 10.081655239041533,
+                "total": 1.091090673027793,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "qcla_mod_7.qasm",
+            "name": "test_PyZX[qcla_mod_7.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[qcla_mod_7.qasm]",
+            "params": {
+                "circ_name": "qcla_mod_7.qasm"
+            },
+            "param": "qcla_mod_7.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.2895029840001371,
+                "max": 0.34691685100551695,
+                "mean": 0.3027795592031907,
+                "stddev": 0.02470971180359013,
+                "rounds": 5,
+                "median": 0.29223097799695097,
+                "iqr": 0.014978685503592715,
+                "q1": 0.29153075525391614,
+                "q3": 0.30650944075750886,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.2895029840001371,
+                "hd15iqr": 0.34691685100551695,
+                "ops": 3.3027328615962324,
+                "total": 1.5138977960159536,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "qft_4.qasm",
+            "name": "test_PyZX[qft_4.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[qft_4.qasm]",
+            "params": {
+                "circ_name": "qft_4.qasm"
+            },
+            "param": "qft_4.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01585823499772232,
+                "max": 0.01657032300136052,
+                "mean": 0.01601464249168722,
+                "stddev": 0.00015560422801128463,
+                "rounds": 63,
+                "median": 0.015970152002410032,
+                "iqr": 8.511274427291937e-05,
+                "q1": 0.01594384450436337,
+                "q3": 0.01602895724863629,
+                "iqr_outliers": 5,
+                "stddev_outliers": 6,
+                "outliers": "6;5",
+                "ld15iqr": 0.01585823499772232,
+                "hd15iqr": 0.016416628001024947,
+                "ops": 62.44285506336302,
+                "total": 1.008922476976295,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "rc_adder_6.qasm",
+            "name": "test_PyZX[rc_adder_6.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[rc_adder_6.qasm]",
+            "params": {
+                "circ_name": "rc_adder_6.qasm"
+            },
+            "param": "rc_adder_6.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.04201484000077471,
+                "max": 0.05189972699736245,
+                "mean": 0.042702694874606095,
+                "stddev": 0.0019730924945653328,
+                "rounds": 24,
+                "median": 0.04228982950007776,
+                "iqr": 0.00020724099886137992,
+                "q1": 0.042167904997768346,
+                "q3": 0.042375145996629726,
+                "iqr_outliers": 3,
+                "stddev_outliers": 1,
+                "outliers": "1;3",
+                "ld15iqr": 0.04201484000077471,
+                "hd15iqr": 0.042762635988765396,
+                "ops": 23.41772581183553,
+                "total": 1.0248646769905463,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "tof_10.qasm",
+            "name": "test_PyZX[tof_10.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[tof_10.qasm]",
+            "params": {
+                "circ_name": "tof_10.qasm"
+            },
+            "param": "tof_10.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.03961736000201199,
+                "max": 0.040549320008722134,
+                "mean": 0.03988998555927537,
+                "stddev": 0.00026388546304843797,
+                "rounds": 25,
+                "median": 0.039826545005780645,
+                "iqr": 0.00016593699183431454,
+                "q1": 0.039728332005324773,
+                "q3": 0.03989426899715909,
+                "iqr_outliers": 3,
+                "stddev_outliers": 4,
+                "outliers": "4;3",
+                "ld15iqr": 0.03961736000201199,
+                "hd15iqr": 0.04050140199251473,
+                "ops": 25.06894865915729,
+                "total": 0.9972496389818843,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "tof_3.qasm",
+            "name": "test_PyZX[tof_3.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[tof_3.qasm]",
+            "params": {
+                "circ_name": "tof_3.qasm"
+            },
+            "param": "tof_3.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.005996555992169306,
+                "max": 0.006757231007213704,
+                "mean": 0.006070907545103127,
+                "stddev": 7.025355330033532e-05,
+                "rounds": 165,
+                "median": 0.006057826001779176,
+                "iqr": 5.27737574884668e-05,
+                "q1": 0.006037256498530041,
+                "q3": 0.006090030256018508,
+                "iqr_outliers": 4,
+                "stddev_outliers": 6,
+                "outliers": "6;4",
+                "ld15iqr": 0.005996555992169306,
+                "hd15iqr": 0.006252849008888006,
+                "ops": 164.72001798258532,
+                "total": 1.001699744942016,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "tof_4.qasm",
+            "name": "test_PyZX[tof_4.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[tof_4.qasm]",
+            "params": {
+                "circ_name": "tof_4.qasm"
+            },
+            "param": "tof_4.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01009635700029321,
+                "max": 0.010505600002943538,
+                "mean": 0.010196327716624617,
+                "stddev": 7.346304352286996e-05,
+                "rounds": 92,
+                "median": 0.01018068899429636,
+                "iqr": 5.843349208589643e-05,
+                "q1": 0.010156230004213285,
+                "q3": 0.010214663496299181,
+                "iqr_outliers": 6,
+                "stddev_outliers": 14,
+                "outliers": "14;6",
+                "ld15iqr": 0.01009635700029321,
+                "hd15iqr": 0.010305269999662414,
+                "ops": 98.07452524005761,
+                "total": 0.9380621499294648,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "tof_5.qasm",
+            "name": "test_PyZX[tof_5.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[tof_5.qasm]",
+            "params": {
+                "circ_name": "tof_5.qasm"
+            },
+            "param": "tof_5.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01693796200561337,
+                "max": 0.017681113997241482,
+                "mean": 0.017131478242939417,
+                "stddev": 0.00011651703388246195,
+                "rounds": 58,
+                "median": 0.01711797349707922,
+                "iqr": 8.580299618188292e-05,
+                "q1": 0.017073160997824743,
+                "q3": 0.017158963994006626,
+                "iqr_outliers": 5,
+                "stddev_outliers": 11,
+                "outliers": "11;5",
+                "ld15iqr": 0.01696632700623013,
+                "hd15iqr": 0.017295878002187237,
+                "ops": 58.372078919234006,
+                "total": 0.9936257380904863,
+                "iterations": 1
+            }
+        },
+        {
+            "group": "vbe_adder_3.qasm",
+            "name": "test_PyZX[vbe_adder_3.qasm]",
+            "fullname": "benchmarks.py::test_PyZX[vbe_adder_3.qasm]",
+            "params": {
+                "circ_name": "vbe_adder_3.qasm"
+            },
+            "param": "vbe_adder_3.qasm",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.024558938996051438,
+                "max": 0.025331832002848387,
+                "mean": 0.02481938014694251,
+                "stddev": 0.0001548949338467974,
+                "rounds": 41,
+                "median": 0.02478657399478834,
+                "iqr": 0.00013010474503971636,
+                "q1": 0.02472802575357491,
+                "q3": 0.024858130498614628,
+                "iqr_outliers": 4,
+                "stddev_outliers": 7,
+                "outliers": "7;4",
+                "ld15iqr": 0.024558938996051438,
+                "hd15iqr": 0.025068630013265647,
+                "ops": 40.2910948653643,
+                "total": 1.017594586024643,
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2020-09-17T16:46:31.063969",
+    "version": "3.2.3"
+}
