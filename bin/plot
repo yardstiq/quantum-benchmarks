@@ -36,7 +36,7 @@ projects = [
 ]
 
 # Single Gate Benchmark Report
-labels = ['X', 'H', 'CNOT', 'T']
+labels = ['X', 'H', 'CNOT', 'T', 'Rx', 'Rz']
 report = BenchmarkReport(
     projects,
     layout = {l + ' gate' : [l] for l in labels},
@@ -51,8 +51,7 @@ report = BenchmarkReport(
     },
 )
 
-fig, ax = plt.subplots(2, 2, figsize=(10, 8))
-((ax1, ax2), (ax3, ax4)) = ax
+fig, ax = plt.subplots(3, 2, figsize=(10, 8))
 
 plots = report.plot_absolute(ax)
 plt.tight_layout()
@@ -71,7 +70,7 @@ lgd = fig.legend(
 plt.savefig(image_path('gates.png'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.savefig(image_path('gates.pdf'), bbox_extra_artists=(lgd,), bbox_inches='tight')
 
-fig, ax = plt.subplots(2, 2, figsize=(10, 8))
+fig, ax = plt.subplots(3, 2, figsize=(10, 8))
 plots = report.plot_relative(projects[0], ax)
 plt.tight_layout()
 plt.subplots_adjust(top=0.85)
