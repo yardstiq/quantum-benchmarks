@@ -4,8 +4,10 @@ FILE_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 ROOT_PATH=$(dirname "$FILE_PATH")
 . "$ROOT_PATH/bin/utils/constants.sh"
 
+pwd
 mkdir -p "$BENCHMARK_DATA_PATH"
-
+echo "$BENCHMARK_DATA_PATH"
+echo "$FILE_PATH"
 #Clear CMAKE cache
 rm -rf CMakeCache.txt CMakeFiles/ Makefile cmake_install.cmake benchmarks
 
