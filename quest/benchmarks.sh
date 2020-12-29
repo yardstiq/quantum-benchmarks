@@ -7,7 +7,7 @@ ROOT_PATH=$(dirname "$FILE_PATH")
 mkdir -p "$BENCHMARK_DATA_PATH"
 
 #Clear CMAKE cache
-rm -rf CMakeCache.txt CMakeFiles/ Makefile cmake_install.cmake
+rm -rf CMakeCache.txt CMakeFiles/ Makefile cmake_install.cmake benchmarks
 
 cmake -DUSER_SOURCE="benchmarks.cc" -DCMAKE_CXX_STANDARD_LIBRARIES="-lbenchmark -lpthread"  -DOUTPUT_EXE="benchmarks"   QuEST/
 make
