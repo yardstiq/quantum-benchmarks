@@ -18,7 +18,7 @@ class QFT:
             for wire in reversed(range(self.n)):
                 qml.Hadamard(wire)
                 for i in range(wire):
-                    qml.CRZ(np.pi/(2**wire-i), wires=[i,wire])
+                    qml.CRZ(np.pi/(2**(wire-i)), wires=[i,wire])
 
             for i in range(self.n//2):
                 qml.SWAP(wires=[i, self.n - i - 1])
