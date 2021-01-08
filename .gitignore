@@ -1,3 +1,11 @@
+quest/CMakeCache.txt
+quest/CMakeFiles/
+quest/Makefile
+quest/QuEST/
+quest/benchmark/
+quest/benchmarks
+quest/cmake_install.cmake
+
 *.out
 *.err
 
