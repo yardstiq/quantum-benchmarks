@@ -3,6 +3,7 @@ import mkl
 import uuid
 from qiskit import Aer, QuantumCircuit
 from qiskit.compiler import transpile, assemble
+import numpy as np
 mkl.set_num_threads(1)
 
 backend = Aer.get_backend("qasm_simulator")
@@ -15,13 +16,13 @@ default_options = {
 def _execute(circuit, backend_options=None):
     experiment = transpile(circuit, backend)
     qobj = assemble(experiment, shots=1)
-    qobj_aer = backend._format_qobj(qobj, backend_options)
+    qobj_aer = backend._format_qobj(qobj, backend_options, None)
     return backend._controller(qobj_aer)
 
 def native_execute(benchmark, circuit, backend_options=None):
     experiment = transpile(circuit, backend)
     qobj = assemble(experiment, shots=1)
-    qobj_aer = backend._format_qobj(qobj, backend_options)
+    qobj_aer = backend._format_qobj(qobj, backend_options, None)
     benchmark(backend._controller, qobj_aer)
 
 def run_bench(benchmark, nqubits, gate, args=(3, )):
@@ -67,10 +68,10 @@ def qft_rotations(circuit, n):
     n -= 1
     circuit.h(n)
     for qubit in range(n):
-        circuit.cu1(pi/2**(n-qubit), qubit, n)
+        circuit.cu1(np.pi/2**(n-qubit), qubit, n)
     # At the end of our function, we call the same function again on
     # the next qubits (we reduced n by one earlier in the function)
-    qft_rotations(circuit, n)
+    return qft_rotations(circuit, n)
 
 def swap_registers(circuit, n):
     for qubit in range(n//2):
@@ -79,8 +80,8 @@ def swap_registers(circuit, n):
 
 def generate_qft_circuit(nqubits):
     qc = QuantumCircuit(nqubits)
-    qc = qft_rotations(qc)
-    qc = swap_registers(qc)
+    qc = qft_rotations(qc, nqubits)
+    qc = swap_registers(qc, nqubits)
     return qc
 
 
