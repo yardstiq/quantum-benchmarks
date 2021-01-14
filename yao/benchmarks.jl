@@ -25,6 +25,16 @@ function build_circuit(n, nlayers, pairs)
     return circuit
 end
 
+qft_rotation(i, j) = control(i, j=>shift(2π/(1<<(i-j+1))))
+qft_layer(n, k) = chain(n, j==k ? put(k=>H) : qft_rotation(j, k) for j in k:n)
+qft(n) = chain(qft_layer(n, k) for k in 1:n)
+
+function build_qft_circuit(n)
+    circuit = chain(n)
+    push!(circuit, qft(n))
+    return circuit
+end
+
 macro task(name::String, nqubits_ex, body)
     nqubits = nqubits_ex.args[2]
     msg = "benchmarking $name"
@@ -92,6 +102,40 @@ end
     end
 end
 
+const qft_nqubits = 4:25
+
+@task "QFT" nqubits=qft_nqubits begin
+    map(qft_nqubits) do k
+        t = @benchmark apply!(st, $(build_qft_circuit(k))) setup=(st=zero_state($k))
+        minimum(t).time
+    end
+end
+
+@task "QFT (batch)" nqubits=qft_nqubits begin
+    map(qft_nqubits) do k
+        t = @benchmark apply!(st, $(build_qft_circuit(k))) setup=(st=zero_state($k, nbatch=1000))
+        minimum(t).time
+    end
+end
+
+@static if CuArrays.functional()
+
+    @task "QFT (cuda)" nqubits=qft_nqubits begin
+        map(qft_nqubits) do k
+            t = @benchmark CuArrays.@sync(apply!(st, $(build_qft_circuit(k)))) setup=(st=cu(zero_state($k)))
+            minimum(t).time
+        end
+    end
+
+    @task "QFT (batch) (cuda)" nqubits=4:15 begin
+        map(4:15) do k
+            t = @benchmark CuArrays.@sync(apply!(st, $(build_qft_circuit(k)))) setup=(st=cu(zero_state($k, nbatch=1000)))
+            minimum(t).time
+        end
+    end
+
+end
+
 const qcbm_nqubits = 4:25
 
 @task "QCBM" nqubits=qcbm_nqubits begin
@@ -125,7 +169,6 @@ end
     end
 
 end
-
 
 if !ispath("data")
     mkpath("data")
