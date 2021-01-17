@@ -3,6 +3,7 @@ import mkl
 import uuid
 from qiskit import Aer, QuantumCircuit
 from qiskit.compiler import transpile, assemble
+import numpy as np
 mkl.set_num_threads(1)
 
 backend = Aer.get_backend("qasm_simulator")
@@ -60,6 +61,29 @@ def generate_qcbm_circuit(nqubits, depth, pairs):
     last_rotation(circuit, nqubits)
     return circuit
 
+def qft_rotations(circuit, n):
+    """Performs qft on the first n qubits in circuit (without swaps)"""
+    if n == 0:
+        return circuit
+    n -= 1
+    circuit.h(n)
+    for qubit in range(n):
+        circuit.cu1(np.pi/2**(n-qubit), qubit, n)
+    # At the end of our function, we call the same function again on
+    # the next qubits (we reduced n by one earlier in the function)
+    return qft_rotations(circuit, n)
+
+def swap_registers(circuit, n):
+    for qubit in range(n//2):
+        circuit.swap(qubit, n-qubit-1)
+    return circuit
+
+def generate_qft_circuit(nqubits):
+    qc = QuantumCircuit(nqubits)
+    qc = qft_rotations(qc, nqubits)
+    qc = swap_registers(qc, nqubits)
+    return qc
+
 
 nqubit_list = range(4, 26)
 
@@ -103,6 +127,12 @@ def test_qcbm(benchmark, nqubits):
     benchmark.group = "QCBM"
     pairs = [(i, (i + 1) % nqubits) for i in range(nqubits)]
     circuit = generate_qcbm_circuit(nqubits, 9, pairs)
+    native_execute(benchmark, circuit, default_options)
+
+@pytest.mark.parametrize('nqubits', nqubit_list)
+def test_qft(benchmark, nqubits):
+    benchmark.group = "QFT"
+    circuit = generate_qft_circuit(nqubits)
     native_execute(benchmark, circuit, default_options)
 
 # NOTE: The following benchmark requires installing Qiskit Aer with GPU
