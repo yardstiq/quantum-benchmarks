@@ -62,6 +62,18 @@ def execute_qcbm(eng, reg, n, depth, pairs):
     last_rotation(reg, n)
     eng.flush()
 
+def execute_qft(eng, reg, n):
+
+    for wire in reversed(range(n)):
+        H | reg[wire]
+        for i in range(wire):
+            CRz(np.pi/(2**(wire-i))) |  (reg[i], reg[wire])
+
+        for i in range(n//2):
+            SwapGate() | (reg[i], reg[n-i-1])
+
+    eng.flush()
+
 
 nqubits_list = range(4,26)
 @pytest.mark.parametrize('nqubits', nqubits_list)
@@ -116,3 +128,11 @@ def test_qcbm(benchmark, nqubits):
     eng = MainEngine()
     reg = eng.allocate_qureg(nqubits)
     benchmark(execute_qcbm, eng, reg, nqubits, 9, pairs)
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_qft(benchmark, nqubits):
+    benchmark.group = "QFT"
+    eng = MainEngine()
+    reg = eng.allocate_qureg(nqubits)
+    benchmark(execute_qft, eng, reg, nqubits)
+
