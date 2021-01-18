@@ -7,5 +7,5 @@ BINDIR="$ROOT_PATH/bin"
 $CONDA create -y --prefix=env python=3.8
 $ACTIVATE ./env
 $CONDA install -p env -y numpy mkl-service pytest pybind11 pytest-benchmark cffi
-./env/bin/pip install qiskit
-./env/bin/pip install qiskit-aer-gpu
+./env/bin/pip install qiskit==0.16.0
+./env/bin/pip install qiskit-aer-gpu==0.4.0

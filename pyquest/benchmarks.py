@@ -30,6 +30,17 @@ def entangler(qubits, nqubits, pairs):
     for a, b in pairs:
         quest.controlledNot(qubits, a, b)
 
+def run_qft(qubits, nqubits):
+    for wire in reversed(range(nqubits)):
+        quest.hadamard(qubits, wire)
+        for i in range(wire):
+            quest.controlledPhaseShift(qubits, i, wire, np.pi/(2**(wire-i)))
+
+    for i in range(nqubits//2):
+        quest.swapGate(qubits, i, nqubits - i - 1)
+
+    return qubits
+
 def run_qcbm(qubits, nqubits, depth, pairs):
     first_rotation(qubits, nqubits)
     entangler(qubits, nqubits, pairs)
@@ -80,6 +91,12 @@ def test_Toffoli(benchmark, nqubits):
     X = ((0.0, 0.0), (1.0, 0.0), (1.0, 0.0), (0.0, 0.0))
     qubits = quest.createQureg(nqubits, env)
     benchmark(quest.multiControlledUnitary, qubits, [0, 1], 2, 2, X)
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_QFT(benchmark, nqubits):
+    benchmark.group = "QFT"
+    qubits = quest.createQureg(nqubits, env)
+    benchmark(run_qft, qubits, nqubits)
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_QCBM(benchmark, nqubits):

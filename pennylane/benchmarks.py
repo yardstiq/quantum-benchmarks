@@ -7,6 +7,26 @@ mkl.set_num_threads(1)
 import pytest
 
 
+class QFT:
+    def __init__(self, n, dev="default.qubit"):
+        self.n = n
+        self.dev = qml.device(dev, wires=n)
+
+    def __call__(self):
+        @qml.qnode(self.dev)
+        def qft_circuit():
+            for wire in reversed(range(self.n)):
+                qml.Hadamard(wire)
+                for i in range(wire):
+                    qml.CRZ(np.pi/(2**(wire-i)), wires=[i,wire])
+
+            for i in range(self.n//2):
+                qml.SWAP(wires=[i, self.n - i - 1])
+
+            return qml.probs(wires=range(self.n))
+        return qft_circuit()
+
+
 class QCBM:
     def __init__(self, n, nlayers, dev="default.qubit"):
         self.n = n
@@ -101,6 +121,12 @@ class GateTest:
 
 nqubits_list = range(4,26)
 
+
+@pytest.mark.parametrize("nqubits", nqubits_list)
+def test_qft(benchmark, nqubits):
+    benchmark.group = "QFT"
+    qft = QFT(nqubits)
+    benchmark(qft)
 
 @pytest.mark.parametrize("nqubits", nqubits_list)
 def test_QCBM(benchmark, nqubits):
