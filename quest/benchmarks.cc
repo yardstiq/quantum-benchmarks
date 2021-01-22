@@ -25,7 +25,7 @@ static void BM_sim_Hadamard(benchmark::State& state) {
 	}
 		destroyQureg(qubits, env); 
 	destroyQuESTEnv(env);
-	state.SetLabel("hadamard");
+	state.SetLabel("H");
 }
 BENCHMARK(BM_sim_Hadamard)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
