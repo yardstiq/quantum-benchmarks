@@ -14,4 +14,4 @@ rm -rf CMakeCache.txt CMakeFiles/ Makefile cmake_install.cmake benchmarks
 cmake -DUSER_SOURCE="benchmarks.cc" -DCMAKE_CXX_STANDARD_LIBRARIES="-lbenchmark -lpthread"  -DOUTPUT_EXE="benchmarks"   QuEST/
 make
 
-./benchmarks --benchmark_out=${BENCHMARK_DATA_PATH}/quest.json --benchmark_out_format=json
+./benchmarks --benchmark_out=${BENCHMARK_DATA_PATH}/quest.json --benchmark_out_format=json --benchmark_filter=BM_sim_QFT
