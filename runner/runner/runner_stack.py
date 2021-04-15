@@ -2,7 +2,6 @@ from aws_cdk import (
     core,
     aws_ec2 as ec2,
 )
-from cdk_ec2_key_pair import KeyPair
 
 instanceName="yardstiqEC2"
 instanceType="t2.micro"
