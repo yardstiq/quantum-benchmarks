@@ -12,36 +12,11 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - run: echo "🖥️ Setting up credentials."
-      - name: cdk diff
-        uses: youyo/aws-cdk-github-actions@v2
-        with:
-          cdk_subcommand: 'diff'
-          actions_comment: false
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'us-east-1'
-      
-      - name: cdk synth
-        uses: youyo/aws-cdk-github-actions@v2
-        with:
-          cdk_subcommand: 'synth'
-          cdk_version: '1.16.2'
-          working_dir: 'runner'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'us-east-1'
-
-      - name: cdk deploy
-        uses: youyo/aws-cdk-github-actions@v2
-        with:
-          cdk_subcommand: 'deploy'
-          cdk_args: '--require-approval never'
-          actions_comment: false
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'us-east-1'
-
+      - run: |
+              cd runner
+              && source .venv/bin/activate
+              && yes y | cdk destory
+              && cdk diff
+              && cdk synth
+              && cdk deploy --require-approval never
       - run: echo "🍏 This job's status is ${{ job.status }}."
