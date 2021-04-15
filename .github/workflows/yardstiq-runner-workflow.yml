@@ -16,7 +16,6 @@ jobs:
         uses: youyo/aws-cdk-github-actions@v2
         with:
           cdk_subcommand: 'synth'
-          cdk_version: '1.16.2'
           cdk_stack: ''
           working_dir: 'runner'
         env:
