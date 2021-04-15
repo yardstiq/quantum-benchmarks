@@ -13,10 +13,10 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - run: echo "🖥️ Setting up credentials."
       - run: |
-              cd runner
-              && source .venv/bin/activate
-              && yes y | cdk destory
-              && cdk diff
-              && cdk synth
+              cd runner \
+              && source .venv/bin/activate \
+              && yes y | cdk destory \
+              && cdk diff \
+              && cdk synth \
               && cdk deploy --require-approval never
       - run: echo "🍏 This job's status is ${{ job.status }}."
