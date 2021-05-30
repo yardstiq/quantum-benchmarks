@@ -105,18 +105,11 @@ class GateTest:
         self.wires = wires
 
     def __call__(self):
-        @qml.qnode(self.dev)
-        def gate_circuit():
-            self.gate(*self.args, wires=self.wires)
-            return qml.expval(qml.PauliZ(0))
+        def apply_gate():
+            operations = [gate(*self.args, wires=self.wires)]
+            self.dev.apply(operations)
 
-        def eval():
-            try:
-                gate_circuit()
-            except:
-                pass
-
-        return eval()
+        return apply_gate()
 
 
 nqubits_list = range(4,26)
