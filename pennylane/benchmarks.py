@@ -26,7 +26,6 @@ class QFT:
                 operations.append(qml.SWAP(wires=[i, self.n - i - 1]))
 
             self.dev.apply(operations)
-            #return qml.probs(wires=range(self.n))
 
         return apply_qft_circuit()
 
