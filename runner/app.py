@@ -3,12 +3,14 @@
 from aws_cdk import core
 
 from runner.runner_stack import RunnerStack
-
+import os
 
 app = core.App()
 
 
-env = core.Environment(region="us-west-1", account="249016812213")
+region = os.environ.get("AWS_REGION", "us-west-1")
+account_id = os.environ.get("AWS_ACCOUNT_ID","249016812213")
+env = core.Environment(region=region, account=account_id)
 
 RunnerStack(app, "runner", env=env)
 
