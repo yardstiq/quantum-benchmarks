@@ -2,6 +2,10 @@ name: Yarstiq Runner Workflow
 on:
   schedule:
     - cron: '0 0 1 */6 *'
+  workflow_dispatch:
+    inputs:
+      AWS_REGION:
+        description: "Region for AWS"
 jobs:
   Benchmark:
     runs-on: ubuntu-latest
