@@ -1,5 +1,7 @@
 name: Yarstiq Runner Workflow
-on: [push]
+on:
+  schedule:
+    - cron: '0 0 1 */6 *'
 jobs:
   Benchmark:
     runs-on: ubuntu-latest
