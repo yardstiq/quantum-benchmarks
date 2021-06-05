@@ -39,11 +39,16 @@ class RunnerStack(core.Stack):
         # Define commands to run on startup
         user_data = ec2.UserData.for_linux()
 
+#        command = """
+#        git clone https://github.com/Roger-luo/quantum-benchmarks > /home/ubuntu/yardstiq.log \
+#                && cd quantum-benchmarks >> /home/ubuntu/yardstiq.log \
+#                && bin/benchmark setup >> /home/ubuntu/yardstiq.log  \
+#                && bin/benchmark benchmark >> /home/ubuntu/yardstiq.log 
+#        """
+
         command = """
-        git clone https://github.com/Roger-luo/quantum-benchmarks > /home/ubuntu/yardstiq.log \
-                && cd quantum-benchmarks >> /home/ubuntu/yardstiq.log \
-                && bin/benchmark setup >> /home/ubuntu/yardstiq.log  \
-                && bin/benchmark benchmark >> /home/ubuntu/yardstiq.log 
+        echo "Hello World" >> /home/ubuntu/yardstiq.log
+        echo "sudo halt" | at now + 1 minutes
         """
 
         user_data.add_commands(command)
