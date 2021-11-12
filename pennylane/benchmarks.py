@@ -88,10 +88,6 @@ class QCBM:
             self.operations.append(qml.CNOT(wires=[i, j]))
 
 
-def _raise_exception(self):
-    raise Exception()
-
-
 class GateTest:
     def __init__(self, n, gate, wires, dev="lightning.qubit", args=()):
         self.n = n
@@ -103,8 +99,7 @@ class GateTest:
 
     def __call__(self):
         def apply_gate():
-            operations = []
-            operations.append(self.gate(*self.args, wires=self.wires))
+            operations = [self.gate(*self.args, wires=self.wires)]
             self.dev.apply(operations)
 
         return apply_gate()
