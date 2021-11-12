@@ -104,7 +104,7 @@ class GateTest:
     def __call__(self):
         def apply_gate():
             operations = []
-            operations.append(gate(*self.args, wires=self.wires))
+            operations.append(self.gate(*self.args, wires=self.wires))
             self.dev.apply(operations)
 
         return apply_gate()
