@@ -8,7 +8,7 @@ import pytest
 
 
 class QFT:
-    def __init__(self, n, dev="default.qubit"):
+    def __init__(self, n, dev="lightning.qubit"):
         self.n = n
         self.dev = qml.device(dev, wires=n)
 
@@ -31,7 +31,7 @@ class QFT:
 
 
 class QCBM:
-    def __init__(self, n, nlayers, dev="default.qubit"):
+    def __init__(self, n, nlayers, dev="lightning.qubit"):
         self.n = n
         self.nlayers = nlayers
         self.neighbors = [(i, (i + 1) % n) for i in range(n)]
@@ -93,7 +93,7 @@ def _raise_exception(self):
 
 
 class GateTest:
-    def __init__(self, n, gate, wires, dev="default.qubit", args=()):
+    def __init__(self, n, gate, wires, dev="lightning.qubit", args=()):
         self.n = n
         self.dev = qml.device(dev, wires=n)
 
