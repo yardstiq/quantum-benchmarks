@@ -8,35 +8,38 @@ import pytest
 
 
 class QFT:
-    def __init__(self, n, dev="default.qubit"):
+    def __init__(self, n, dev="lightning.qubit"):
         self.n = n
         self.dev = qml.device(dev, wires=n)
 
     def __call__(self):
-        @qml.qnode(self.dev)
-        def qft_circuit():
+
+        def apply_qft_circuit():
+            operations = []
+
             for wire in reversed(range(self.n)):
-                qml.Hadamard(wire)
+                operations.append(qml.Hadamard(wire))
                 for i in range(wire):
-                    qml.CRZ(np.pi/(2**(wire-i)), wires=[i,wire])
+                    operations.append(qml.CRZ(np.pi/(2**(wire-i)), wires=[i,wire]))
 
             for i in range(self.n//2):
-                qml.SWAP(wires=[i, self.n - i - 1])
+                operations.append(qml.SWAP(wires=[i, self.n - i - 1]))
 
-            return qml.probs(wires=range(self.n))
-        return qft_circuit()
+            self.dev.apply(operations)
+
+        return apply_qft_circuit()
 
 
 class QCBM:
-    def __init__(self, n, nlayers, dev="default.qubit"):
+    def __init__(self, n, nlayers, dev="lightning.qubit"):
         self.n = n
         self.nlayers = nlayers
         self.neighbors = [(i, (i + 1) % n) for i in range(n)]
         self.dev = qml.device(dev, wires=n)
+        self.operations = []
 
     def __call__(self, vars):
-        @qml.qnode(self.dev)
-        def qcbm_circuit(vars):
+        def apply_qcbm_circuit(vars):
             self.first_layer(vars[1])
             for each in vars[2:-2]:
                 self.entangler()
@@ -45,9 +48,9 @@ class QCBM:
             self.entangler()
             self.last_layer(vars[-1])
 
-            return qml.expval(qml.PauliZ(0))
+            self.dev.apply(self.operations)
 
-        return qcbm_circuit(vars)
+        return apply_qcbm_circuit(vars)
 
     def generate_random_vars(self):
         vars = [np.random.rand(self.n, 2)]
@@ -55,21 +58,18 @@ class QCBM:
         vars += [np.random.rand(self.n, 2)]
         return vars
 
-    @staticmethod
-    def first_rotation(alpha, beta, wires=1):
-        qml.RX(alpha, wires=wires)
-        qml.RZ(beta, wires=wires)
+    def first_rotation(self, alpha, beta, wires=1):
+        self.operations.append(qml.RX(alpha, wires=wires))
+        self.operations.append(qml.RZ(beta, wires=wires))
 
-    @staticmethod
-    def mid_rotation(alpha, beta, gamma, wires=1):
-        qml.RZ(alpha, wires=wires)
-        qml.RX(beta, wires=wires)
-        qml.RZ(gamma, wires=wires)
+    def mid_rotation(self, alpha, beta, gamma, wires=1):
+        self.operations.append(qml.RZ(alpha, wires=wires))
+        self.operations.append(qml.RX(beta, wires=wires))
+        self.operations.append(qml.RZ(gamma, wires=wires))
 
-    @staticmethod
-    def last_rotation(alpha, beta, wires=1):
-        qml.RX(alpha, wires=wires)
-        qml.RZ(beta, wires=wires)
+    def last_rotation(self, alpha, beta, wires=1):
+        self.operations.append(qml.RX(alpha, wires=wires))
+        self.operations.append(qml.RZ(beta, wires=wires))
 
     def first_layer(self, vars):
         for each in vars:
@@ -85,38 +85,24 @@ class QCBM:
 
     def entangler(self):
         for i, j in self.neighbors:
-            qml.CNOT(wires=[i, j])
-
-
-def _raise_exception(self):
-    raise Exception()
+            self.operations.append(qml.CNOT(wires=[i, j]))
 
 
 class GateTest:
-    def __init__(self, n, gate, wires, dev="default.qubit", args=()):
+    def __init__(self, n, gate, wires, dev="lightning.qubit", args=()):
         self.n = n
         self.dev = qml.device(dev, wires=n)
 
-        # This ensures that no expectation values are calculated
-        # which would skew the results for gate tests
-        self.dev.pre_measure = _raise_exception
         self.gate = gate
         self.args = args
         self.wires = wires
 
     def __call__(self):
-        @qml.qnode(self.dev)
-        def gate_circuit():
-            self.gate(*self.args, wires=self.wires)
-            return qml.expval(qml.PauliZ(0))
+        def apply_gate():
+            operations = [self.gate(*self.args, wires=self.wires)]
+            self.dev.apply(operations)
 
-        def eval():
-            try:
-                gate_circuit()
-            except:
-                pass
-
-        return eval()
+        return apply_gate()
 
 
 nqubits_list = range(4,26)
