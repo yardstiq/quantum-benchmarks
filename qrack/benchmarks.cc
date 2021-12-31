@@ -14,7 +14,7 @@ static void BM_sim_X(benchmark::State& state) {
 		if (qReg != NULL){
 			qReg.reset();
 		}
-		qReg = CreateQuantumInterface(QINTERFACE_QUNIT, QINTERFACE_OPTIMAL, state.range(0), 0); 
+		qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
 		qReg->X(state.range(0) - 1);
 		qReg->Finish();
 	}
@@ -24,7 +24,7 @@ static void BM_sim_X(benchmark::State& state) {
 BENCHMARK(BM_sim_X)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_H(benchmark::State& state) {
-	QInterfacePtr qReg = CreateQuantumInterface(QINTERFACE_QUNIT, QINTERFACE_OPTIMAL, state.range(0), 0);
+	QInterfacePtr qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
 	for (auto _ : state){
 		qReg->H(state.range(0) - 1);
 	}
@@ -34,7 +34,7 @@ static void BM_sim_H(benchmark::State& state) {
 BENCHMARK(BM_sim_H)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_T(benchmark::State& state) {
-	QInterfacePtr qReg = CreateQuantumInterface(QINTERFACE_QUNIT, QINTERFACE_OPTIMAL, state.range(0), 0);
+	QInterfacePtr qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
 	for (auto _ : state){
 		qReg->T(state.range(0) - 1);
 	}
@@ -44,7 +44,7 @@ static void BM_sim_T(benchmark::State& state) {
 BENCHMARK(BM_sim_T)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_CNOT(benchmark::State& state) {
-	QInterfacePtr qReg = CreateQuantumInterface(QINTERFACE_QUNIT, QINTERFACE_OPTIMAL, state.range(0), 0);
+	QInterfacePtr qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
 	for (auto _ : state){
 		qReg->CNOT(0,1);
 	}
@@ -54,7 +54,7 @@ static void BM_sim_CNOT(benchmark::State& state) {
 BENCHMARK(BM_sim_CNOT)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_Toffoli(benchmark::State& state) {
-	QInterfacePtr qReg = CreateQuantumInterface(QINTERFACE_QUNIT, QINTERFACE_OPTIMAL, state.range(0), 0);
+	QInterfacePtr qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
 	for (auto _ : state){
 		qReg->CCNOT(0,1,2);
 	}
@@ -64,7 +64,7 @@ static void BM_sim_Toffoli(benchmark::State& state) {
 BENCHMARK(BM_sim_Toffoli)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_Rx(benchmark::State& state) {
-	QInterfacePtr qReg = CreateQuantumInterface(QINTERFACE_QUNIT, QINTERFACE_OPTIMAL, state.range(0), 0);
+	QInterfacePtr qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
 	for (auto _ : state){
 		qReg->RX(0.5, 2);
 	}
@@ -74,7 +74,7 @@ static void BM_sim_Rx(benchmark::State& state) {
 BENCHMARK(BM_sim_Rx)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_Ry(benchmark::State& state) {
-	QInterfacePtr qReg = CreateQuantumInterface(QINTERFACE_QUNIT, QINTERFACE_OPTIMAL, state.range(0), 0);
+	QInterfacePtr qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
 	for (auto _ : state){
 		qReg->RY(0.5, 2);
 	}
