@@ -1,5 +1,7 @@
 # Quantum Software Benchmarks
 
+*DISCLAIMER: the benchmark results are only update to date till 2020, a rewrite of the benchmark scripts are still in progress*
+
 We benchmark several popular quantum computation softwares/frameworks/simulators to test their performance
 in practical daily research.
 
