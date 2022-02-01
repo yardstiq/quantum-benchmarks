@@ -82,7 +82,50 @@ static void BM_sim_Ry(benchmark::State& state) {
 	qReg->Finish();
 	state.SetLabel("Ry");
 }
+
 // Register the function as a benchmark
 BENCHMARK(BM_sim_Ry)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+
+static void BM_sim_QCBM(benchmark::State& state) {
+        QInterfacePtr qReg = CreateQuantumInterface({ QINTERFACE_HYBRID }, state.range(0), 0);
+        for (auto _: state){
+
+               // First rotation
+               for (int i = 0; i < qReg->GetQubitCount(); i++) {
+                       qReg->RX(qReg->Rand(), i);
+                       qReg->RZ(qReg->Rand(), i);
+               }
+
+		// Entangler
+               for (int i = 0; i < qReg->GetQubitCount(); i++) {
+                       qReg->CNOT(i, (i+1) % qReg->GetQubitCount());
+               }
+
+
+		for (int depth = 0; depth < 9; depth++){
+			// Mid Rotation
+			for (int i = 0; i < qReg->GetQubitCount(); i++) {
+			        qReg->RZ(qReg->Rand(), i);
+                               qReg->RX(qReg->Rand(), i);
+                               qReg->RZ(qReg->Rand(), i);
+                       }
+
+			// Entangler
+                       for (int i = 0; i < qReg->GetQubitCount(); i++) {
+                               qReg->CNOT(i, (i+1) % qReg->GetQubitCount());
+			}
+		}
+
+		// Last Rotation
+		for (int i = 0; i < qReg->GetQubitCount(); i++) {
+                       qReg->RZ(qReg->Rand(), i);
+                       qReg->RX(qReg->Rand(), i);
+               }
+
+	}
+	state.SetLabel("QCBM");
+}
+
+BENCHMARK(BM_sim_QCBM)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
 
 BENCHMARK_MAIN();

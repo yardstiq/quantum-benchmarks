@@ -18,7 +18,7 @@ cmake --build "build" --config Release
 
 git clone https://github.com/vm6502q/qrack.git
 cd qrack
-mkdir _build && cd _build && sudo cmake .. && sudo make all install
+mkdir _build && cd _build && sudo cmake .. && sudo make all install -j$(nproc --all)
 cd ${FILE_PATH}
 
 g++ benchmarks.cc -std=c++11 -isystem benchmark/include -Lbuild/src -lbenchmark -lOpenCL -lpthread -lqrack -o benchmarks
