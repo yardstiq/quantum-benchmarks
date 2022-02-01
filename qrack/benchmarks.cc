@@ -23,7 +23,7 @@ static void BM_sim_X(benchmark::State& state) {
 	state.SetLabel("X");
 }
 // Register the function as a benchmark
-BENCHMARK(BM_sim_X)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_X)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_H(benchmark::State& state) {
 	QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
@@ -34,7 +34,7 @@ static void BM_sim_H(benchmark::State& state) {
 	state.SetLabel("H");
 }
 // Register the function as a benchmark
-BENCHMARK(BM_sim_H)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_H)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_T(benchmark::State& state) {
 	QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
@@ -45,7 +45,7 @@ static void BM_sim_T(benchmark::State& state) {
 	state.SetLabel("T");
 }
 // Register the function as a benchmark
-BENCHMARK(BM_sim_T)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_T)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_CNOT(benchmark::State& state) {
 	QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
@@ -56,7 +56,7 @@ static void BM_sim_CNOT(benchmark::State& state) {
 	state.SetLabel("CNOT");
 }
 // Register the function as a benchmark
-BENCHMARK(BM_sim_CNOT)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_CNOT)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_Toffoli(benchmark::State& state) {
 	QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
@@ -67,7 +67,7 @@ static void BM_sim_Toffoli(benchmark::State& state) {
 	state.SetLabel("Toffoli");
 }
 // Register the function as a benchmark
-BENCHMARK(BM_sim_Toffoli)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_Toffoli)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_Rx(benchmark::State& state) {
 	QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
@@ -78,7 +78,7 @@ static void BM_sim_Rx(benchmark::State& state) {
 	state.SetLabel("Rx");
 }
 // Register the function as a benchmark
-BENCHMARK(BM_sim_Rx)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_Rx)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_Ry(benchmark::State& state) {
 	QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
@@ -90,7 +90,7 @@ static void BM_sim_Ry(benchmark::State& state) {
 }
 
 // Register the function as a benchmark
-BENCHMARK(BM_sim_Ry)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_Ry)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 static void BM_sim_QCBM(benchmark::State& state) {
         QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
@@ -132,6 +132,6 @@ static void BM_sim_QCBM(benchmark::State& state) {
 	state.SetLabel("QCBM");
 }
 
-BENCHMARK(BM_sim_QCBM)->DenseRange(4,25); //->ComputeStatistics("min", min_estimator);
+BENCHMARK(BM_sim_QCBM)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
 BENCHMARK_MAIN();
