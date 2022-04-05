@@ -92,14 +92,21 @@ static void BM_sim_Ry(benchmark::State& state) {
 // Register the function as a benchmark
 BENCHMARK(BM_sim_Ry)->DenseRange(4,25)->ComputeStatistics("min", min_estimator);
 
+float get_random() {
+	// https://stackoverflow.com/questions/686353/random-float-number-generation
+	static std::default_random_engine e;
+	static std::uniform_real_distribution<> dis(0, 1); // rage 0 - 1
+	return dis(e);
+}
+
 static void BM_sim_QCBM(benchmark::State& state) {
         QInterfacePtr qReg = CreateQuantumInterface({ SimType }, state.range(0), 0);
         for (auto _: state){
 
                // First rotation
                for (int i = 0; i < qReg->GetQubitCount(); i++) {
-                       qReg->RX(qReg->Rand(), i);
-                       qReg->RZ(qReg->Rand(), i);
+                       qReg->RX(get_random(), i);
+                       qReg->RZ(get_random(), i);
                }
 
 		// Entangler
@@ -111,9 +118,9 @@ static void BM_sim_QCBM(benchmark::State& state) {
 		for (int depth = 0; depth < 9; depth++){
 			// Mid Rotation
 			for (int i = 0; i < qReg->GetQubitCount(); i++) {
-			        qReg->RZ(qReg->Rand(), i);
-                               qReg->RX(qReg->Rand(), i);
-                               qReg->RZ(qReg->Rand(), i);
+			        qReg->RZ(get_random(), i);
+                               qReg->RX(get_random(), i);
+                               qReg->RZ(get_random(), i);
                        }
 
 			// Entangler
@@ -124,11 +131,12 @@ static void BM_sim_QCBM(benchmark::State& state) {
 
 		// Last Rotation
 		for (int i = 0; i < qReg->GetQubitCount(); i++) {
-                       qReg->RZ(qReg->Rand(), i);
-                       qReg->RX(qReg->Rand(), i);
+                       qReg->RZ(get_random(), i);
+                       qReg->RX(get_random(), i);
                }
 
 	}
+	qReg->Finish();
 	state.SetLabel("QCBM");
 }
 
