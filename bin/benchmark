@@ -93,19 +93,19 @@ ${BOLD}COMMAND${NC}
 
 ${BOLD}OPTIONS${NC}
 
-setup [project]         setup the given project, if project is not specified,
-                        all projects in this benchmark will be setup. If the project
-                        is essentials, it will try to install all essentials dependencies
+setup [project/essentials]          setup the given project, if project is not specified,
+                                    all projects in this benchmark will be setup. If the project
+                                    is essentials, it will try to install all essentials dependencies
 
-run [project]           run the given project benchmark, if project is not
-                        specified, all projects in this benchmark will be
-                        setup.
+run [project]                       run the given project benchmark, if project is not
+                                    specified, all projects in this benchmark will be
+                                    setup.
 
-list                    list available projects to run.
+list                                list available projects to run.
 
-info                    print current machine info.
+info                                print current machine info.
 
-help                    print this message.
+help                                print this message.
 """
 }
 
