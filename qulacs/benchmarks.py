@@ -27,6 +27,22 @@ def entangler(circuit, nqubits, pairs):
     for a, b in pairs:
         circuit.add_CNOT_gate(a, b)
 
+def build_qft_circuit(nqubits):
+    circuit = QuantumCircuit(nqubits)
+
+    for wire in reversed(range(nqubits)):
+        circuit.add_H_gate(wire)
+        for i in range(wire):
+            circuit.add_dense_matrix_gate(wire, [[1,0],[0, np.exp(1j * (np.pi/(2**(wire-i)))/2)]])
+            circuit.add_CNOT_gate(i, wire)
+            circuit.add_dense_matrix_gate(wire, [[1,0],[0, np.exp(-1j * (np.pi/(2**(wire-i)))/2)]])
+            circuit.add_CNOT_gate(i, wire)
+
+    for i in range(nqubits//2):
+        circuit.add_SWAP_gate(i, nqubits - i - 1)
+
+    return circuit
+
 def build_circuit(nqubits, depth, pairs):
     circuit = QuantumCircuit(nqubits)
     first_rotation(circuit, nqubits)
@@ -81,6 +97,21 @@ def test_Toffoli(benchmark, nqubits):
     toffoli.add_control_qubit(2,1)
     st = QuantumState(nqubits)
     benchmark(toffoli.update_quantum_state, st)
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_QFT(benchmark, nqubits):
+    benchmark.group = "QFT"
+    circuit = build_qft_circuit(nqubits)
+    st = QuantumState(nqubits)
+    benchmark(circuit.update_quantum_state, st)
+
+@pytest.mark.parametrize('nqubits', nqubits_list)
+def test_QFT_CUDA(benchmark, nqubits):
+    benchmark.group = "QFT (cuda)"
+    circuit = build_qft_circuit(nqubits)
+    st = QuantumStateGpu(nqubits)
+    benchmark(circuit.update_quantum_state, st)
+
 
 @pytest.mark.parametrize('nqubits', nqubits_list)
 def test_QCBM(benchmark, nqubits):
